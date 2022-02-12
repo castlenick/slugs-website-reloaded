@@ -1,8 +1,18 @@
 import React from "react";
-import "./App.css";
+import { HashRouter as Router } from 'react-router-dom';
+
+import { Header } from './Header';
+import { Footer } from './Footer';
+import { Routes } from './Routes';
 
 function App() {
-    return <h1 className="text-3xl font-bold underline">Hello World!</h1>;
+    return (
+        <Router>
+            <Header/>
+            <Routes/>
+            <Footer/>
+        </Router>
+    );
 }
 
 export default App;
