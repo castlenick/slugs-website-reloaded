@@ -5,23 +5,33 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faDiscord } from '@fortawesome/free-brands-svg-icons';
 
+import { commify, shortenAddress } from './Utilities';
+
 import Logo from './img/Logo-Small.png';
-import DigitalEyes from './img/marketplace-icons/DigitalEyes.png'
-import ExchangeArt from './img/marketplace-icons/ExchangeArt.png'
-import MagicEden from './img/marketplace-icons/MagicEden.png'
-import Solanart from './img/marketplace-icons/Solanart.png'
-import Solsea from './img/marketplace-icons/Solsea.png'
+
+import DigitalEyes from './img/marketplace-icons/DigitalEyes.png';
+import ExchangeArt from './img/marketplace-icons/ExchangeArt.png';
+import MagicEden from './img/marketplace-icons/MagicEden.png';
+import Solanart from './img/marketplace-icons/Solanart.png';
+import Solsea from './img/marketplace-icons/Solsea.png';
+
+import Burned from './img/statistics-icons/Burned.png';
+import Minted from './img/statistics-icons/Minted.png';
+import Crown from './img/statistics-icons/Crown.png';
 
 // Default styles that can be overridden by your app
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 export interface IHeaderProps {
     slugCount?: number;
+
+    burnCount?: number;
 }
 
 export function Header(props: IHeaderProps) {
     const {
         slugCount,
+        burnCount,
     } = props;
 
     const {
@@ -44,19 +54,74 @@ export function Header(props: IHeaderProps) {
                         <Link to='/leaderboard'>Burn-Leaderboard</Link>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center border-2 border-slugGreen my-4 py-3 relative w-full col-span-9">
+                    <div className="flex flex-col justify-center items-center border-2 border-slugGreen my-4 py-5 relative w-full col-span-9">
                         <img
                             src={Logo}
                             className="absolute top-0 left-0 -mt-16 -ml-2 w-44 2xl:w-56 2xl:-mt-20 2xl:-ml-3"
                         />
 
-                        <span className="text-slugGreen text-5xl 2xl:text-6xl">
-                            It's SLUGS on SOLANA!
-                        </span>
+                        <div className="flex flex-col w-full gap-y-4 2xl:flex-row">
+                            <div className="2xl:basis-1/5">
+                            </div>
 
-                        <span className="text-2xl mt-2 text-center w-3/5 2xl:text-3xl">
-                            {`Solana Slugs is a deflationary collection of ${slugCount || 9362} slugs on the Solana blockchain`}
-                        </span>
+                            <div className="flex flex-col justify-center items-center 2xl:basis-2/5">
+                                <span className="text-slugGreen text-center text-5xl 2xl:text-6xl">
+                                    It's SLUGS on SOLANA!
+                                </span>
+
+                                <span className="text-2xl mt-2 text-center w-3/5 2xl:text-3xl 2xl:w-full">
+                                    {`Solana Slugs is a deflationary collection of ${slugCount || 9362} slugs on the Solana blockchain`}
+                                </span>
+                            </div>
+
+                            <div className="flex flex-row justify-around items-center 2xl:basis-3/5">
+                                <div className="flex flex-col justify-center items-center 2xl:col-start-7 2xl:col-end-9">
+                                    <img
+                                        className="w-16"
+                                        src={Minted}
+                                    />
+
+                                    <span className="text-2l uppercase">
+                                        Initially Minted
+                                    </span>
+
+                                    <span className="text-2l">
+                                        10,000
+                                    </span>
+                                </div>
+
+                                <div className="flex flex-col justify-center items-center 2xl:col-start-9 2xl:col-end-11">
+                                    <img
+                                        className="w-16"
+                                        src={Burned}
+                                    />
+
+                                    <span className="text-2l uppercase">
+                                        Total Burned
+                                    </span>
+
+                                    <span className="text-2l">
+                                        {commify(burnCount || '1160')}
+                                    </span>
+
+                                </div>
+
+                                <div className="flex flex-col justify-center items-center 2xl:col-start-11 2xl:col-end-13">
+                                    <img
+                                        className="w-16"
+                                        src={Crown}
+                                    />
+
+                                    <span className="text-2l uppercase">
+                                        Big Burner
+                                    </span>
+
+                                    <span className="text-2l">
+                                        {shortenAddress('ALd4UHgcX9sXJzFiodRihi6W6AoYNs3vHxRSZzjWafgH')}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="flex col-span-2 2xl:col-start-2 2xl:row-start-2 2xl:col-span-2 2xl:items-end 2xl:justify-center">
@@ -135,7 +200,11 @@ export function Header(props: IHeaderProps) {
                 </div>
             </div>
         );
-    }, [slugCount, connected]);
+    }, [
+        slugCount,
+        burnCount,
+        connected
+    ]);
 
     return header;
 }

@@ -90,6 +90,7 @@ function App() {
                     <WalletModalProvider>
                         <Header
                             slugCount={burntData ? burntData.currentTokenCount : undefined}
+                            burnCount={burntData ? burntData.burnCount : undefined}
                         />
 
                         <Routes/>
