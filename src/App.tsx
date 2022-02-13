@@ -1,5 +1,20 @@
 import React from "react";
 import { HashRouter as Router } from 'react-router-dom';
+import {
+    ConnectionProvider,
+    WalletProvider,
+} from '@solana/wallet-adapter-react';
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import {
+    PhantomWalletAdapter,
+    SlopeWalletAdapter,
+    SolflareWalletAdapter,
+    SolletExtensionWalletAdapter,
+    SolletWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
+import {
+    WalletModalProvider,
+} from '@solana/wallet-adapter-react-ui';
 
 import { Header } from './Header';
 import { Footer } from './Footer';
@@ -10,6 +25,7 @@ import {
     createBurntMap,
     calculateRanks,
 } from './Rankings';
+import { RPC_URL } from './Constants';
 
 function App() {
     /* Mapping of mint hash to whether slug is burnt */
@@ -26,6 +42,18 @@ function App() {
 
     /* Raw data we get back from the /burntslugs api */
     const [burntData, setBurntData] = React.useState<any | undefined>(undefined);
+
+    const network = WalletAdapterNetwork.Mainnet;
+
+    const endpoint = RPC_URL;
+
+    const wallets = React.useMemo(() => [
+        new PhantomWalletAdapter(),
+        new SlopeWalletAdapter(),
+        new SolflareWalletAdapter({ network }),
+        new SolletWalletAdapter({ network }),
+        new SolletExtensionWalletAdapter({ network }),
+    ], [network]);
 
     async function fetchData() {
         const data = await fetchBurntData();
@@ -57,13 +85,19 @@ function App() {
 
     return (
         <Router>
-            <Header
-                slugCount={burntData ? burntData.currentTokenCount : undefined}
-            />
+            <ConnectionProvider endpoint={endpoint}>
+                <WalletProvider wallets={wallets} autoConnect>
+                    <WalletModalProvider>
+                        <Header
+                            slugCount={burntData ? burntData.currentTokenCount : undefined}
+                        />
 
-            <Routes/>
+                        <Routes/>
 
-            <Footer/>
+                        <Footer/>
+                    </WalletModalProvider>
+                </WalletProvider>
+            </ConnectionProvider>
         </Router>
     );
 }

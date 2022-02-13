@@ -39,6 +39,9 @@ export function Header(props: IHeaderProps) {
                             {`Solana Slugs is a deflationary collection of ${slugCount || 9362} slugs on the Solana blockchain`}
                         </span>
                     </div>
+
+                    <div>
+                    </div>
                 </div>
             </div>
         );
