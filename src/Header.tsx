@@ -1,7 +1,19 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter, faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 import Logo from './img/Logo-Small.png';
+import DigitalEyes from './img/marketplace-icons/DigitalEyes.png'
+import ExchangeArt from './img/marketplace-icons/ExchangeArt.png'
+import MagicEden from './img/marketplace-icons/MagicEden.png'
+import Solanart from './img/marketplace-icons/Solanart.png'
+import Solsea from './img/marketplace-icons/Solsea.png'
+
+// Default styles that can be overridden by your app
+require('@solana/wallet-adapter-react-ui/styles.css');
 
 export interface IHeaderProps {
     slugCount?: number;
@@ -12,11 +24,18 @@ export function Header(props: IHeaderProps) {
         slugCount,
     } = props;
 
+    const {
+        connected,
+        autoConnect,
+    } = useWallet();
+
+    console.log(connected, autoConnect);
+
     const header = React.useMemo(() => {
         return (
             <div className="flex justify-center items-center flex-col">
-                <div className="grid grid-cols-3 w-4/5">
-                    <div className="flex justify-end gap-x-6 text-3xl mt-20 w-full col-span-3">
+                <div className="grid grid-cols-9 w-4/5">
+                    <div className="flex justify-end gap-x-6 text-3xl mt-20 w-full col-span-9">
                         <Link to='/'>Home</Link>
                         <Link to='/faq'>FAQ</Link>
                         <Link to='/rarity'>Rarity</Link>
@@ -25,7 +44,7 @@ export function Header(props: IHeaderProps) {
                         <Link to='/leaderboard'>Burn-Leaderboard</Link>
                     </div>
 
-                    <div className="flex flex-col justify-center items-center border-2 border-slugGreen mt-4 py-3 relative w-full col-span-3">
+                    <div className="flex flex-col justify-center items-center border-2 border-slugGreen my-4 py-3 relative w-full col-span-9">
                         <img
                             src={Logo}
                             className="absolute top-0 left-0 -mt-16 -ml-2 w-44"
@@ -40,12 +59,78 @@ export function Header(props: IHeaderProps) {
                         </span>
                     </div>
 
-                    <div>
+                    <div className="col-span-2">
+                        <WalletMultiButton
+                            className="!border-solid !border-2 !border-slugGreen !w-52 !h-12 !font-sans !text-2xl !p-1 !font-normal text-center justify-center items-center"
+                            startIcon={undefined}
+                            endIcon={undefined}
+                        >
+                            <div className={`rounded-full w-3 h-3 mx-1 ${connected ? 'bg-green-500' : 'bg-red-500'}`}>
+                            </div>
+                            <span className="mx-1">
+                                {connected ? 'Wallet Connected' : 'Connect Wallet'}
+                            </span>
+                        </WalletMultiButton>
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center col-span-5 gap-y-3">
+                        <span className="text-2xl text-center">
+                            Buy Slugs At These Marketplaces!
+                        </span>
+
+                        <div className="flex flex-row justify-center items-center col-span-5 gap-x-3">
+                            <a href="https://magiceden.io/marketplace/sol_slugs">
+                                <img
+                                    src={MagicEden}
+                                />
+                            </a>
+
+                            <a href="https://solanart.io/collections/solanaslugs">
+                                <img
+                                    src={Solanart}
+                                />
+                            </a>
+
+                            <a href="https://digitaleyes.market/collections/Sol%20Slugs">
+                                <img
+                                    src={DigitalEyes}
+                                />
+                            </a>
+
+                            <a href="https://exchange.art/collections/Generation%201">
+                                <img
+                                    src={ExchangeArt}
+                                />
+                            </a>
+
+                            <a href="https://solsea.io/collection/6174889e35bdfa7fd24932c5">
+                                <img
+                                    src={Solsea}
+                                />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-row justify-end items-start col-span-2 gap-x-4">
+                        <a href="https://twitter.com/SolSlugsNFT">
+                            <FontAwesomeIcon
+                                icon={faTwitter}
+                                size="1x"
+                                className="text-4xl"
+                            />
+                        </a>
+
+                        <a href="https://discord.gg/zqdrguPfUa">
+                            <FontAwesomeIcon
+                                icon={faDiscord}
+                                className="text-4xl"
+                            />
+                        </a>
                     </div>
                 </div>
             </div>
         );
-    }, [slugCount]);
+    }, [slugCount, connected]);
 
     return header;
 }

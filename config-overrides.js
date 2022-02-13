@@ -1,4 +1,3 @@
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 const webpack = require('webpack');
 
 module.exports = function override(config, env) {
@@ -7,10 +6,6 @@ module.exports = function override(config, env) {
         fs: require.resolve('fs'),
         assert: require.resolve('assert'),
         crypto: require.resolve('crypto-browserify'),
-        http: require.resolve('stream-http'),
-        https: require.resolve('https-browserify'),
-        os: require.resolve('os-browserify/browser'),
-        buffer: require.resolve('buffer'),
         stream: require.resolve('stream-browserify'),
     };
 
