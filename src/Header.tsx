@@ -46,18 +46,57 @@ export function Header(props: IHeaderProps) {
             <div className="flex justify-center items-center flex-col">
                 <div className="grid grid-cols-9 w-4/5 mt-20 2xl:w-5/6">
                     <div className="flex justify-end gap-x-6 text-3xl w-full col-span-9 items-end 2xl:col-span-4 2xl:col-start-6 2xl:row-start-2">
-                        <Link to='/'>Home</Link>
-                        <Link to='/faq'>FAQ</Link>
-                        <Link to='/rarity'>Rarity</Link>
-                        <Link to='/designer'>Designer</Link>
-                        <Link to='/partners'>Partners</Link>
-                        <Link to='/leaderboard'>Burn-Leaderboard</Link>
+                        <Link to='/'>
+                            <span className="text-3xl">
+                                Home
+                            </span>
+                        </Link>
+
+                        <Link to='/rarity'>
+                            <div className="flex flex-row justify-center items-center gap-x-2">
+                                <span className="text-3xl">
+                                    Rarity
+                                </span>
+                                <span className="text-base">
+                                    ▼
+                                </span>
+                            </div>
+                        </Link>
+
+                        <Link to='/tools'>
+                            <div className="flex flex-row justify-center items-center gap-x-2">
+                                <span className="text-3xl">
+                                    Tools
+                                </span>
+                                <span className="text-base">
+                                    ▼
+                                </span>
+                            </div>
+                        </Link>
+
+                        <Link to='/partners'>
+                            <div className="flex flex-row justify-center items-center gap-x-2">
+                                <span className="text-3xl">
+                                    Partners
+                                </span>
+                                <span className="text-base">
+                                    ▼
+                                </span>
+                            </div>
+                        </Link>
+
+                        <Link to='/leaderboard'>
+                            <span className="text-3xl">
+                                Burn-Leaderboard
+                            </span>
+                        </Link>
                     </div>
 
                     <div className="flex flex-col justify-center items-center border-2 border-slugGreen my-4 py-5 relative w-full col-span-9">
                         <img
                             src={Logo}
                             className="absolute top-0 left-0 -mt-16 -ml-2 w-44 2xl:w-56 2xl:-mt-20 2xl:-ml-3"
+                            alt='Slug Logo'
                         />
 
                         <div className="flex flex-col w-full gap-y-4 2xl:flex-row">
@@ -79,6 +118,7 @@ export function Header(props: IHeaderProps) {
                                     <img
                                         className="w-16"
                                         src={Minted}
+                                        alt='Minted Count'
                                     />
 
                                     <span className="text-2l uppercase">
@@ -94,6 +134,7 @@ export function Header(props: IHeaderProps) {
                                     <img
                                         className="w-16"
                                         src={Burned}
+                                        alt='Burned Count'
                                     />
 
                                     <span className="text-2l uppercase">
@@ -110,6 +151,7 @@ export function Header(props: IHeaderProps) {
                                     <img
                                         className="w-16"
                                         src={Crown}
+                                        alt='Big Burner'
                                     />
 
                                     <span className="text-2l uppercase">
@@ -148,6 +190,7 @@ export function Header(props: IHeaderProps) {
                                 <img
                                     src={MagicEden}
                                     className="w-8 2xl:w-9"
+                                    alt='MagicEden'
                                 />
                             </a>
 
@@ -155,6 +198,7 @@ export function Header(props: IHeaderProps) {
                                 <img
                                     src={Solanart}
                                     className="w-8 2xl:w-9"
+                                    alt='Solanart'
                                 />
                             </a>
 
@@ -162,6 +206,7 @@ export function Header(props: IHeaderProps) {
                                 <img
                                     src={DigitalEyes}
                                     className="w-8 2xl:w-9"
+                                    alt='DigitalEyes'
                                 />
                             </a>
 
@@ -169,6 +214,7 @@ export function Header(props: IHeaderProps) {
                                 <img
                                     src={ExchangeArt}
                                     className="w-8 2xl:w-9"
+                                    alt='ExchangeArt'
                                 />
                             </a>
 
@@ -176,6 +222,7 @@ export function Header(props: IHeaderProps) {
                                 <img
                                     src={Solsea}
                                     className="w-8 2xl:w-9"
+                                    alt='Solsea'
                                 />
                             </a>
                         </div>
