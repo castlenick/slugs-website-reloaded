@@ -9,6 +9,7 @@ module.exports = {
         extend: {
             colors: {
                 slugGreen: '#92E643',
+                slugGreenDark: 'rgba(146, 230, 67, 0.5)',
             }
         },
     },

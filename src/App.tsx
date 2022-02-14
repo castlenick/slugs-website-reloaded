@@ -88,14 +88,18 @@ function App() {
             <ConnectionProvider endpoint={endpoint}>
                 <WalletProvider wallets={wallets} autoConnect>
                     <WalletModalProvider>
-                        <Header
-                            slugCount={burntData ? burntData.currentTokenCount : undefined}
-                            burnCount={burntData ? burntData.burnCount : undefined}
-                        />
+                        <div className="flex justify-center items-center flex-col">
+                            <div className="w-4/5 2xl:w-5/6">
+                                <Header
+                                    slugCount={burntData ? burntData.currentTokenCount : undefined}
+                                    burnCount={burntData ? burntData.burnCount : undefined}
+                                />
 
-                        <Routes/>
+                                <Routes/>
 
-                        <Footer/>
+                                <Footer/>
+                            </div>
+                        </div>
                     </WalletModalProvider>
                 </WalletProvider>
             </ConnectionProvider>

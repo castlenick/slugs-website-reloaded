@@ -1,4 +1,4 @@
-export function Partners() {
+export function Designer() {
     return (
         <div>
         </div>
