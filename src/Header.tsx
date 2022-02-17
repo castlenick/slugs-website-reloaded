@@ -88,19 +88,11 @@ export function Header(props: IHeaderProps) {
                         ]}
                     />
 
-                    <HeaderDropdown
-                        label={'Partners'}
-                        links={[
-                            {
-                                name: 'Collabs',
-                                link: '/collabs',
-                            },
-                            {
-                                name: 'Affiliates',
-                                link: '/affiliates',
-                            },
-                        ]}
-                    />
+                    <Link to='/affiliates'>
+                        <span className="text-3xl">
+                            Affiliates
+                        </span>
+                    </Link>
 
                     <Link to='/burn-leaderboard'>
                         <span className="text-3xl">
