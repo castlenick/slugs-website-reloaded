@@ -62,7 +62,7 @@ function App() {
                 <WalletProvider wallets={wallets} autoConnect>
                     <WalletModalProvider>
                         <div className="flex justify-center items-center flex-col">
-                            <div className="w-4/5 2xl:w-5/6">
+                            <div className="w-4/5 2xl:w-5/6 mb-20">
                                 <Header
                                     slugCount={data?.slugStats?.slugCount}
                                     burnCount={data?.burnStats?.slugsBurnt}

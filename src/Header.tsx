@@ -40,7 +40,6 @@ export function Header(props: IHeaderProps) {
 
     const {
         connected,
-        autoConnect,
     } = useWallet();
 
     const header = React.useMemo(() => {
@@ -267,7 +266,8 @@ export function Header(props: IHeaderProps) {
     }, [
         slugCount,
         burnCount,
-        connected
+        connected,
+        biggestBurner,
     ]);
 
     return header;
