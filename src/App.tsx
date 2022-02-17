@@ -39,7 +39,7 @@ function App() {
         new SolletExtensionWalletAdapter({ network }),
     ], [network]);
 
-    async function fetchData() {
+    const fetchData = React.useCallback(async () => {
         const url = 'https://letsalllovelain.com/slugs/';
 
         try {
@@ -50,11 +50,11 @@ function App() {
             await sleep(5 * 1000);
             fetchData();
         }
-    }
+    }, []);
 
     React.useEffect(() => {
         fetchData();
-    }, []);
+    }, [fetchData]);
 
     return (
         <Router>
@@ -69,7 +69,9 @@ function App() {
                                     biggestBurner={data?.burnStats?.biggestBurner?.address}
                                 />
 
-                                <Routes/>
+                                <Routes
+                                    data={data}
+                                />
 
                                 <Footer/>
                             </div>

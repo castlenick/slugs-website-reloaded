@@ -37,6 +37,7 @@ function AffiliateItem(props: AffiliatedItemProps) {
         <div className="flex flex-row justify-center items-start gap-x-10">
             <div className="w-60 flex grow-0 shrink-0">
                 <img
+                    alt='affiliate-logo'
                     src={image}
                     className="w-60 h-60 border-slugGreen border-2 self-center object-contain"
                 />
