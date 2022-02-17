@@ -6,8 +6,11 @@ export function commify(s: string | number) {
     return x.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export function shortenAddress(address: string): string {
-    return `${address.slice(0, 4)}...${address.slice(-4)}`;
+export function shortenAddress(address: string, totalLength: number = 11): string {
+    const excludingDots = totalLength - 3;
+    const half = Math.floor(excludingDots / 2);
+
+    return `${address.slice(0, half)}...${address.slice(-half)}`;
 }
 
 export function sleep(ms: number): Promise<void> {
