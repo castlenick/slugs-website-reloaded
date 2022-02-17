@@ -27,7 +27,7 @@ export function HeaderDropdown(props: HeaderDropdownProps) {
             </Menu.Button>
             <Menu.Items className="absolute flex flex-col justify-center items-center right-0 w-60 mt-2 origin-top-right bg-black border-2 border-slugGreen rounded z-10 divide-y divide-slugGreen">
                 {links.map(({ link, name }) => (
-                    <Menu.Item as="div" className="w-full flex justify-center items-center py-2 hover:bg-slugGreenDark">
+                    <Menu.Item as="div" className="w-full flex justify-center items-center py-2 hover:bg-slugGreenDark" key="name">
                         {({ active }) => (
                             <Link to={link} className="w-full flex justify-center items-center">
                                 <span className="text-3xl">

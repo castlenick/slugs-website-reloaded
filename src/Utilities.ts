@@ -9,3 +9,7 @@ export function commify(s: string | number) {
 export function shortenAddress(address: string): string {
     return `${address.slice(0, 4)}...${address.slice(-4)}`;
 }
+
+export function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}

@@ -27,12 +27,15 @@ export interface IHeaderProps {
     slugCount?: number;
 
     burnCount?: number;
+
+    biggestBurner?: string;
 }
 
 export function Header(props: IHeaderProps) {
     const {
         slugCount,
         burnCount,
+        biggestBurner,
     } = props;
 
     const {
@@ -174,14 +177,14 @@ export function Header(props: IHeaderProps) {
                                 </span>
 
                                 <span className="text-2l">
-                                    {shortenAddress('ALd4UHgcX9sXJzFiodRihi6W6AoYNs3vHxRSZzjWafgH')}
+                                    {biggestBurner ? shortenAddress(biggestBurner) : 'Loading...'}
                                 </span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex col-span-2 2xl:col-start-2 2xl:row-start-2 2xl:col-span-2 2xl:items-end 2xl:justify-center">
+                <div className="flex col-span-2 2xl:col-start-2 2xl:row-start-2 2xl:col-span-2 2xl:items-end 2xl:justify-center z-10">
                     <WalletMultiButton
                         className="!border-solid !border-2 !border-slugGreen !w-52 !h-12 !font-sans !text-2xl !p-1 !font-normal text-center justify-center items-center"
                         startIcon={undefined}
