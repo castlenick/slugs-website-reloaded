@@ -1,11 +1,13 @@
 import * as React from 'react';
 
-import { BurnStats } from './Types';
+import { BurnStats, BurntSlug } from './Types';
 import Crown from './img/statistics-icons/Crown.png';
-import { shortenAddress } from './Utilities';
+import { shortenAddress, shortenValue } from './Utilities';
 
 export interface BurnLeaderboardProps {
     burnStats?: BurnStats;
+
+    allSlugsMap?: Map<string, BurntSlug>;
 }
 
 const textColors = {
@@ -19,6 +21,7 @@ const textColors = {
 export function BurnLeaderboard(props: BurnLeaderboardProps) {
     const {
         burnStats,
+        allSlugsMap,
     } = props;
 
     const [rows, setRows] = React.useState<any[]>([]);
@@ -47,7 +50,7 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
     }
 
     const tableBody = React.useMemo(() => {
-        if (!burnStats || !rows) {
+        if (!burnStats || !rows || !allSlugsMap) {
             return (
                 <tr>
                     <td colSpan={4} className="text-center">
@@ -69,7 +72,7 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
             const color = (textColors as any)[rank];
             const tableText = `${color} text-center`;
 
-            return (
+            const row = (
                 <tr key={burn.address}>
                     <td className={`${tableText} w-28 2xl:w-36`}>
                         <div className="flex flex-row items-center justify-center gap-x-1">
@@ -107,6 +110,78 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
                     </td>
                 </tr>
             );
+
+            if (burn.expanded) {
+                const burntTraitMap = new Map();
+
+                for (const tx of burn.transactions) {
+                    for (const mint of tx.slugsBurnt) {
+                        const slugData = allSlugsMap.get(mint);
+
+                        if (!slugData) {
+                            continue;
+                        }
+
+                        for (const attribute of slugData.attributes) {
+                            if (attribute.value === 'None') {
+                                continue;
+                            }
+
+                            const existingCount = burntTraitMap.get(`${attribute.trait_type}-${attribute.value}`) || {
+                                count: 0,
+                                attribute: attribute.trait_type,
+                                value: attribute.value,
+                            };
+
+                            existingCount.count++;
+
+                            burntTraitMap.set(`${attribute.trait_type}-${attribute.value}`, existingCount);
+                        }
+                    }
+                }
+
+                const sorted = [...burntTraitMap.values()].sort((a, b) => b.count - a.count).slice(0, 10);
+
+                return (
+                    <>
+                        {row}
+
+                        <tr key={`${burn.address}-expanded m-4`}>
+                            <td colSpan={4} className="text-center border-slugGreen border-2 p-4">
+                                <div className="flex flex-col gap-y-4">
+                                    <span className="uppercase text-4xl">
+                                        Most Burned Traits
+                                    </span>
+
+                                    <div className="grid grid-cols-5 grid-rows-2 gap-x-12 gap-y-8 items-center justify-center">
+                                        {sorted.map((trait) => (
+                                            <div
+                                                key={`${trait.attribute}-${trait.value}`}
+                                                className="flex flex-col items-center justify-center"
+                                            >
+                                                <span className="uppercase text-2xl -mb-1">
+                                                    {trait.attribute}
+                                                </span>
+
+                                                <span className="uppercase text-2xl -mt-1">
+                                                    {shortenValue(trait.value, 15)}
+                                                </span>
+
+                                                <span className="uppercase text-4xl">
+                                                    {trait.count}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </>
+                );
+            }
+
+            return row;
         });
     }, [rows, burnStats]);
 

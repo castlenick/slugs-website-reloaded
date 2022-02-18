@@ -53,18 +53,8 @@ export interface SlugAttributes {
     value: string;
 }
 
-export interface UnburntSlug {
-    name: string;
-
-    image: string;
-
-    mint: string;
-
-    attributes: SlugAttributes[];
-
+export interface UnburntSlug extends BurntSlug {
     formerRank: number;
-
-    rank: number;
 
     ranksGained: number;
 }
@@ -77,6 +67,8 @@ export interface BurntSlug {
     mint: string;
 
     attributes: SlugAttributes[];
+
+    rank: number;
 }
 
 export interface SlugData {
@@ -98,10 +90,6 @@ export interface BurnStats {
     slugGang: SlugGangStats;
 
     users: UserBurn[];
-
-    attributes: Attribute[];
-
-    slugs: SlugData;
 }
 
 export interface APIData {
@@ -112,4 +100,8 @@ export interface APIData {
     }
 
     burnStats: BurnStats;
+
+    attributes: Attribute[];
+
+    slugs: SlugData;
 }

@@ -16,3 +16,11 @@ export function shortenAddress(address: string, totalLength: number = 11): strin
 export function sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+export function shortenValue(value: string, length: number): string {
+    if (value.length <= length) {
+        return value;
+    }
+
+    return value.substr(0, length) + '...';
+}

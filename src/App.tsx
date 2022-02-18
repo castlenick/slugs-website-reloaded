@@ -27,6 +27,10 @@ import { APIData } from './Types';
 function App() {
     const [data, setData] = React.useState<APIData | undefined>();
 
+    const [unburntSlugMap, setUnburntSlugMap] = React.useState<Map<string, any> | undefined>();
+
+    const [allSlugsMap, setAllSlugsMap] = React.useState<Map<string, any> | undefined>();
+
     const network = WalletAdapterNetwork.Mainnet;
 
     const endpoint = RPC_URL;
@@ -45,7 +49,23 @@ function App() {
         try {
             const data = await fetch(url);
             const raw = await data.json();
+
             setData(raw);
+
+            const allMap = new Map();
+            const unburntMap = new Map();
+
+            for (const slug of raw.slugs.burnt) {
+                allMap.set(slug.mint, slug);
+            }
+
+            for (const slug of raw.slugs.unburnt) {
+                allMap.set(slug.mint, slug);
+                unburntMap.set(slug.mint, slug);
+            }
+
+            setUnburntSlugMap(unburntMap);
+            setAllSlugsMap(allMap);
         } catch (err) {
             await sleep(5 * 1000);
             fetchData();
@@ -71,6 +91,8 @@ function App() {
 
                                 <Routes
                                     data={data}
+                                    unburntSlugMap={unburntSlugMap}
+                                    allSlugsMap={allSlugsMap}
                                 />
 
                                 <Footer/>

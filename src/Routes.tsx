@@ -10,15 +10,21 @@ import { MSolStaking } from './MSolStaking';
 import { Collabs } from './Collabs';
 import { Affiliates } from './Affiliates';
 import { BurnLeaderboard } from './BurnLeaderboard';
-import { APIData } from './Types';
+import { APIData, UnburntSlug, BurntSlug } from './Types';
 
 export interface RouteProps {
     data?: APIData;
+
+    unburntSlugMap?: Map<string, UnburntSlug>;
+
+    allSlugsMap?: Map<string, BurntSlug>;
 }
 
 export function Routes(props: RouteProps) {
     const {
         data,
+        unburntSlugMap,
+        allSlugsMap,
     } = props;
 
     return (
@@ -46,6 +52,7 @@ export function Routes(props: RouteProps) {
                 element={
                     <BurnLeaderboard
                         burnStats={data?.burnStats}
+                        allSlugsMap={allSlugsMap}
                     />
                 }
             />
