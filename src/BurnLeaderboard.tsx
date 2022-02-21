@@ -37,7 +37,7 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
         }));
     }, [burnStats]);
 
-    function handleExpand(address: string) {
+    const handleExpand = React.useCallback((address: string) => {
         const dupe = [...rows];
 
         for (let row of dupe) {
@@ -47,7 +47,7 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
         }
 
         setRows(dupe);
-    }
+    }, [rows]);
 
     const tableBody = React.useMemo(() => {
         if (!burnStats || !rows || !allSlugsMap) {
@@ -78,6 +78,7 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
                         <div className="flex flex-row items-center justify-center gap-x-1">
                             {bigBurner && (
                                 <img
+                                    alt='Big Burner'
                                     src={Crown}
                                     className="w-12"
                                 />
@@ -183,7 +184,12 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
 
             return row;
         });
-    }, [rows, burnStats]);
+    }, [
+        rows,
+        burnStats,
+        allSlugsMap,
+        handleExpand,
+    ]);
 
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">

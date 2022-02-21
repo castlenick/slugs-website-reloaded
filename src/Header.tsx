@@ -44,7 +44,7 @@ export function Header(props: IHeaderProps) {
 
     const header = React.useMemo(() => {
         return (
-            <div className="grid grid-cols-9 mt-20 mb-10">
+            <div className="grid grid-cols-9 mt-20 mb-10 2xl:mb-6">
                 <div className="flex justify-end gap-x-6 text-3xl w-full col-span-9 items-end 2xl:col-span-4 2xl:col-start-6 2xl:row-start-2 z-10">
                     <Link to='/'>
                         <span className="text-3xl">
@@ -94,11 +94,19 @@ export function Header(props: IHeaderProps) {
                         </span>
                     </Link>
 
-                    <Link to='/burn-leaderboard'>
-                        <span className="text-3xl">
-                            Burn-Leaderboard
-                        </span>
-                    </Link>
+                    <HeaderDropdown
+                        label={'Misc'}
+                        links={[
+                            {
+                                name: 'Burn Leaderboard',
+                                link: '/burn-leaderboard',
+                            },
+                            {
+                                name: 'Graveyard',
+                                link: '/graveyard',
+                            },
+                        ]}
+                    />
                 </div>
 
                 <div className="flex flex-col justify-center items-center border-2 border-slugGreen my-4 py-5 relative w-full col-span-9">
@@ -160,11 +168,11 @@ export function Header(props: IHeaderProps) {
                                 <img
                                     className="w-16"
                                     src={Crown}
-                                    alt='Big Burner'
+                                    alt='Top Burner'
                                 />
 
                                 <span className="text-2l uppercase">
-                                    Big Burner
+                                    Top Burner
                                 </span>
 
                                 <span className="text-2l">

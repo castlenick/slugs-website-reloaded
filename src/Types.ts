@@ -40,6 +40,10 @@ export interface Trait {
     rarity: string;
 
     percentBurnt: string;
+
+    generations: string[];
+
+    image: string;
 }
 
 export interface Attribute {
@@ -104,4 +108,10 @@ export interface APIData {
     attributes: Attribute[];
 
     slugs: SlugData;
+}
+
+export enum Generation {
+    All = 'All',
+    GenerationOne = 'Generation 1',
+    GenerationTwo = 'Generation 2',
 }

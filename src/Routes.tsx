@@ -10,7 +10,8 @@ import { MSolStaking } from './MSolStaking';
 import { Collabs } from './Collabs';
 import { Affiliates } from './Affiliates';
 import { BurnLeaderboard } from './BurnLeaderboard';
-import { APIData, UnburntSlug, BurntSlug } from './Types';
+import { Graveyard } from './Graveyard';
+import { APIData, UnburntSlug, BurntSlug, Trait } from './Types';
 
 export interface RouteProps {
     data?: APIData;
@@ -18,6 +19,14 @@ export interface RouteProps {
     unburntSlugMap?: Map<string, UnburntSlug>;
 
     allSlugsMap?: Map<string, BurntSlug>;
+
+    unburntSlugNameMap?: Map<string, UnburntSlug>;
+
+    unburntSlugRankMap?: Map<number, UnburntSlug>;
+
+    burntSlugNameMap?: Map<string, BurntSlug>;
+
+    traitNameMap?: Map<string, Trait>;
 }
 
 export function Routes(props: RouteProps) {
@@ -25,15 +34,37 @@ export function Routes(props: RouteProps) {
         data,
         unburntSlugMap,
         allSlugsMap,
+        unburntSlugNameMap,
+        unburntSlugRankMap,
+        burntSlugNameMap,
+        traitNameMap,
     } = props;
 
     return (
         <RoutesWrapper>
             <Route path='/' element={<Home/>}/>
 
-            <Route path='/attribute-rarity' element={<AttributeRarity/>}/>
+            <Route
+                path='/attribute-rarity'
+                element={
+                    <AttributeRarity
+                        traitNameMap={traitNameMap}
+                        attributes={data?.attributes}
+                    />
+                }
+            />
 
-            <Route path='/slug-rarity' element={<SlugRarity/>}/>
+            <Route
+                path='/slug-rarity'
+                element={
+                    <SlugRarity
+                        unburntSlugNameMap={unburntSlugNameMap}
+                        unburntSlugRankMap={unburntSlugRankMap}
+                        burntSlugNameMap={burntSlugNameMap}
+                        traitNameMap={traitNameMap}
+                    />
+                }
+            />
 
             <Route path='/designer' element={<Designer/>}/>
 
@@ -53,6 +84,14 @@ export function Routes(props: RouteProps) {
                     <BurnLeaderboard
                         burnStats={data?.burnStats}
                         allSlugsMap={allSlugsMap}
+                    />
+                }
+            />
+
+            <Route
+                path='/graveyard'
+                element={
+                    <Graveyard
                     />
                 }
             />

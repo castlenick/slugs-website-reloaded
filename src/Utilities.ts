@@ -22,5 +22,11 @@ export function shortenValue(value: string, length: number): string {
         return value;
     }
 
-    return value.substr(0, length) + '...';
+    return value.substr(0, length) + '..';
+}
+
+export function chunk<T>(arr: T[], size: number) {
+    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+        arr.slice(i * size, i * size + size)
+    );
 }
