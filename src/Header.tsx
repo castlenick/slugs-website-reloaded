@@ -123,7 +123,7 @@ export function Header(props: IHeaderProps) {
                         </div>
 
                         <div className="flex flex-col justify-center items-center 2xl:basis-2/5">
-                            <span className="text-slugGreen text-center text-5xl 2xl:text-6xl">
+                            <span className="text-slugGreen text-center text-5xl w-40 md:w-64 lg:w-auto 2xl:text-6xl">
                                 It's SLUGS on SOLANA!
                             </span>
 
@@ -200,7 +200,7 @@ export function Header(props: IHeaderProps) {
                 </div>
 
                 <div className="flex flex-col justify-center items-center col-span-5 gap-y-3 2xl:col-start-3 2xl:col-span-4 2xl:row-span-2 2xl:row-start-1 2xl:justify-end">
-                    <span className="text-2xl text-center w-48 lg:w-auto 2xl:text-3xl">
+                    <span className="text-2xl text-center w-36 md:w-48 lg:w-auto 2xl:text-3xl">
                         Buy Slugs At These Marketplaces!
                     </span>
 

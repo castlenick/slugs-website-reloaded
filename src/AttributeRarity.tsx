@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { UnburntSlug, Trait, Attribute, Generation } from './Types';
+import { Trait, Attribute, Generation } from './Types';
 import { Dropdown } from './Dropdown';
 import { LoadingImage, SizeOptions } from './LoadingImage';
 import { ATTRIBUTES_PER_PAGE } from './Constants';
@@ -63,7 +63,7 @@ export function AttributeRarity(props: AttributeRarityProps) {
             return a.generations.includes(generationSelected);
         });
 
-        return chunk(attributeValues, ATTRIBUTES_PER_PAGE);
+        return chunk(filtered, ATTRIBUTES_PER_PAGE);
     }, [
         attributeValues,
         generationSelected,
