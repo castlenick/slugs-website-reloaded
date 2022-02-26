@@ -30,3 +30,7 @@ export function chunk<T>(arr: T[], size: number) {
         arr.slice(i * size, i * size + size)
     );
 }
+
+export function pickRandomItem<T>(items: T[]): T {
+    return items[Math.floor(Math.random() * items.length)];
+}

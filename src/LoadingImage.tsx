@@ -8,6 +8,8 @@ export interface LoadingImageProps {
     alt: string;
 
     size: SizeOptions;
+
+    sizeClasses?: string;
 }
 
 export enum SizeOptions {
@@ -30,6 +32,7 @@ export function LoadingImage(props: LoadingImageProps) {
         asyncSrc,
         alt,
         size,
+        sizeClasses = sizeOptions.get(size),
     } = props;
 
     const [loaded, setLoaded] = React.useState<boolean>(false);
@@ -68,15 +71,20 @@ export function LoadingImage(props: LoadingImageProps) {
         setFailedLoad(true);
     }
 
-    async function loadAsyncImage() {
+    const loadAsyncImage = React.useCallback(async () => {
         if (!asyncSrc) {
             return;
         }
 
-        const image = await asyncSrc;
-        setRealSrc(image);
-        handleImageLoaded();
-    }
+        try {
+            const image = await asyncSrc;
+
+            setRealSrc(image);
+            handleImageLoaded();
+        } catch (err) {
+            setFailedLoad(true);
+        }
+    }, [asyncSrc]);
 
     /* Unload image when source changes */
     React.useEffect(() => {
@@ -84,18 +92,16 @@ export function LoadingImage(props: LoadingImageProps) {
         setLoaded(false);
     }, [
         src,
-        asyncSrc
     ])
 
     React.useEffect(() => {
+        setLoaded(false);
         loadAsyncImage();
     }, [asyncSrc]);
 
     if (!src && !asyncSrc) {
         return null;
     }
-
-    const sizeClasses = sizeOptions.get(size);
 
     return (
         <div className={`${sizeClasses} flex grow-0 shrink-0`}>

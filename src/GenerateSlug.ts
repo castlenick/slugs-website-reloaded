@@ -1,8 +1,10 @@
 import { fabric } from 'fabric';
 import {
     SlugAttributes,
+    Attribute,
     Trait,
 } from './Types';
+import { pickRandomItem } from './Utilities';
 
 const layerMapping = new Map([
     ['Background', { zIndex: 0 }],
@@ -21,7 +23,15 @@ const downloadedImageMap = new Map<string, fabric.Image>();
 async function getImageData(url: string, canvasSize: number): Promise<fabric.Image> {
     const prefetched = downloadedImageMap.get(url);
 
-    if (prefetched) {
+    if (prefetched !== undefined) {
+        const height = prefetched.height as number;
+        const scale = prefetched.scaleY as number;
+
+        if (height * scale !== canvasSize) {
+            prefetched.scaleToHeight(canvasSize);
+            prefetched.scaleToWidth(canvasSize);
+        }
+
         return prefetched;
     }
 
@@ -139,4 +149,14 @@ export function generatePreviewTraits(attributes: SlugAttributes) {
     }
 
     return items;
+}
+
+export function pickRandomTrait(attribute: string, attributes: Attribute[]): Trait {
+    for (const attr of attributes) {
+        if (attr.name === attribute) {
+            return pickRandomItem(attr.values);
+        }
+    }
+
+    throw new Error(`Invalid attribute ${attribute} given!`);
 }

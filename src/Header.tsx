@@ -73,6 +73,7 @@ export function Header(props: IHeaderProps) {
                                 name: 'Designer',
                                 link: '/designer',
                             },
+                            /*
                             {
                                 name: 'Incinerator',
                                 link: '/incinerator',
@@ -85,6 +86,7 @@ export function Header(props: IHeaderProps) {
                                 name: 'mSol Staking',
                                 link: '/mSol-staking',
                             },
+                             */
                         ]}
                     />
 

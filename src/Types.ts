@@ -114,3 +114,9 @@ export enum Generation {
     GenerationOne = 'Generation 1',
     GenerationTwo = 'Generation 2',
 }
+
+export enum Align {
+    Start = 0,
+    Center = 1,
+    End = 2,
+}

@@ -66,7 +66,15 @@ export function Routes(props: RouteProps) {
                 }
             />
 
-            <Route path='/designer' element={<Designer/>}/>
+            <Route
+                path='/designer'
+                element={
+                    <Designer
+                        traitNameMap={traitNameMap}
+                        attributes={data?.attributes}
+                    />
+                }
+            />
 
             <Route path='/incinerator' element={<Incinerator/>}/>
 
