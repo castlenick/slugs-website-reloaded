@@ -276,12 +276,12 @@ export function Designer(props: DesignerProps) {
             );
         }
 
-        const oneRowClasses = `grid-cols-1 2xl:grid-cols-2`;
-        const twoRowClasses = `grid-cols-2`;
+        const compactClasses = `grid-cols-1 2xl:grid-cols-2`;
+        const expandedClasses = `lg:grid-cols-2`;
 
         const gridClasses = canvasSize === 512
-            ? oneRowClasses
-            : twoRowClasses;
+            ? compactClasses 
+            : expandedClasses;
 
         return (
             <div>

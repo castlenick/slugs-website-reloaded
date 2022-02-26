@@ -45,7 +45,7 @@ export function Header(props: IHeaderProps) {
     const header = React.useMemo(() => {
         return (
             <div className="grid grid-cols-9 mt-20 mb-10 2xl:mb-6">
-                <div className="flex justify-end gap-x-6 text-3xl w-full col-span-9 items-end 2xl:col-span-4 2xl:col-start-6 2xl:row-start-2 z-10">
+                <div className="flex justify-end gap-x-6 text-3xl w-full col-start-3 col-span-7 items-end 2xl:col-span-4 2xl:col-start-6 2xl:row-start-2 z-10 flex-wrap">
                     <Link to='/'>
                         <span className="text-3xl">
                             Home
@@ -193,14 +193,14 @@ export function Header(props: IHeaderProps) {
                     >
                         <div className={`rounded-full w-3 h-3 mx-1 ${connected ? 'bg-green-500' : 'bg-red-500'}`}>
                         </div>
-                        <span className="mx-1">
+                        <span className="mx-1 text-ellipsis whitespace-nowrap">
                             {connected ? 'Wallet Connected' : 'Connect Wallet'}
                         </span>
                     </WalletMultiButton>
                 </div>
 
                 <div className="flex flex-col justify-center items-center col-span-5 gap-y-3 2xl:col-start-3 2xl:col-span-4 2xl:row-span-2 2xl:row-start-1 2xl:justify-end">
-                    <span className="text-2xl text-center 2xl:text-3xl">
+                    <span className="text-2xl text-center w-48 lg:w-auto 2xl:text-3xl">
                         Buy Slugs At These Marketplaces!
                     </span>
 

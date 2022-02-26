@@ -121,13 +121,13 @@ export function SlugRarity(props: SlugRarityProps) {
             );
         }
 
-        const twoRowClasses = `grid-cols-2`;
-        const threeRowClasses = `grid-cols-3`;
+        const compactClasses = `grid-cols-1 lg:grid-cols-2`;
+        const expandedClasses = `grid-cols-1 md:grid-cols-2 xl:grid-cols-3`;
 
         const attributeDivClasses = showTraitRarity ? 'w-40' : 'w-56';
         const attributeDivBigClasses = showTraitRarity ? 'w-56' : 'w-64';
 
-        const gridClasses = showTraitRarity ? threeRowClasses : twoRowClasses;
+        const gridClasses = showTraitRarity ? expandedClasses : compactClasses;
 
         return (
             <div>

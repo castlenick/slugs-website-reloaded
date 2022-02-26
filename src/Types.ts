@@ -56,13 +56,17 @@ export interface SlugAttributes {
     value: string;
 }
 
-export interface UnburntSlug extends BurntSlug {
+export interface UnburntSlug extends Slug {
     formerRank: number;
 
     ranksGained: number;
 }
 
-export interface BurntSlug {
+export interface BurntSlug extends Slug {
+    burntBy: string;
+}
+
+export interface Slug {
     name: string;
 
     image: string;

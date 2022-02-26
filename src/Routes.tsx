@@ -100,6 +100,7 @@ export function Routes(props: RouteProps) {
                 path='/graveyard'
                 element={
                     <Graveyard
+                        burntSlugs={data?.slugs.burnt}
                     />
                 }
             />
