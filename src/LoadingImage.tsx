@@ -3,6 +3,8 @@ import * as React from 'react';
 export interface LoadingImageProps {
     src?: string;
 
+    asyncSrc?: Promise<string>;
+
     alt: string;
 
     size: SizeOptions;
@@ -25,12 +27,14 @@ const sizeOptions = new Map([
 export function LoadingImage(props: LoadingImageProps) {
     const {
         src,
+        asyncSrc,
         alt,
         size,
     } = props;
 
     const [loaded, setLoaded] = React.useState<boolean>(false);
     const [failedLoad, setFailedLoad] = React.useState<boolean>(false);
+    const [realSrc, setRealSrc] = React.useState<string | undefined>(src);
 
     const divClasses = React.useMemo(() => {
         if (loaded) {
@@ -64,12 +68,30 @@ export function LoadingImage(props: LoadingImageProps) {
         setFailedLoad(true);
     }
 
+    async function loadAsyncImage() {
+        if (!asyncSrc) {
+            return;
+        }
+
+        const image = await asyncSrc;
+        setRealSrc(image);
+        handleImageLoaded();
+    }
+
     /* Unload image when source changes */
     React.useEffect(() => {
+        setRealSrc(src);
         setLoaded(false);
-    }, [src])
+    }, [
+        src,
+        asyncSrc
+    ])
 
-    if (!src) {
+    React.useEffect(() => {
+        loadAsyncImage();
+    }, [asyncSrc]);
+
+    if (!src && !asyncSrc) {
         return null;
     }
 
@@ -85,7 +107,7 @@ export function LoadingImage(props: LoadingImageProps) {
 
             <img
                 alt={alt}
-                src={src}
+                src={realSrc}
                 key={src}
                 className={`${sizeClasses} border-slugGreen border-2 self-center object-contain rounded ${imgClasses}`}
                 onLoad={handleImageLoaded}

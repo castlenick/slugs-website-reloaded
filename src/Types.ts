@@ -53,7 +53,6 @@ export interface Attribute {
 
 export interface SlugAttributes {
     trait_type: string;
-    
     value: string;
 }
 

@@ -34,7 +34,6 @@ export function Dropdown(props: DropdownProps) {
 
     function handleOptionChange(option: DropdownOption) {
         setSelectedOption(option);
-        console.log(`calling on change with ${option.value}`);
         onChange(option.value);
     }
 

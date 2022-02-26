@@ -5,6 +5,7 @@ import { Dropdown } from './Dropdown';
 import { LoadingImage, SizeOptions } from './LoadingImage';
 import { ATTRIBUTES_PER_PAGE } from './Constants';
 import { chunk, shortenValue } from './Utilities';
+import { renderSlug, generatePreviewTraits } from './GenerateSlug';
 import HowRare from './img/social-media-icons/HowRare.is.png';
 
 export interface AttributeRarityProps {
@@ -69,10 +70,29 @@ export function AttributeRarity(props: AttributeRarityProps) {
     ]);
 
     const pageData = React.useMemo(() => {
-        return pages[page] || [];
+        if (!traitNameMap) {
+            return [];
+        }
+
+        const attributes = [];
+
+        for (const item of pages[page] || []) {
+            const exampleTraits = generatePreviewTraits({
+                trait_type: traitSelected,
+                value: item.name,
+            });
+
+            attributes.push({
+                exampleImage: renderSlug(exampleTraits, traitNameMap),
+                ...item,
+            });
+        }
+
+        return attributes;
     }, [
         page,
-        pages
+        pages,
+        traitNameMap,
     ]);
 
     const pageCount = React.useMemo(() => pages.length, [pages]);
@@ -159,7 +179,7 @@ export function AttributeRarity(props: AttributeRarityProps) {
                     return (
                         <div className="flex flex-col items-center justify-center" key={attribute.name}>
                             <LoadingImage
-                                src={attribute.image}
+                                asyncSrc={attribute.exampleImage}
                                 alt={attribute.name}
                                 size={SizeOptions.Medium}
                             />
