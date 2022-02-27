@@ -47,20 +47,8 @@ export function MemeGraveyard(props: GraveyardProps) {
             </div>
         );
     }, [burntSlugs]);
-
-    React.useEffect(() => {
-        document.addEventListener('click', playOnce, { once: true });
-        document.addEventListener('scroll', playOnce, { once: true });
-    }, []);
-
-    function playOnce() {
-        play();
-
-        document.removeEventListener('click', playOnce);
-        document.removeEventListener('scroll', playOnce);
-    }
-
-    function play() {
+    
+    const play = React.useCallback(() => {
         if (isPlaying) {
             return;
         }
@@ -77,7 +65,19 @@ export function MemeGraveyard(props: GraveyardProps) {
         a.play();
 
         setIsPlaying(true);
-    }
+    }, [isPlaying]);
+
+    const playOnce = React.useCallback(() => {
+        play();
+
+        document.removeEventListener('click', playOnce);
+        document.removeEventListener('scroll', playOnce);
+    }, [play]);
+
+    React.useEffect(() => {
+        document.addEventListener('click', playOnce, { once: true });
+        document.addEventListener('scroll', playOnce, { once: true });
+    }, [playOnce]);
 
     function stop() {
         if (!isPlaying) {
