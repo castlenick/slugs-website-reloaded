@@ -167,6 +167,9 @@ export function Roadmap() {
                                 item: 'Listing Bot',
                             },
                             {
+                                item: 'Onboarding new community manager/events coordinator',
+                            },
+                            {
                                 item: 'Partnership with large non-NFT project in the space',
                                 complete: false,
                             },
@@ -187,10 +190,6 @@ export function Roadmap() {
                             },
                             {
                                 item: 'Additional NFT Bots',
-                                complete: false,
-                            },
-                            {
-                                item: 'Onboarding new community manager/events coordinator',
                                 complete: false,
                             },
                             {
