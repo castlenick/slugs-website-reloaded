@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/slugs-website-reloaded/static/css/main.a1ae10db.css",
-    "main.js": "/slugs-website-reloaded/static/js/main.612da847.js",
+    "main.css": "/slugs-website-reloaded/static/css/main.fd831311.css",
+    "main.js": "/slugs-website-reloaded/static/js/main.dfdcf53f.js",
     "static/js/431.b1b03486.chunk.js": "/slugs-website-reloaded/static/js/431.b1b03486.chunk.js",
     "static/js/126.d2249e54.chunk.js": "/slugs-website-reloaded/static/js/126.d2249e54.chunk.js",
     "static/js/489.5c7e8652.chunk.js": "/slugs-website-reloaded/static/js/489.5c7e8652.chunk.js",
@@ -9,6 +9,7 @@
     "static/js/152.27fbe7de.chunk.js": "/slugs-website-reloaded/static/js/152.27fbe7de.chunk.js",
     "static/js/880.28eb6fd9.chunk.js": "/slugs-website-reloaded/static/js/880.28eb6fd9.chunk.js",
     "static/media/fire-bg.gif": "/slugs-website-reloaded/static/media/fire-bg.d06b8a0f0501b4171d2e.gif",
+    "static/media/InTheEnd.mp3": "/slugs-website-reloaded/static/media/InTheEnd.52c09712e9b584f52b8e.mp3",
     "static/media/Sanctuary Gate.png": "/slugs-website-reloaded/static/media/Sanctuary Gate.ccd06ac2f60986458019.png",
     "static/media/VT323-Regular.ttf": "/slugs-website-reloaded/static/media/VT323-Regular.bddd705ec7f7fc153ad8.ttf",
     "static/media/Infungibles.png": "/slugs-website-reloaded/static/media/Infungibles.f6c665a8e35487e7eb20.png",
@@ -20,8 +21,8 @@
     "static/media/tombstone.gif": "/slugs-website-reloaded/static/media/tombstone.ce5c4b1bb0a08509f14b.gif",
     "static/media/Undervalued.jpg": "/slugs-website-reloaded/static/media/Undervalued.fb92caa690540eff920b.jpg",
     "index.html": "/slugs-website-reloaded/index.html",
-    "main.a1ae10db.css.map": "/slugs-website-reloaded/static/css/main.a1ae10db.css.map",
-    "main.612da847.js.map": "/slugs-website-reloaded/static/js/main.612da847.js.map",
+    "main.fd831311.css.map": "/slugs-website-reloaded/static/css/main.fd831311.css.map",
+    "main.dfdcf53f.js.map": "/slugs-website-reloaded/static/js/main.dfdcf53f.js.map",
     "431.b1b03486.chunk.js.map": "/slugs-website-reloaded/static/js/431.b1b03486.chunk.js.map",
     "126.d2249e54.chunk.js.map": "/slugs-website-reloaded/static/js/126.d2249e54.chunk.js.map",
     "489.5c7e8652.chunk.js.map": "/slugs-website-reloaded/static/js/489.5c7e8652.chunk.js.map",
@@ -29,7 +30,7 @@
     "880.28eb6fd9.chunk.js.map": "/slugs-website-reloaded/static/js/880.28eb6fd9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a1ae10db.css",
-    "static/js/main.612da847.js"
+    "static/css/main.fd831311.css",
+    "static/js/main.dfdcf53f.js"
   ]
 }
