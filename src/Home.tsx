@@ -17,6 +17,12 @@ export function Home() {
 
             <FoundingMessage
             />
+
+            <div className="flex items-center justify-center">
+                <a className="text-2xl" href='#'>
+                    Scroll to Top
+                </a>
+            </div>
         </div>
     );
 }
