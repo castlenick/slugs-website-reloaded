@@ -5,7 +5,7 @@ import { FoundingMessage } from './FoundingMessage';
 
 export function Home() {
     return (
-        <div className="flex flex-col gap-y-24">
+        <div className="flex flex-col gap-y-32">
             <Roadmap
             />
 
