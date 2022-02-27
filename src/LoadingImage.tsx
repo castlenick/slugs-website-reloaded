@@ -97,7 +97,10 @@ export function LoadingImage(props: LoadingImageProps) {
     React.useEffect(() => {
         setLoaded(false);
         loadAsyncImage();
-    }, [asyncSrc]);
+    }, [
+        asyncSrc,
+        loadAsyncImage,
+    ]);
 
     if (!src && !asyncSrc) {
         return null;

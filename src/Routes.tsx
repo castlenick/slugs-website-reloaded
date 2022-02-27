@@ -16,8 +16,6 @@ import { APIData, UnburntSlug, BurntSlug, Trait } from './Types';
 export interface RouteProps {
     data?: APIData;
 
-    unburntSlugMap?: Map<string, UnburntSlug>;
-
     allSlugsMap?: Map<string, BurntSlug>;
 
     unburntSlugNameMap?: Map<string, UnburntSlug>;
@@ -32,7 +30,6 @@ export interface RouteProps {
 export function Routes(props: RouteProps) {
     const {
         data,
-        unburntSlugMap,
         allSlugsMap,
         unburntSlugNameMap,
         unburntSlugRankMap,

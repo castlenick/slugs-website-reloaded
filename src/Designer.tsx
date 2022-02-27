@@ -217,7 +217,7 @@ export function Designer(props: DesignerProps) {
         setShowTraitRarity((val) => !val);
     }
 
-    function handleTraitChanged(setFunc: (str: any) => void, attribute: string, newTraitValue: string) {
+    const handleTraitChanged = React.useCallback((setFunc: (str: any) => void, attribute: string, newTraitValue: string) => {
         if (!attributes) {
             return;
         }
@@ -231,13 +231,15 @@ export function Designer(props: DesignerProps) {
                 }
             }
         }
-    }
+    }, [
+        attributes,
+    ]);
 
     function onCanvasSizeChange(value: number) {
         setCanvasSize(value);
     }
 
-    function handleRandomize() {
+    const handleRandomize = React.useCallback(() => {
         if (!attributes) {
             return;
         }
@@ -251,7 +253,9 @@ export function Designer(props: DesignerProps) {
         setTail(pickRandomTrait('Tail', attributes));
         setBack(pickRandomTrait('Back', attributes));
         setHands(pickRandomTrait('Hands', attributes));
-    }
+    }, [
+        attributes,
+    ]);
 
     const data = React.useMemo(() => {
         if (
@@ -437,6 +441,8 @@ export function Designer(props: DesignerProps) {
         back,
         hands,
         canvasSize,
+        handleRandomize,
+        handleTraitChanged,
     ]);
 
     return data;

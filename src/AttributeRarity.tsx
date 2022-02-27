@@ -93,6 +93,7 @@ export function AttributeRarity(props: AttributeRarityProps) {
         page,
         pages,
         traitNameMap,
+        traitSelected,
     ]);
 
     const pageCount = React.useMemo(() => pages.length, [pages]);
@@ -234,6 +235,7 @@ export function AttributeRarity(props: AttributeRarityProps) {
                     <a href={'https://howrare.is/solslugs'}>
                         <img
                             src={HowRare}
+                            alt='HowRare'
                         />
                     </a>
                 </div>

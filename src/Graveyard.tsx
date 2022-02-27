@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BurntSlug, UnburntSlug } from './Types';
+import { BurntSlug } from './Types';
 import { SizeOptions, LoadingImage } from './LoadingImage';
 import { shortenAddress } from './Utilities';
 

@@ -27,9 +27,6 @@ import { APIData, UnburntSlug, BurntSlug, Trait } from './Types';
 function App() {
     const [data, setData] = React.useState<APIData | undefined>();
 
-    /* Mapping from mint hash to slug, only unburnt ones */
-    const [unburntSlugMap, setUnburntSlugMap] = React.useState<Map<string, UnburntSlug> | undefined>();
-
     /* Mapping from mint hash to slug, all slugs */
     const [allSlugsMap, setAllSlugsMap] = React.useState<Map<string, BurntSlug> | undefined>();
 
@@ -67,7 +64,6 @@ function App() {
             setData(raw);
 
             const allMap = new Map();
-            const unburntMap = new Map();
             const rankMap = new Map();
             const nameMap = new Map();
             const burntNameMap = new Map();
@@ -80,7 +76,6 @@ function App() {
 
             for (const slug of raw.slugs.unburnt) {
                 allMap.set(slug.mint, slug);
-                unburntMap.set(slug.mint, slug);
                 rankMap.set(slug.rank, slug);
                 nameMap.set(slug.name, slug);
             }
@@ -90,8 +85,6 @@ function App() {
                     traitMap.set(`${attribute.name}-${trait.name}`, trait);
                 }
             }
-
-            setUnburntSlugMap(unburntMap);
 
             setAllSlugsMap(allMap);
 
@@ -127,7 +120,6 @@ function App() {
 
                                 <Routes
                                     data={data}
-                                    unburntSlugMap={unburntSlugMap}
                                     allSlugsMap={allSlugsMap}
                                     unburntSlugNameMap={unburntSlugNameMap}
                                     unburntSlugRankMap={unburntSlugRankMap}
