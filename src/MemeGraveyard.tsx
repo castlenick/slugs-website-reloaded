@@ -1,4 +1,5 @@
 import * as React from 'react';
+import LazyLoad from 'react-lazyload';
 
 import { BurntSlug } from './Types';
 import { SizeOptions, LoadingImage } from './LoadingImage';
@@ -25,17 +26,19 @@ export function MemeGraveyard(props: GraveyardProps) {
         return (
             <div className="grid grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {burntSlugs.map((slug) => (
-                    <div className="flex flex-col items-center justify-center relative">
-                        <LoadingImage
-                            src={slug.image}
-                            alt={`Sol Slug ${slug.name}`}
-                            size={SizeOptions.Small}
-                        />
+                    <LazyLoad>
+                        <div className="flex flex-col items-center justify-center relative">
+                            <LoadingImage
+                                src={slug.image}
+                                alt={`Sol Slug ${slug.name}`}
+                                size={SizeOptions.Small}
+                            />
 
-                        <span className="absolute top-0 text-yellow-300 font-['Times_New_Roman']">
-                            {`Formerly rank ${slug.rank}`}
-                        </span>
-                    </div>
+                            <span className="absolute top-0 text-yellow-300 font-['Times_New_Roman']">
+                                {`Formerly rank ${slug.rank}`}
+                            </span>
+                        </div>
+                    </LazyLoad>
                 ))}
             </div>
         );
