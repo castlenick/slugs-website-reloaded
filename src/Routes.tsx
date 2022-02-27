@@ -98,6 +98,7 @@ export function Routes(props: RouteProps) {
                 element={
                     <Graveyard
                         burntSlugs={data?.slugs.burnt}
+                        burnCount={data?.burnStats?.slugsBurnt}
                     />
                 }
             />

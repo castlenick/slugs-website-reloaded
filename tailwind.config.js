@@ -14,7 +14,15 @@ module.exports = {
                 incinerator: '#F44343',
                 pyro: '#FB6D00',
                 scorcher: '#F4A133',
-            }
+            },
+            keyframes: {
+                moveRainbow: {
+                    '100%': { 'background-position': '4500vh' },
+                },
+            },
+            animation: {
+                'rainbow': 'moveRainbow 200s linear infinite',
+            },
         },
     },
     plugins: [],

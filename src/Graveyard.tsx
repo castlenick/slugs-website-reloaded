@@ -1,22 +1,29 @@
 import * as React from 'react';
+import { Switch } from '@headlessui/react';
 
 import { BurntSlug } from './Types';
-import { SizeOptions, LoadingImage } from './LoadingImage';
-import { shortenAddress } from './Utilities';
-
-import Burned from './img/statistics-icons/Burned.png';
+import { MemeGraveyard } from './MemeGraveyard';
+import { ProfessionalGraveyard } from './ProfessionalGraveyard';
 
 export interface GraveyardProps {
     burntSlugs?: BurntSlug[];
+    burnCount?: number;
 }
 
 export function Graveyard(props: GraveyardProps) {
     const {
         burntSlugs,
+        burnCount,
     } = props;
 
-    const data = React.useMemo(() => {
-        if (!burntSlugs) {
+    const [professionalGraveyard, setProfessionalGraveyard] = React.useState<boolean>(true);
+
+    function handleToggleProfessionalGraveyard() {
+        setProfessionalGraveyard((val) => !val);
+    }
+
+    const graveyardData = React.useMemo(() => {
+        if (!burntSlugs || !burnCount) {
             return (
                 <div className="flex items-center justify-center mt-8">
                     <span className="text-6xl">
@@ -28,56 +35,45 @@ export function Graveyard(props: GraveyardProps) {
 
         const sorted = burntSlugs.sort((a, b) => a.rank - b.rank);
 
+        if (professionalGraveyard) {
+            return <ProfessionalGraveyard burntSlugs={sorted}/>;
+        }
+
         return (
-            <div className="grid grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-                {sorted.map((slug) => (
-                    <div className="flex flex-col items-center justify-center">
-                        <LoadingImage
-                            src={slug.image}
-                            alt={`Sol Slug ${slug.name}`}
-                            size={SizeOptions.Small}
-                        />
-
-                        <div className="flex flex-col items-start w-48">
-                            <span className="uppercase text-3xl mt-2">
-                                {`Former Rank ${slug.rank}`}
-                            </span>
-
-                            <span className="uppercase text-xl" title={slug.burntBy}>
-                                {`By ${shortenAddress(slug.burntBy)}`}
-                            </span>
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <MemeGraveyard
+                burntSlugs={sorted}
+                burnCount={burnCount}
+            />
         );
-    }, [burntSlugs]);
+    }, [
+        burnCount,
+        burntSlugs,
+        professionalGraveyard,
+    ]);
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-row items-center justify-center gap-x-4">
-                <img
-                    className="w-14"
-                    src={Burned}
-                    alt='Fire'
-                />
-
-                <span className="uppercase text-slugGreen text-5xl">
-                    The Slug Graveyard
+            <div className="flex items-center justify-center gap-x-4">
+                <span>
+                    Toggle Graveyard Style
                 </span>
 
-                <img
-                    className="w-14"
-                    src={Burned}
-                    alt='Fire'
-                />
+                <Switch
+                    checked={professionalGraveyard}
+                    onChange={handleToggleProfessionalGraveyard}
+                    className={`${
+                        professionalGraveyard ? 'bg-slugGreen' : 'bg-gray-200'
+                    } relative inline-flex items-center h-6 rounded-full w-11`}
+                >
+                    <span
+                        className={`${
+                            professionalGraveyard ? 'translate-x-6' : 'translate-x-1'
+                        } inline-block w-4 h-4 transform bg-black rounded-full`}
+                    />
+                </Switch>
             </div>
 
-            <span className="uppercase text-2xl">
-                RIP you slimey bastards
-            </span>
-
-            {data}
+            {graveyardData}
         </div>
     );
 }
