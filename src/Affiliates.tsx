@@ -69,7 +69,7 @@ function AffiliateItem(props: AffiliatedItemProps) {
 
 export function Affiliates() {
     return (
-        <div className="grid grid-cols-1 gap-x-10 gap-y-10 2xl:grid-cols-2">
+        <div className="grid grid-cols-1 gap-x-20 gap-y-20 2xl:grid-cols-2">
             <div className="flex flex-col justify-start items-start gap-y-3">
                 <span className="text-7xl text-slugGreen">
                     Checkout our Affiliates!
