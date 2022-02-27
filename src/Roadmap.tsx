@@ -205,10 +205,6 @@ export function Roadmap() {
                                 item: 'Limited Release Merch for slug-gang',
                                 complete: false,
                             },
-                            {
-                                item: 'Dating Sim',
-                                complete: false,
-                            },
                         ]}
                     />
                 </div>
