@@ -3,6 +3,7 @@ import { FAQ } from './FAQ';
 import { Team } from './Team';
 import { FoundingMessage } from './FoundingMessage';
 
+/* eslint-disable jsx-a11y/anchor-is-valid */
 export function Home() {
     return (
         <div className="flex flex-col gap-y-32">
