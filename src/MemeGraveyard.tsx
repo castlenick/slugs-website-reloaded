@@ -10,6 +10,8 @@ import Fire from './img/meme-graveyard/fire.gif';
 import FireBG from './img/meme-graveyard/fire-bg.gif';
 import Skeleton from './img/meme-graveyard/skeleton.gif';
 
+const InTheEnd = require('./audio/InTheEnd.mp3');
+
 export interface GraveyardProps {
     burntSlugs: BurntSlug[];
 
@@ -21,6 +23,8 @@ export function MemeGraveyard(props: GraveyardProps) {
         burntSlugs,
         burnCount,
     } = props;
+
+    const [isPlaying, setIsPlaying] = React.useState(false);
 
     const data = React.useMemo(() => {
         return (
@@ -43,6 +47,56 @@ export function MemeGraveyard(props: GraveyardProps) {
             </div>
         );
     }, [burntSlugs]);
+
+    React.useEffect(() => {
+        document.addEventListener('click', playOnce, { once: true });
+        document.addEventListener('scroll', playOnce, { once: true });
+    }, []);
+
+    function playOnce() {
+        play();
+
+        document.removeEventListener('click', playOnce);
+        document.removeEventListener('scroll', playOnce);
+    }
+
+    function play() {
+        if (isPlaying) {
+            return;
+        }
+
+        const audio = document.getElementById('audio');
+
+        if (!audio) {
+            return;
+        }
+
+        const a = audio as HTMLAudioElement;
+
+        a.volume = 0.5;
+        a.play();
+
+        setIsPlaying(true);
+    }
+
+    function stop() {
+        if (!isPlaying) {
+            return;
+        }
+
+        const audio = document.getElementById('audio');
+
+        if (!audio) {
+            return;
+        }
+
+        const a = audio as HTMLAudioElement;
+
+        a.pause();
+
+        setIsPlaying(false);
+    }
+
 
     return (
         <div className="flex flex-col items-center justify-center mt-8 bg-repeat" style={{ backgroundImage: `url(${FireBG})` }}>
@@ -89,6 +143,22 @@ export function MemeGraveyard(props: GraveyardProps) {
             >
                 {`${burnCount} slugs have been burnt`}
             </span>
+
+            <button
+                onClick={isPlaying ? stop : play}
+                className="text-3xl font-['Times_New_Roman'] bg-green-900 mt-6 px-4"
+            >
+                {isPlaying ? 'Stop Music' : 'Play Music'}
+            </button>
+
+            <audio
+                style={{
+                    display: 'hidden',
+                }}
+                src={InTheEnd}
+                id='audio'
+                loop
+            />
 
             <img
                 src={Skeleton}
