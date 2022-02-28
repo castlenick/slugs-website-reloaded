@@ -33,7 +33,7 @@ export function FAQ() {
                         </span>
 
                         <span className="text-[1.35rem]">
-                            We believed too many projects capitalize off of the euphoria of this space to get a big bag up front. Once this happens, the incentive to deliver isnt as strong, and as weve seen, many many projects in this space stop putting as much effort in post-mint.
+                            We believed too many projects capitalize off of the euphoria of this space to get a big bag up front. Once this happens, the incentive to deliver isnt as strong, and as we've seen, many many projects in this space stop putting as much effort in post-mint.
                         </span>
 
                         <span className="text-[1.35rem] mt-5">
