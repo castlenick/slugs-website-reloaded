@@ -57,7 +57,7 @@ export function RoadmapBundle(props: RoadmapBundleProps) {
 export function Roadmap() {
     return (
         <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-row flex-wrap gap-x-12 gap-y-8 items-start justify-center">
+            <div className="flex flex-row flex-wrap md:flex-nowrap gap-x-12 gap-y-8 items-start justify-center">
                 <div className="flex flex-col items-start justify-center gap-y-2 xl:basis-2/5">
                     <span className="text-slugGreen text-4xl uppercase">
                         SolSlugs Roadmap to Bluechip
