@@ -146,7 +146,7 @@ export function Affiliates() {
                     }
                 ]}
                 header={'Degen Coin Flip'}
-                info={'DCF is a smart contract that allows users to play Double or Nothing with their Solana tokens. DCF collects a 3.5% fee on every game and distributes it to our holders.'}
+                info={'DCF is a smart contract that allows users to play Double or Nothing with their Solana tokens. DCF collects a 3.5% fee on every game and distributes it to their holders.'}
                 image={DegenCoinFlip}
             />
 
