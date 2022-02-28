@@ -75,12 +75,12 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
             const row = (
                 <tr key={burn.address}>
                     <td className={`${tableText} w-28 2xl:w-36`}>
-                        <div className="flex flex-row items-center justify-center gap-x-1">
+                        <div className="relative">
                             {bigBurner && (
                                 <img
                                     alt='Big Burner'
                                     src={Crown}
-                                    className="w-12"
+                                    className="absolute w-12 -ml-1 -mt-2"
                                 />
                             )}
                             {i+1}
