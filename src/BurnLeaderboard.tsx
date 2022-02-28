@@ -74,13 +74,13 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
 
             const row = (
                 <tr key={burn.address}>
-                    <td className={`${tableText} w-28 2xl:w-36`}>
+                    <td className={`${tableText} w-28`}>
                         <div className="relative">
                             {bigBurner && (
                                 <img
                                     alt='Big Burner'
                                     src={Crown}
-                                    className="absolute w-12 -ml-1 -mt-2"
+                                    className="absolute w-12 -ml-7 -mt-2 sm:-ml-5 md:-ml-3 lg:-ml-1"
                                 />
                             )}
                             {i+1}
@@ -203,7 +203,7 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
             <table className="border-separate [border-spacing:0.75rem] table-fixed w-6/7">
                 <thead className="mb-10">
                     <tr>
-                        <th className="w-28 2xl:w-36">
+                        <th className="w-28">
                             <span className="uppercase text-3xl">
                                 Rank
                             </span>
