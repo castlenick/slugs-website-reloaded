@@ -88,7 +88,14 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
                     </td>
 
                     <td className={`${tableText} uppercase w-64 2xl:w-72`}>
-                        {rank}
+                        <span className="block sm:hidden" title={rank}>
+                            {shortenValue(rank, 12)}
+                        </span>
+
+                        <span className="hidden sm:block">
+                            {rank}
+                        </span>
+
                     </td>
 
                     <td className={`${tableText} w-64 break-words 2xl:w-[36rem]`}>
@@ -148,13 +155,13 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
                         {row}
 
                         <tr key={`${burn.address}-expanded m-4`}>
-                            <td colSpan={4} className="text-center border-slugGreen border-2 p-4">
+                            <td colSpan={4} className="text-center border-slugGreen border-2 py-4 px-2 sm:px-4">
                                 <div className="flex flex-col gap-y-4">
                                     <span className="uppercase text-4xl">
                                         Most Burned Traits
                                     </span>
 
-                                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 grid-rows-2 gap-x-12 gap-y-8 items-center justify-center">
+                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-x-12 gap-y-8 items-center justify-center">
                                         {sorted.map((trait) => (
                                             <div
                                                 key={`${trait.attribute}-${trait.value}`}
