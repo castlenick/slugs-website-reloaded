@@ -3,7 +3,7 @@ export function commify(s: string | number) {
         ? s.toString()
         : s;
 
-    return x.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    return Number(x).toLocaleString('en');
 }
 
 export function shortenAddress(address: string, totalLength: number = 11): string {

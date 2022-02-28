@@ -161,7 +161,7 @@ export function Header(props: IHeaderProps) {
                                 </span>
 
                                 <span className="text-2l">
-                                    {commify(burnCount || '1160')}
+                                    {commify(burnCount || '1327')}
                                 </span>
 
                             </div>
