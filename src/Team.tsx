@@ -30,7 +30,7 @@ export function Team() {
                         size={SizeOptions.Small}
                     />
 
-                    <span className="text-3xl">
+                    <span className="text-3xl whitespace-pre">
                         Tinker Dev
                     </span>
 
@@ -50,7 +50,7 @@ export function Team() {
                         size={SizeOptions.Small}
                     />
 
-                    <span className="text-3xl">
+                    <span className="text-3xl whitespace-pre">
                         Project Lead
                     </span>
 
@@ -74,7 +74,7 @@ export function Team() {
                         size={SizeOptions.Small}
                     />
 
-                    <span className="text-3xl">
+                    <span className="text-3xl whitespace-pre">
                         Social Media Rockstar
                     </span>
 
@@ -98,7 +98,7 @@ export function Team() {
                         size={SizeOptions.Small}
                     />
 
-                    <span className="text-3xl">
+                    <span className="text-3xl whitespace-pre">
                         Artist/Co-Creator
                     </span>
 
@@ -118,7 +118,7 @@ export function Team() {
                         size={SizeOptions.Small}
                     />
 
-                    <span className="text-3xl">
+                    <span className="text-3xl whitespace-pre">
                         Co-Creator
                     </span>
 
@@ -138,7 +138,7 @@ export function Team() {
                         size={SizeOptions.Small}
                     />
 
-                    <span className="text-3xl uppercase">
+                    <span className="text-3xl uppercase whitespace-pre">
                         The Dev
                     </span>
 
