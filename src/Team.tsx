@@ -18,7 +18,7 @@ export function Team() {
                 Behind an NFT full of degeneracy, there's the team of degenerates.
             </span>
 
-            <div className="grid grid-cols-2 items-center mt-8 gap-y-12 gap-x-8 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 items-center mt-8 gap-y-12 gap-x-8 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
                 <div className="flex flex-col items-center justify-start gap-y-3 h-full">
                     <span className="text-4xl">
                         Buggles

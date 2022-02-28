@@ -18,7 +18,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
 
     const data = React.useMemo(() => {
         return (
-            <div className="grid grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {burntSlugs.map((slug) => (
                     <LazyLoad>
                         <div className="flex flex-col items-center justify-center">

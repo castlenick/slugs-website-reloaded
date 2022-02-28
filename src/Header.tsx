@@ -123,7 +123,7 @@ export function Header(props: IHeaderProps) {
                         </div>
 
                         <div className="flex flex-col justify-center items-center 2xl:basis-2/5">
-                            <span className="text-slugGreen text-center text-5xl w-40 mt-14 md:mt-0 md:w-64 lg:w-auto 2xl:text-6xl">
+                            <span className="text-slugGreen text-center text-5xl w-40 mt-14 sm:mt-0 md:w-64 lg:w-auto 2xl:text-6xl">
                                 It's SLUGS on SOLANA!
                             </span>
 
@@ -132,7 +132,7 @@ export function Header(props: IHeaderProps) {
                             </span>
                         </div>
 
-                        <div className="flex flex-row flex-wrap justify-around items-center 2xl:basis-3/5">
+                        <div className="flex flex-row flex-wrap justify-around items-center gap-x-4 2xl:basis-3/5">
                             <div className="flex flex-col justify-center items-center 2xl:col-start-7 2xl:col-end-9">
                                 <img
                                     className="w-16"

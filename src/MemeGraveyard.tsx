@@ -28,7 +28,7 @@ export function MemeGraveyard(props: GraveyardProps) {
 
     const data = React.useMemo(() => {
         return (
-            <div className="grid grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {burntSlugs.map((slug) => (
                     <LazyLoad>
                         <div className="flex flex-col items-center justify-center relative">
@@ -77,7 +77,9 @@ export function MemeGraveyard(props: GraveyardProps) {
     React.useEffect(() => {
         document.addEventListener('click', playOnce, { once: true });
         document.addEventListener('scroll', playOnce, { once: true });
-    }, [playOnce]);
+    /* eslint-disable react-hooks/exhaustive-deps */
+    }, []);
+    /* eslint-enable react-hooks/exhaustive-deps */
 
     function stop() {
         if (!isPlaying) {
@@ -97,7 +99,6 @@ export function MemeGraveyard(props: GraveyardProps) {
         setIsPlaying(false);
     }
 
-
     return (
         <div className="flex flex-col items-center justify-center mt-8 bg-repeat" style={{ backgroundImage: `url(${FireBG})` }}>
             <div className="flex flex-row items-center justify-center gap-x-8">
@@ -113,14 +114,16 @@ export function MemeGraveyard(props: GraveyardProps) {
                     />
                 </div>
 
-                <span className="text-4xl text-blue-500 font-['Times_New_Roman']">
-                    Welcome to the
-                </span>
+                <div className="flex flex-row flex-wrap items-center justify-center">
+                    <span className="text-4xl text-blue-500 font-['Times_New_Roman']">
+                        Welcome to the
+                    </span>
 
-                <img
-                    src={Graveyard}
-                    alt='Graveyard'
-                />
+                    <img
+                        src={Graveyard}
+                        alt='Graveyard'
+                    />
+                </div>
 
                 <div className="flex flex-row items-center justify-center flex-wrap gap-y-4">
                     <img

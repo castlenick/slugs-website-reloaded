@@ -7,9 +7,15 @@ import { renderSlug, pickRandomTrait } from './GenerateSlug';
 import { Dropdown } from './Dropdown';
 
 const canvasWidths = new Map([
-    [256, 'w-[256px] h-[256px]'],
-    [432, 'w-[432px] h-[432px]'],
-    [512, 'w-[512px] h-[512px]'],
+    [256, 'w-[256px]'],
+    [432, 'w-[256px] md:w-[432px]'],
+    [512, 'w-[256px] md:w-[512px]'],
+]);
+
+const canvasHeights = new Map([
+    [256, 'h-[256px]'],
+    [432, 'h-[256px] md:h-[432px]'],
+    [512, 'h-[256px] md:h-[512px]'],
 ]);
 
 const canvasOptions = [
@@ -290,18 +296,18 @@ export function Designer(props: DesignerProps) {
         return (
             <div>
                 <div className="flex flex-col items-center justify-center gap-x-4 gap-y-4 mt-8">
-                    <div className="flex flex-row items-start justify-center w-full h-full gap-x-8 mt-4">
+                    <div className="flex flex-wrap sm:flex-nowrap flex-row items-start justify-center w-full h-full gap-x-8 gap-y-4 mt-4">
                         <div className="flex flex-col items-center gap-y-6">
                             <LoadingImage
                                 asyncSrc={image}
                                 alt={'Slug'}
                                 size={showTraitRarity ? SizeOptions.Large : SizeOptions.Giant}
-                                sizeClasses={canvasWidths.get(canvasSize)}
+                                sizeClasses={`${canvasWidths.get(canvasSize)} ${canvasHeights.get(canvasSize)}`}
                             />
 
-                            <div className="flex flex-row w-full items-center justify-end">
+                            <div className="flex flex-wrap md:flex-nowrap flex-row w-full items-center justify-center sm:justify-end gap-y-4">
                                 <button
-                                    className="background-transparent border-slugGreen border-2 uppercase text-4xl p-4 rounded h-16 w-4/6 align-middle flex items-center justify-center"
+                                    className="background-transparent border-slugGreen border-2 uppercase w-52 sm:w-auto sm:grow text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
                                     onClick={handleRandomize}
                                 >
                                     Randomize

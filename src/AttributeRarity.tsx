@@ -128,7 +128,7 @@ export function AttributeRarity(props: AttributeRarityProps) {
 
     return (
         <div className="flex flex-col">
-            <div className="grid grid-cols-2 gap-x-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4">
                 <div className="flex flex-col items-start justify-center">
                     <span className="text-6xl uppercase">
                         Attribute Rarity
@@ -173,7 +173,7 @@ export function AttributeRarity(props: AttributeRarityProps) {
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 mt-10 gap-x-4 gap-y-8 lg:grid-cols-3 2xl:grid-cols-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-x-4 gap-y-8 lg:grid-cols-3 2xl:grid-cols-6">
                 {pageData.map((attribute) => {
                     const traitData = traitNameMap.get(`${traitSelected}-${attribute.name}`)!;
 
@@ -206,7 +206,7 @@ export function AttributeRarity(props: AttributeRarityProps) {
                 })}
             </div>
 
-            <div className="grid grid-cols-3 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 mt-10 gap-y-2">
                 <div>
                 </div>
 

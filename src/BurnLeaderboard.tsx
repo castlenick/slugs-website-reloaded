@@ -154,7 +154,7 @@ export function BurnLeaderboard(props: BurnLeaderboardProps) {
                                         Most Burned Traits
                                     </span>
 
-                                    <div className="grid grid-cols-5 grid-rows-2 gap-x-12 gap-y-8 items-center justify-center">
+                                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 grid-rows-2 gap-x-12 gap-y-8 items-center justify-center">
                                         {sorted.map((trait) => (
                                             <div
                                                 key={`${trait.attribute}-${trait.value}`}

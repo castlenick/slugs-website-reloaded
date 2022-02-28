@@ -121,8 +121,8 @@ export function SlugRarity(props: SlugRarityProps) {
             );
         }
 
-        const compactClasses = `grid-cols-1 lg:grid-cols-2`;
-        const expandedClasses = `grid-cols-1 md:grid-cols-2 xl:grid-cols-3`;
+        const compactClasses = `grid-cols-2 sm:grid-cols-1 lg:grid-cols-2`;
+        const expandedClasses = `grid-cols-2 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3`;
 
         const attributeDivClasses = showTraitRarity ? 'w-40' : 'w-56';
         const attributeDivBigClasses = showTraitRarity ? 'w-56' : 'w-64';
@@ -164,11 +164,12 @@ export function SlugRarity(props: SlugRarityProps) {
                             </span>
                         </div>
 
-                        <div className="flex flex-row items-start justify-center w-full h-full gap-x-8 mt-4">
+                        <div className="flex flex-row flex-wrap sm:flex-nowrap items-start justify-center w-full h-full gap-x-8 gap-y-4 mt-4">
                             <LoadingImage
                                 src={image}
                                 alt={'Slug'}
                                 size={showTraitRarity ? SizeOptions.Large : SizeOptions.Giant}
+                                sizeClasses={showTraitRarity ? 'w-[350px] h-[350px]' : 'w-[350px] h-[350px] sm:w-[432px] sm:h-[432px]'}
                             />
 
                             <div className={`grid items-center justify-center gap-x-20 gap-y-4 ${gridClasses}`}>

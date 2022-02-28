@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
@@ -5,6 +6,10 @@ module.exports = {
     theme: {
         fontFamily: {
             sans: ['VT323', 'sans-serif'],
+        },
+        screens: {
+            'xs': '475px',
+            ...defaultTheme.screens,
         },
         extend: {
             colors: {
