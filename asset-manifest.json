@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9a0eac57.css",
-    "main.js": "/static/js/main.5eeb18ec.js",
+    "main.css": "/static/css/main.1ecd828d.css",
+    "main.js": "/static/js/main.0b50b7a9.js",
     "static/js/431.b1b03486.chunk.js": "/static/js/431.b1b03486.chunk.js",
     "static/js/126.c5597fd6.chunk.js": "/static/js/126.c5597fd6.chunk.js",
     "static/js/489.5c7e8652.chunk.js": "/static/js/489.5c7e8652.chunk.js",
@@ -21,8 +21,8 @@
     "static/media/tombstone.gif": "/static/media/tombstone.ce5c4b1bb0a08509f14b.gif",
     "static/media/Undervalued.jpg": "/static/media/Undervalued.fb92caa690540eff920b.jpg",
     "index.html": "/index.html",
-    "main.9a0eac57.css.map": "/static/css/main.9a0eac57.css.map",
-    "main.5eeb18ec.js.map": "/static/js/main.5eeb18ec.js.map",
+    "main.1ecd828d.css.map": "/static/css/main.1ecd828d.css.map",
+    "main.0b50b7a9.js.map": "/static/js/main.0b50b7a9.js.map",
     "431.b1b03486.chunk.js.map": "/static/js/431.b1b03486.chunk.js.map",
     "126.c5597fd6.chunk.js.map": "/static/js/126.c5597fd6.chunk.js.map",
     "489.5c7e8652.chunk.js.map": "/static/js/489.5c7e8652.chunk.js.map",
@@ -30,7 +30,7 @@
     "880.4d7af7f2.chunk.js.map": "/static/js/880.4d7af7f2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9a0eac57.css",
-    "static/js/main.5eeb18ec.js"
+    "static/css/main.1ecd828d.css",
+    "static/js/main.0b50b7a9.js"
   ]
 }
