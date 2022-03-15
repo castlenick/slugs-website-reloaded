@@ -53,7 +53,7 @@ export interface Attribute {
 
 export interface SlugAttributes {
     trait_type: string;
-    value: string;
+    value?: string;
 }
 
 export interface UnburntSlug extends Slug {

@@ -75,6 +75,10 @@ export async function renderSlug(
     const images: { image: string, zIndex: number }[] = [];
 
     for (const trait of slugTraits) {
+        if (!trait.value) {
+            continue;
+        }
+
         const { zIndex } = layerMapping.get(trait.trait_type)!;
         const { image } = traitNameMap.get(`${trait.trait_type}-${trait.value}`)!;
 

@@ -40,7 +40,7 @@ export interface DesignerProps {
 }
 
 export interface AttributeProps {
-    trait: Trait;
+    trait?: Trait;
 
     attributes?: Attribute[];
 
@@ -75,10 +75,25 @@ function AttributeWrapper(props: AttributeProps) {
 
         for (const attr of attributes) {
             if (attr.name === attribute) {
-                return attr.values.map((a) => ({
-                    value: a.name,
-                    label: a.name,
-                }));
+                const options = attr.values.reduce((accumulator, a) => {
+                    if (a.name !== 'None') {
+                        accumulator.push({
+                            value: a.name,
+                            label: a.name,
+                        });
+                    }
+
+                    return accumulator;
+                }, [] as { value: string, label: string }[]);
+
+                options.sort((a, b) => a.label.localeCompare(b.label));
+
+                options.unshift({
+                    value: 'None',
+                    label: 'None',
+                });
+
+                return options;
             }
         }
 
@@ -89,7 +104,7 @@ function AttributeWrapper(props: AttributeProps) {
         <div className={`flex flex-col items-start justify-center ${attributeDivClasses} 2xl:${attributeDivBigClasses}`} key={attribute}>
             <Dropdown
                 label={attribute}
-                value={trait.name}
+                value={trait?.name || 'None'}
                 onChange={onChange}
                 options={availableValues}
                 headerStyle={`text-2xl text-slugGreen uppercase`}
@@ -98,7 +113,7 @@ function AttributeWrapper(props: AttributeProps) {
                 dropdownWidth={dropdownWidth}
             />
 
-            {showTraitRarity && (
+            {showTraitRarity && trait && (
                 <span
                     className="text-2xl uppercase"
                 >
@@ -150,16 +165,7 @@ export function Designer(props: DesignerProps) {
     React.useEffect(() => {
         if (
             !traitNameMap || 
-            !attributes || 
-            !background ||
-            !slug ||
-            !chest ||
-            !mouth ||
-            !head ||
-            !eyes ||
-            !tail ||
-            !back ||
-            !hands
+            !attributes
         ) {
             return;
         }
@@ -167,39 +173,39 @@ export function Designer(props: DesignerProps) {
         const traits = [
             {
                 trait_type: 'Background',
-                value: background.name,
+                value: background?.name,
             },
             {
                 trait_type: 'Slug',
-                value: slug.name,
+                value: slug?.name,
             },
             {
                 trait_type: 'Chest',
-                value: chest.name,
+                value: chest?.name,
             },
             {
                 trait_type: 'Mouth',
-                value: mouth.name,
+                value: mouth?.name,
             },
             {
                 trait_type: 'Head',
-                value: head.name,
+                value: head?.name,
             },
             {
                 trait_type: 'Eyes',
-                value: eyes.name,
+                value: eyes?.name,
             },
             {
                 trait_type: 'Tail',
-                value: tail.name,
+                value: tail?.name,
             },
             {
                 trait_type: 'Back',
-                value: back.name,
+                value: back?.name,
             },
             {
                 trait_type: 'Hands',
-                value: hands.name,
+                value: hands?.name,
             },
         ];
 
@@ -233,10 +239,13 @@ export function Designer(props: DesignerProps) {
                 for (const trait of attr.values) {
                     if (trait.name === newTraitValue) {
                         setFunc(trait);
+                        return;
                     }
                 }
             }
         }
+
+        setFunc(undefined);
     }, [
         attributes,
     ]);
@@ -266,16 +275,7 @@ export function Designer(props: DesignerProps) {
     const data = React.useMemo(() => {
         if (
             !traitNameMap || 
-            !attributes || 
-            !background ||
-            !slug ||
-            !chest ||
-            !mouth ||
-            !head ||
-            !eyes ||
-            !tail ||
-            !back ||
-            !hands
+            !attributes
         ) {
             return (
                 <div className="flex items-center justify-center">
