@@ -3,7 +3,10 @@ import { Menu } from '@headlessui/react';
 
 export interface HeaderLink {
     link: string;
+
     name: string;
+
+    external?: boolean;
 }
 
 export interface HeaderDropdownProps {
@@ -26,15 +29,23 @@ export function HeaderDropdown(props: HeaderDropdownProps) {
                 </span>
             </Menu.Button>
             <Menu.Items className="absolute flex flex-col justify-center items-center right-0 w-60 mt-2 origin-top-right bg-black border-2 border-slugGreen rounded z-10 divide-y divide-slugGreen">
-                {links.map(({ link, name }) => (
+                {links.map(({ link, name, external }) => (
                     <Menu.Item as="div" className="w-full flex justify-center items-center py-2 hover:bg-slugGreenDark" key={name}>
-                        {({ active }) => (
-                            <Link to={link} className="w-full flex justify-center items-center">
-                                <span className="text-3xl">
-                                    {name}
-                                </span>
-                            </Link>
-                        )}
+                        {() => external ? (
+                                <a href={link} key={link}>
+                                    <span className="text-3xl">
+                                        {name}
+                                    </span>
+                                </a>
+                            )
+                            : (
+                                <Link to={link} className="w-full flex justify-center items-center">
+                                    <span className="text-3xl">
+                                        {name}
+                                    </span>
+                                </Link>
+                            )
+                        }
                     </Menu.Item>
                 ))}
             </Menu.Items>

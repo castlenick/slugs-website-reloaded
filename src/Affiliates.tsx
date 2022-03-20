@@ -130,6 +130,7 @@ export function Affiliates() {
                 info={'The Sanctuary is a DAO dedicated to provide resources, community, and organization to Solana NFT communities that have been rugged, abandoned, or otherwise broken.'}
                 image={Sanctuary}
             />
+
             <AffiliateItem
                 links={[
                     {
@@ -141,7 +142,7 @@ export function Affiliates() {
                         icon: faDiscord,
                     },
                     {
-                        url: 'https://flip.solslugs.com/',
+                        url: 'https://degencoinflip.com/solslugs',
                         icon: faGlobe,
                     }
                 ]}

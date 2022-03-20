@@ -107,6 +107,11 @@ export function Header(props: IHeaderProps) {
                                 name: 'Graveyard',
                                 link: '/graveyard',
                             },
+                            {
+                                name: 'Play Slug Flip',
+                                link: 'https://degencoinflip.com/solslugs',
+                                external: true,
+                            },
                         ]}
                     />
                 </div>
