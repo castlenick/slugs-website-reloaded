@@ -257,7 +257,7 @@ export function Verifier() {
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">
             <p>
-                {`Failed to fetch info from discord! ${discordError ? `Error: ${discordError}` : ''}`}
+                {`Failed to fetch info from discord! A browser extension may be preventing the request from completing. ${discordError ? `Error: ${discordError}` : ''}`}
             </p>
         </div>
     );
