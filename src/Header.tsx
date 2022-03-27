@@ -137,7 +137,7 @@ export function Header(props: IHeaderProps) {
                             </span>
 
                             <span className="text-2xl mt-8 md:mt-0 text-center w-3/5 2xl:text-3xl 2xl:w-full">
-                                {`Solana Slugs is a deflationary collection of ${slugCount || 9362} slugs on the Solana blockchain`}
+                                {`Solana Slugs is a deflationary collection of ${slugCount || 8950} slugs on the Solana blockchain`}
                             </span>
                         </div>
 
@@ -170,7 +170,7 @@ export function Header(props: IHeaderProps) {
                                 </span>
 
                                 <span className="text-2l">
-                                    {commify(burnCount || '1327')}
+                                    {commify(burnCount || '1550')}
                                 </span>
 
                             </div>

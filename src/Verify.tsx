@@ -17,7 +17,7 @@ interface DiscordUser {
     public_flags: number;
 }
 
-const backendApiURL = `https://letsalllovelain.com/verify`;
+const backendApiURL = `https://letsalllovelain.com/verify/`;
 
 const discordArgs = {
     client_id: '903156913724874832',
