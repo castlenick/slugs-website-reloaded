@@ -11,6 +11,7 @@ import { Collabs } from './Collabs';
 import { Affiliates } from './Affiliates';
 import { BurnLeaderboard } from './BurnLeaderboard';
 import { Graveyard } from './Graveyard';
+import { Verifier } from './Verify';
 import { APIData, UnburntSlug, BurntSlug, Trait } from './Types';
 
 export interface RouteProps {
@@ -99,6 +100,14 @@ export function Routes(props: RouteProps) {
                     <Graveyard
                         burntSlugs={data?.slugs.burnt}
                         burnCount={data?.burnStats?.slugsBurnt}
+                    />
+                }
+            />
+
+            <Route
+                path='/verify'
+                element={
+                    <Verifier
                     />
                 }
             />

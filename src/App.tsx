@@ -102,6 +102,14 @@ function App() {
     }, []);
 
     React.useEffect(() => {
+        if (window.location.hash.length > 0) {
+            const urlArgs = new URLSearchParams(window.location.hash.slice(1));
+
+            if (urlArgs.get('state') === 'verify') {
+                window.location.href = `/#/verify?${urlArgs.toString()}`;
+            }
+        }
+
         fetchData();
     }, [fetchData]);
 

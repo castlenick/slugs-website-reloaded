@@ -73,6 +73,10 @@ export function Header(props: IHeaderProps) {
                                 name: 'Designer',
                                 link: '/designer',
                             },
+                            {
+                                name: 'Verify Holder',
+                                link: '/verify',
+                            },
                             /*
                             {
                                 name: 'Incinerator',
