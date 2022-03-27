@@ -29,6 +29,7 @@ const discordArgs = {
 
 export function Verifier() {
     const [user, setUser] = useState<DiscordUser | null | false>(null);
+    const [discordError, setDiscordError] = useState<string | null>(null);
 
     const [verifyInProgress, setVerifyInProgress] = useState(false);
 
@@ -55,6 +56,8 @@ export function Verifier() {
         }
 
         const grabDetails = async () => {
+            setDiscordError(null);
+
             try {
                 const res = await fetch("https://discord.com/api/users/@me", {
                     headers: {
@@ -69,6 +72,8 @@ export function Verifier() {
                 }
             } catch (err) {
                 setUser(false);
+                setDiscordError((err as any).toString());
+                console.log(err);
             }
         };
 
@@ -252,7 +257,7 @@ export function Verifier() {
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">
             <p>
-                Failed to fetch info from discord! Please verify you are on the correct URL.
+                {`Failed to fetch info from discord! ${discordError ? `Error: ${discordError}` : ''}`}
             </p>
         </div>
     );
