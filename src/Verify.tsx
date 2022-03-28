@@ -17,7 +17,7 @@ interface DiscordUser {
     public_flags: number;
 }
 
-const test = true;
+const test = false;
 
 const backendApiURL = `https://letsalllovelain.com/verify/`;
 const testBackendApiURL = `http://localhost:5353/`;
