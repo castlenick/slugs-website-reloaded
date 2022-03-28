@@ -149,7 +149,7 @@ export function Header(props: IHeaderProps) {
                                     alt='Minted Count'
                                 />
 
-                                <span className="text-2l uppercase">
+                                <span className="text-2l uppercase text-center">
                                     Initially Minted
                                 </span>
 
@@ -194,7 +194,7 @@ export function Header(props: IHeaderProps) {
                     </div>
                 </div>
 
-                <div className="flex row-start-4 md:row-start-3 mt-4 md:mt-0 col-span-2 2xl:col-start-2 2xl:row-start-2 2xl:col-span-2 2xl:items-end 2xl:justify-center z-10">
+                <div className="flex justify-center sm:justify-start 2xl:justify-center col-span-9 row-start-4 md:row-start-3 mt-4 md:mt-0 sm:col-span-2 2xl:col-start-2 2xl:row-start-2 2xl:col-span-2 2xl:items-end z-10">
                     <WalletMultiButton
                         className="!border-solid !border-2 !border-slugGreen !w-52 !h-12 !font-sans !text-2xl !p-1 !font-normal text-center justify-center items-center"
                         startIcon={undefined}
@@ -256,7 +256,7 @@ export function Header(props: IHeaderProps) {
                     </div>
                 </div>
 
-                <div className="flex row-start-4 md:row-start-3 mt-4 md:mt-0 flex-row justify-end items-start col-start-8 col-span-2 gap-x-4 2xl:col-start-9 2xl:row-start-1">
+                <div className="flex justify-center row-start-5 col-start-3 col-span-5 sm:col-start-8 sm-col-span-2 sm:row-start-4 md:row-start-3 mt-4 md:mt-0 flex-row sm:justify-end items-start gap-x-4 2xl:col-start-9 2xl:row-start-1">
                     <a href="https://twitter.com/SolSlugsNFT">
                         <FontAwesomeIcon
                             icon={faTwitter}

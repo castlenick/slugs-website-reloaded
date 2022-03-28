@@ -53,8 +53,8 @@ export function Graveyard(props: GraveyardProps) {
 
     return (
         <div className="flex flex-col items-center justify-center">
-            <div className="flex items-center justify-center gap-x-4">
-                <span>
+            <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-x-4 gap-y-4">
+                <span className="text-center">
                     Toggle Graveyard Style
                 </span>
 

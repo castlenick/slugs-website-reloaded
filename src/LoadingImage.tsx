@@ -102,10 +102,6 @@ export function LoadingImage(props: LoadingImageProps) {
         loadAsyncImage,
     ]);
 
-    if (!src && !asyncSrc) {
-        return null;
-    }
-
     return (
         <div className={`${sizeClasses} flex grow-0 shrink-0`}>
             <div

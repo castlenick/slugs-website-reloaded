@@ -53,7 +53,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                     alt='Fire'
                 />
 
-                <span className="uppercase text-slugGreen text-5xl">
+                <span className="uppercase text-slugGreen text-5xl text-center">
                     The Slug Graveyard
                 </span>
 

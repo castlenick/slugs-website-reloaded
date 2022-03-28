@@ -9,7 +9,16 @@ module.exports = {
         },
         screens: {
             'xs': '475px',
-            ...defaultTheme.screens,
+
+            'sm': '700px',
+
+            'md': '840px',
+
+            'lg': '1100px',
+
+            'xl': '1400px',
+
+            '2xl': '1700px',
         },
         extend: {
             colors: {
