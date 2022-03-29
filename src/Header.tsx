@@ -77,6 +77,11 @@ export function Header(props: IHeaderProps) {
                                 name: 'Verify Holder',
                                 link: '/verify',
                             },
+                            {
+                                name: 'Sol Incinerator',
+                                link: 'https://www.sol-incinerator.com/#/',
+                                external: true,
+                            },
                             /*
                             {
                                 name: 'Incinerator',
