@@ -163,7 +163,7 @@ export function Verifier() {
                 </span>
 
                 <button
-                    className="background-transparent border-slugGreen border-2 uppercase w-52 text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
+                    className="background-transparent border-slugGreen border-2 uppercase text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
                     onClick={() => {
                         window.location.href = `https://discord.com/api/oauth2/authorize?${Qs.stringify(discordArgs)}`;
                     }}
