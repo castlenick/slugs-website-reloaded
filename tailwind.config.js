@@ -24,6 +24,7 @@ module.exports = {
             colors: {
                 slugGreen: '#92E643',
                 slugGreenDark: 'rgba(146, 230, 67, 0.5)',
+                exclusive: '#A3DBFF',
                 acolyte: '#FC9191',
                 incinerator: '#F44343',
                 pyro: '#FB6D00',

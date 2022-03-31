@@ -169,9 +169,32 @@ export function Roadmap() {
                             {
                                 item: 'Onboarding new community manager/events coordinator',
                             },
+                        ]}
+                    />
+
+                    <RoadmapBundle
+                        label={'March 2022'}
+                        items={[
                             {
-                                item: 'Partnership with large non-NFT project in the space',
-                                complete: false,
+                                item: 'Incinerator Feed Bot',
+                            },
+                            {
+                                item: 'Under 9000 slug supply reached',
+                            },
+                            {
+                                item: 'Solana Price Bot',
+                            },
+                            {
+                                item: 'Slug Metrics Bot',
+                            },
+                            {
+                                item: 'Twitter Influencer Tracker Bot',
+                            },
+                            {
+                                item: 'Incinerator updated to return SOL to users',
+                            },
+                            {
+                                item: 'Burn and Holder Verification Bot',
                             },
                         ]}
                         initiallyExpanded={true}
@@ -180,6 +203,10 @@ export function Roadmap() {
                     <RoadmapBundle
                         label={'Future'}
                         items={[
+                            {
+                                item: 'Partnership with large non-NFT project in the space',
+                                complete: false,
+                            },
                             {
                                 item: '50/50',
                                 complete: false,

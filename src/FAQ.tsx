@@ -79,7 +79,11 @@ export function FAQ() {
                         </span>
 
                         <span className="text-[1.35rem] -mt-3">
-                            - Access to our alpha channel and candy machine finder
+                            - Access to Whitelists
+                        </span>
+
+                        <span className="text-[1.35rem] -mt-3">
+                            - Access to our alpha channel, candy machine finder, and twitter follower bot
                         </span>
 
                         <span className="text-[1.35rem] -mt-3">
@@ -91,7 +95,7 @@ export function FAQ() {
                         </span>
 
                         <span className="text-[1.35rem] mt-5">
-                            There are 4 ranks for burning: At 1, 5, 10 and 25 slugs burned.
+                            There are 5 ranks for burning: At 1, 5, 10, 25 and 50 slugs burned.
                         </span>
 
                         <span className="text-[1.35rem] mt-5 text-scorcher">
@@ -108,6 +112,14 @@ export function FAQ() {
 
                         <span className="text-[1.35rem] -mt-3 text-acolyte">
                             25 - Slug Reaper Acolyte
+                        </span>
+
+                        <span className="text-[1.35rem] -mt-3 text-exclusive">
+                            50 - Slug Exclusive
+                        </span>
+
+                        <span className="text-[1.35rem] mt-5">
+                            Once you reach Slug Exclusive, you gain access to a secret channel where the Slug Devs share information about future plans.
                         </span>
                     </div>
                 </div>

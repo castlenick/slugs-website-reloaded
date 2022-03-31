@@ -11,6 +11,7 @@ export interface BurnLeaderboardProps {
 }
 
 const textColors = {
+    'Slug Exclusive': 'text-exclusive',
     'Slug Reaper Acolyte': 'text-acolyte',
     'Slug Incinerator': 'text-incinerator',
     'Slug Pyro': 'text-pyro',
