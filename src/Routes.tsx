@@ -40,7 +40,7 @@ export function Routes(props: RouteProps) {
 
     return (
         <RoutesWrapper>
-            <Route path='/' element={<Home/>}/>
+            <Route path='' element={<Home/>}/>
 
             <Route
                 path='/attribute-rarity'

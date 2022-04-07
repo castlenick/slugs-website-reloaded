@@ -46,7 +46,7 @@ export function Header(props: IHeaderProps) {
         return (
             <div className="grid grid-cols-9 mt-20 mb-10 2xl:mb-6">
                 <div className="flex justify-end gap-x-6 text-3xl w-full col-start-4 col-span-6 items-end 2xl:col-span-4 2xl:col-start-6 2xl:row-start-2 z-10 flex-wrap">
-                    <Link to='/'>
+                    <Link to=''>
                         <span className="text-3xl">
                             Home
                         </span>
