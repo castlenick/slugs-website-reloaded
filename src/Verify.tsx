@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Switch } from '@headlessui/react';
 import { encode } from "@stablelib/base64";
 import * as Qs from 'querystring';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { Transaction, SystemProgram } from '@solana/web3.js';
 
 interface DiscordUser {
     id: string;
@@ -17,7 +19,7 @@ interface DiscordUser {
     public_flags: number;
 }
 
-const test = false;
+const test = true;
 
 const backendApiURL = `https://letsalllovelain.com/verify/`;
 const testBackendApiURL = `http://localhost:5353/`;
@@ -39,6 +41,7 @@ export function Verifier() {
     const [user, setUser] = useState<DiscordUser | null | false>(null);
     const [discordError, setDiscordError] = useState<string | null>(null);
     const [rolesApplied, setRolesApplied] = useState<any[] | null>(null);
+    const [haveLedger, setHaveLedger] = useState<boolean>(false);
 
     const [verifyInProgress, setVerifyInProgress] = useState(false);
 
@@ -46,7 +49,12 @@ export function Verifier() {
         connected,
         publicKey,
         signMessage,
+        signTransaction,
     } = useWallet();
+
+    const {
+        connection,
+    } = useConnection();
 
     const [ , query ] = window.location.hash.split('?');
 
@@ -58,6 +66,70 @@ export function Verifier() {
     ];
 
     const [verified, setVerified] = useState<boolean | null>(null);
+
+    function handleToggleHaveLedger() {
+        setHaveLedger((val) => !val);
+    }
+
+    async function handleSend0SolTransaction() {
+        if (!user || !publicKey || !signTransaction) {
+            return;
+        }
+
+        const transaction = new Transaction().add(
+            SystemProgram.transfer({
+                fromPubkey: publicKey,
+                toPubkey: publicKey,
+                lamports: 0,
+            })
+        );
+
+        transaction.feePayer = publicKey;
+        transaction.recentBlockhash = (await connection.getRecentBlockhash('finalized')).blockhash;
+
+        const signedTransaction = await signTransaction(transaction);
+
+        const address = publicKey.toString();
+
+        setVerifyInProgress(true);
+        setRolesApplied(null);
+
+        const verifyRequest = {
+            address,
+            transaction: encode(signedTransaction.serialize()),
+            discordToken: accessToken,
+        };
+
+        try {
+            const res = await fetch(
+                apiURL,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json",
+                    },
+                    body: JSON.stringify(
+                        verifyRequest
+                    ),
+                }
+            );
+
+            setVerifyInProgress(false);
+
+            if (res.status === 200) {
+                const roleData = await res.json();
+                setVerified(true);
+                setRolesApplied(roleData);
+            } else {
+                setVerified(false);
+            }
+        } catch (err) {
+            console.log((err as any).toString());
+            setVerified(false);
+            setVerifyInProgress(false);
+        }
+    }
 
     async function handleSignVerifyMessage() {
         if (!user || !publicKey) {
@@ -107,7 +179,6 @@ export function Verifier() {
 
             if (res.status === 200) {
                 const roleData = await res.json();
-                console.log(roleData);
                 setVerified(true);
                 setRolesApplied(roleData);
             } else {
@@ -175,16 +246,6 @@ export function Verifier() {
     }
 
     if (user) {
-        if (connected && !signMessage) {
-            return (
-                <div className="flex flex-col items-center justify-center gap-y-5">
-                    <p>
-                        Uh oh, it looks like your wallet doesn't support signing messages... Please try again with Phantom or Solflare.
-                    </p>
-                </div>
-            );
-        }
-
         return (
             <div className="flex flex-col items-center justify-center gap-y-5">
                 {!connected && (
@@ -211,18 +272,38 @@ export function Verifier() {
                                     {verifyInProgress ? 'Please wait, verifying your holder status and applying roles...' : 'Finally, sign a message to verify your address and get your roles.'}
                                 </p>
 
+                                <div className="flex items-center justify-center gap-x-4">
+                                    <span>
+                                        Using Ledger?
+                                    </span>
+
+                                    <Switch
+                                        checked={haveLedger}
+                                        onChange={handleToggleHaveLedger}
+                                        className={`${
+                                            haveLedger ? 'bg-slugGreen' : 'bg-gray-200'
+                                        } relative inline-flex items-center h-6 rounded-full w-11`}
+                                    >
+                                        <span
+                                            className={`${
+                                                haveLedger ? 'translate-x-6' : 'translate-x-1'
+                                            } inline-block w-4 h-4 transform bg-black rounded-full`}
+                                        />
+                                    </Switch>
+                                </div>
+
                                 <button
-                                    className="background-transparent border-slugGreen border-2 uppercase w-96 text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
+                                    className="background-transparent border-slugGreen border-2 uppercase text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
                                     disabled={verifyInProgress}
-                                    onClick={handleSignVerifyMessage}
+                                    onClick={(haveLedger || !signMessage) ? handleSend0SolTransaction : handleSignVerifyMessage}
                                 >
-                                    Sign Message to Verify
+                                    {haveLedger ? `Sign Transaction To Verify` : `Sign Message to Verify`}
                                 </button>
                             </>
                         )}
 
                         {rolesApplied && verified === true && (
-                            <>
+                            <div className="flex flex-col items-center justify-center gap-y-5 w-3/5">
                                 <span className="text-center">
                                     Success! You have been given the following roles:
                                 </span>
@@ -238,7 +319,7 @@ export function Verifier() {
                                 <p>
                                     You can return to Discord.
                                 </p>
-                            </>
+                            </div>
                         )}
 
                         {verified === false && (
