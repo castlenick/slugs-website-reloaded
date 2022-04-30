@@ -42,7 +42,7 @@ interface ConnectWalletProps {
     user: DiscordUser;
 }
 
-const test = true;
+const test = false;
 
 const verifyEndpoint = `https://letsalllovelain.com/verify`;
 const testVerifyEndpoint = `http://localhost:5353`;
