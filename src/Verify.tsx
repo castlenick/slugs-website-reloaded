@@ -63,52 +63,47 @@ const discordArgs = {
 async function fetchDiscordUserInfo(tokenType: string, accessToken: string) {
     let user;
 
-    try {
-        const discordRes = await fetch("https://discord.com/api/users/@me", {
-            headers: {
-                authorization: `${tokenType} ${accessToken}`,
-            },
-        });
+    const discordRes = await fetch("https://discord.com/api/users/@me", {
+        headers: {
+            authorization: `${tokenType} ${accessToken}`,
+        },
+    });
 
-        if (discordRes.status === 200) {
-            user = await discordRes.json();
-        } else {
-            return undefined;
-        }
-
-        const userRequest = {
-            discordToken: accessToken,
-        };
-
-        const userRes = await fetch(
-            `${verifyURL}/user`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userRequest),
-            },
-        );
-
-        if (userRes.status === 200) {
-            const json = await userRes.json();
-
-            return {
-                ...json,
-                user,
-            };
-        }
-
-        return {
-            user,
-            roles: [],
-            addresses: [],
-        };
-    } catch (err) {
-        console.log(err);
+    if (discordRes.status === 200) {
+        user = await discordRes.json();
+    } else {
         return undefined;
     }
+
+    const userRequest = {
+        discordToken: accessToken,
+    };
+
+    const userRes = await fetch(
+        `${verifyURL}/user`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userRequest),
+        },
+    );
+
+    if (userRes.status === 200) {
+        const json = await userRes.json();
+
+        return {
+            ...json,
+            user,
+        };
+    }
+
+    return {
+        user,
+        roles: [],
+        addresses: [],
+    };
 }
 
 function DiscordError(props: { discordError: string | null }) {
@@ -117,9 +112,9 @@ function DiscordError(props: { discordError: string | null }) {
     } = props;
 
     return (
-        <div className="flex flex-col items-center justify-center gap-y-5">
+        <div className="flex flex-col items-center justify-center gap-y-5 text-center">
             <p>
-                {`Failed to fetch info from Discord! You may need to disable your ad blocker/privacy badger/umatrix extensions. ${discordError ? `Error: ${discordError}` : ''}`}
+                {`Failed to fetch info from Discord or verify backend! You may need to disable your ad blocker/privacy badger/umatrix extensions. ${discordError ? `Error: ${discordError}` : ''}`}
             </p>
         </div>
     );
@@ -358,9 +353,7 @@ function PerformVerify(props: PerformVerifyProps) {
                             </p>
 
                             <p className="text-center">
-                                That didn't work. Make sure you have a
-                                Solana Slug in your wallet and that you're
-                                linking the correct Discord account.
+                                We weren't able to verify that wallet signature.
                             </p>
 
                             <span>
@@ -575,22 +568,28 @@ export function Verifier() {
             setDiscordError(null);
 
             try {
-                const {
-                    user,
-                    addresses,
-                    roles
-                } = await fetchDiscordUserInfo(tokenType, accessToken);
+                const data = await fetchDiscordUserInfo(tokenType, accessToken);
 
-                if (!user) {
-                    setUser(false);
-                } else {
+                if (data) {
+                    const {
+                        user,
+                        addresses,
+                        roles,
+                    } = data;
+
                     setUser(user);
                     setRoles(roles);
                     setAddresses(addresses);
+                } else {
+                    setUser(false);
                 }
             } catch (err) {
+                if (err) {
+                    console.log(`Got error: ${(err as any).toString()}`);
+                    setDiscordError((err as any).toString());
+                }
+
                 setUser(false);
-                setDiscordError((err as any).toString());
                 console.log(err);
             }
         };
