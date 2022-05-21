@@ -11,10 +11,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: node --version
+
     - name: Install dependencies
       run: yarn install
+
+    - name: Setup .env file
+      run: cp .production.env .env
+
     - name: Build
       run: yarn run react-app-rewired --max_old_space_size=8192 build
+
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:

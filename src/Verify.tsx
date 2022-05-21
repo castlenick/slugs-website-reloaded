@@ -42,15 +42,8 @@ interface ConnectWalletProps {
     user: DiscordUser;
 }
 
-const test = false;
-
-const verifyEndpoint = `https://letsalllovelain.com/verify`;
-const testVerifyEndpoint = `http://localhost:5353`;
-const verifyURL = test ? testVerifyEndpoint : verifyEndpoint;
-
-const mainRedirectURL = `https://solslugs.com/`;
-const testRedirectURL = `http://localhost:3000/`;
-const redirectURL = test ? testRedirectURL : mainRedirectURL;
+const redirectURL = process.env.REACT_APP_REDIRECT_URL;
+const verifyURL = process.env.REACT_APP_VERIFY_URL;
 
 const discordArgs = {
     client_id: '903156913724874832',
