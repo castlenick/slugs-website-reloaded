@@ -7,12 +7,12 @@ import { Designer } from './Designer';
 import { Incinerator } from './Incinerator';
 import { WalletTracker } from './WalletTracker';
 import { MSolStaking } from './MSolStaking';
-import { Collabs } from './Collabs';
 import { Affiliates } from './Affiliates';
 import { BurnLeaderboard } from './BurnLeaderboard';
 import { Graveyard } from './Graveyard';
 import { Verifier } from './Verify';
 import { APIData, UnburntSlug, BurntSlug, Trait } from './Types';
+import { Marketing } from './Marketing';
 
 export interface RouteProps {
     data?: APIData;
@@ -80,8 +80,6 @@ export function Routes(props: RouteProps) {
 
             <Route path='/mSol-staking' element={<MSolStaking/>}/>
 
-            <Route path='/collabs' element={<Collabs/>}/>
-
             <Route path='/affiliates' element={<Affiliates/>}/>
 
             <Route
@@ -109,6 +107,13 @@ export function Routes(props: RouteProps) {
                 element={
                     <Verifier
                     />
+                }
+            />
+
+            <Route
+                path='/marketing'
+                element={
+                    <Marketing/>
                 }
             />
         </RoutesWrapper>

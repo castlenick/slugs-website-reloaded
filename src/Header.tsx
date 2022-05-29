@@ -82,20 +82,10 @@ export function Header(props: IHeaderProps) {
                                 link: 'https://www.sol-incinerator.com/#/',
                                 external: true,
                             },
-                            /*
                             {
-                                name: 'Incinerator',
-                                link: '/incinerator',
+                                name: 'Marketing Pack',
+                                link: '/marketing',
                             },
-                            {
-                                name: 'Wallet Tracking',
-                                link: '/wallet-tracker',
-                            },
-                            {
-                                name: 'mSol Staking',
-                                link: '/mSol-staking',
-                            },
-                             */
                         ]}
                     />
 
