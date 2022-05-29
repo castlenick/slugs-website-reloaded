@@ -2,7 +2,7 @@ export function Marketing() {
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">
             <span className="w-3/5 text-center">
-                Below is a marketing pack that includes our branding standards and various art assets. Use it to promote slugs on twitter, or create new content to share!
+                Below is a marketing pack that includes our branding standards and various art assets. Use it to promote slugs on Twitter, or create new content to share!
             </span>
 
             <button
