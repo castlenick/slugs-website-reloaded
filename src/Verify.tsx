@@ -467,7 +467,7 @@ function ManageAddresses(props: ManageAddressesProps) {
 
                     <div className="flex flex-col items-center justify-center gap-y-1">
                         {roles.map((r) => (
-                            <span className="inline mx-3" style={{ color: r.color }} key={r.name}>
+                            <span className="inline mx-3 text-center" style={{ color: r.color }} key={r.name}>
                                 {r.name} - {r.description}
                             </span>
                         ))}
