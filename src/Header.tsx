@@ -11,7 +11,7 @@ import { HeaderDropdown } from './HeaderDropdown';
 import Logo from './img/Logo-Small.png';
 
 import DigitalEyes from './img/marketplace-icons/DigitalEyes.png';
-import ExchangeArt from './img/marketplace-icons/ExchangeArt.png';
+import OpenSea from './img/marketplace-icons/OpenSea.png';
 import MagicEden from './img/marketplace-icons/MagicEden.png';
 import Solanart from './img/marketplace-icons/Solanart.png';
 import Solsea from './img/marketplace-icons/Solsea.png';
@@ -227,19 +227,11 @@ export function Header(props: IHeaderProps) {
                             />
                         </a>
 
-                        <a href="https://digitaleyes.market/collections/Sol%20Slugs">
+                        <a href="https://opensea.io/collection/solslugs">
                             <img
-                                src={DigitalEyes}
+                                src={OpenSea}
                                 className="w-8 2xl:w-9"
-                                alt='DigitalEyes'
-                            />
-                        </a>
-
-                        <a href="https://exchange.art/collections/Generation%201">
-                            <img
-                                src={ExchangeArt}
-                                className="w-8 2xl:w-9"
-                                alt='ExchangeArt'
+                                alt='OpenSea'
                             />
                         </a>
 
@@ -248,6 +240,14 @@ export function Header(props: IHeaderProps) {
                                 src={Solsea}
                                 className="w-8 2xl:w-9"
                                 alt='Solsea'
+                            />
+                        </a>
+
+                        <a href="https://digitaleyes.market/collections/Sol%20Slugs">
+                            <img
+                                src={DigitalEyes}
+                                className="w-8 2xl:w-9"
+                                alt='DigitalEyes'
                             />
                         </a>
                     </div>
