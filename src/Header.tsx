@@ -45,7 +45,7 @@ export function Header(props: IHeaderProps) {
     const header = React.useMemo(() => {
         return (
             <div className="grid grid-cols-9 mt-20 mb-10 2xl:mb-6">
-                <div className="flex justify-end gap-x-6 text-3xl w-full col-start-4 col-span-6 items-end 2xl:col-span-4 2xl:col-start-6 2xl:row-start-2 z-10 flex-wrap">
+                <div className="flex justify-end gap-x-6 text-3xl w-full col-start-5 col-span-5 items-end sm:col-start-3 sm:col-span-7 2xl:col-span-4 2xl:col-start-6 2xl:row-start-2 z-10 flex-wrap">
                     <Link to=''>
                         <span className="text-3xl">
                             Home
@@ -116,11 +116,13 @@ export function Header(props: IHeaderProps) {
                 </div>
 
                 <div className="flex flex-col justify-center items-center border-2 border-slugGreen my-4 p-5 relative w-full col-span-9">
-                    <img
-                        src={Logo}
-                        className="absolute top-0 left-0 -mt-16 -ml-2 w-44 2xl:w-56 2xl:-mt-20 2xl:-ml-3"
-                        alt='Slug Logo'
-                    />
+                    <a href="/">
+                        <img
+                            src={Logo}
+                            className="absolute top-0 left-0 -mt-16 -ml-2 w-44 2xl:w-56 2xl:-mt-20 2xl:-ml-3"
+                            alt='Slug Logo'
+                        />
+                    </a>
 
                     <div className="flex flex-col w-full gap-y-4 2xl:flex-row">
                         <div className="2xl:basis-1/5">

@@ -14,11 +14,11 @@ export function Team() {
                 Meet the Team!
             </span>
 
-            <span className="text-2xl w-80 mt-1">
+            <span className="text-2xl mt-1 w-4/5">
                 Behind an NFT full of degeneracy, there's the team of degenerates.
             </span>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 items-center mt-8 gap-y-12 gap-x-8 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 items-center mt-8 gap-y-12 gap-x-8 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 2xl:w-4/5">
                 <div className="flex flex-col items-center justify-start gap-y-3 h-full">
                     <span className="text-4xl">
                         Buggles
