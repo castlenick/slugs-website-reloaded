@@ -13,7 +13,7 @@ export function FAQ() {
                         </span>
 
                         <span className="text-2xl">
-                            We were a free mint that launched on October 23rd at 10pm UTC.
+                            We were a free mint that launched on October 23rd, 2021 at 10pm UTC.
                         </span>
                     </div>
 
