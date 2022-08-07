@@ -11,6 +11,7 @@ import {
     SolflareWalletAdapter,
     SolletExtensionWalletAdapter,
     SolletWalletAdapter,
+    GlowWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
 import {
     WalletModalProvider,
@@ -52,6 +53,7 @@ function App() {
         new SolflareWalletAdapter({ network }),
         new SolletWalletAdapter({ network }),
         new SolletExtensionWalletAdapter({ network }),
+        new GlowWalletAdapter({ network }),
     ], [network]);
 
     const fetchData = React.useCallback(async () => {
