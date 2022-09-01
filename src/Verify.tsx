@@ -106,7 +106,7 @@ function DiscordError(props: { discordError: string | null }) {
 
     return (
         <div className="flex flex-col items-center justify-center gap-y-5 text-center">
-            <p>
+            <p className='text-center'>
                 {`Failed to fetch info from Discord or verify backend! You may need to disable your ad blocker/privacy badger/umatrix extensions. ${discordError ? `Error: ${discordError}` : ''}`}
             </p>
         </div>
@@ -349,7 +349,7 @@ function PerformVerify(props: PerformVerifyProps) {
                                 We weren't able to verify that wallet signature.
                             </p>
 
-                            <span>
+                            <span className='text-center'>
                                 You may need to reload the page if you just swapped wallet accounts.
                             </span>
 
