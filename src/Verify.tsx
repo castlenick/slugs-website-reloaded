@@ -140,7 +140,7 @@ function LinkDiscord() {
             </span>
 
             <button
-                className="background-transparent border-slugGreen border-2 uppercase text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
+                className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                 onClick={() => {
                     window.location.href = `https://discord.com/api/oauth2/authorize?${args}`;
                 }}
@@ -314,7 +314,7 @@ function PerformVerify(props: PerformVerifyProps) {
                             </div>
 
                             <button
-                                className="background-transparent border-slugGreen border-2 uppercase text-2xl p-4 rounded h-12 align-middle flex items-center justify-center"
+                                className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                                 disabled={verifyInProgress}
                                 onClick={txVerify ? handleSend0SolTransaction : handleSignVerifyMessage}
                             >
@@ -322,7 +322,7 @@ function PerformVerify(props: PerformVerifyProps) {
                             </button>
 
                             <button
-                                className="background-transparent border-slugGreen border-2 uppercase text-2xl p-4 rounded h-12 align-middle flex items-center justify-center"
+                                className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                                 disabled={verifyInProgress}
                                 onClick={disconnect}
                             >
@@ -331,7 +331,7 @@ function PerformVerify(props: PerformVerifyProps) {
 
                             {addresses.length > 0 && (
                                 <button
-                                    className="background-transparent border-slugGreen border-2 uppercase text-2xl p-4 rounded h-12 align-middle flex items-center justify-center"
+                                    className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                                     onClick={goBack}
                                 >
                                     Go Back
@@ -355,7 +355,7 @@ function PerformVerify(props: PerformVerifyProps) {
                             </span>
 
                             <button
-                                className="background-transparent border-slugGreen border-2 uppercase w-52 text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
+                                className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                                 onClick={restartProcess}
                             >
                                 Try again
@@ -387,7 +387,7 @@ function ConnectWallet(props: ConnectWalletProps) {
 
             {addresses.length > 0 && (
                 <button
-                    className="background-transparent border-slugGreen border-2 uppercase text-2xl p-4 rounded h-12 align-middle flex items-center justify-center"
+                    className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                     onClick={goBack}
                 >
                     Go Back
@@ -447,13 +447,13 @@ function ManageAddresses(props: ManageAddressesProps) {
 
     return (
         <div className="flex flex-col items-center justify-center gap-y-4">
-            <div className="flex flex-row items-center justify-center gap-x-5">
+            <div className="flex flex-row items-center justify-center gap-x-5 flex-wrap gap-y-5">
                 <span className="text-center">
                     {`You have linked ${addresses.length} address${addresses.length > 1 ? 'es' : ''}. You can return to Discord, or link another wallet.`}
                 </span>
 
                 <button
-                    className="background-transparent border-slugGreen border-2 uppercase text-2xl p-4 rounded h-12 align-middle flex items-center justify-center shrink-0"
+                    className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                     onClick={toggleManageAddresses}
                 >
                     Link Another?
@@ -487,13 +487,13 @@ function ManageAddresses(props: ManageAddressesProps) {
             </span>
 
             {addresses.map((addr) => (
-                <div className="flex flex-row items-center justify-center gap-x-5" key={addr}>
-                    <span>
+                <div className="flex flex-row flex-wrap items-center justify-center gap-x-5 gap-y-5 w-full" key={addr}>
+                    <span className='truncate'>
                         {addr}
                     </span>
 
                     <button
-                        className="background-transparent border-slugGreen border-2 uppercase text-2xl p-4 rounded h-12 align-middle flex items-center justify-center"
+                        className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                         onClick={() => handleUnlink(addr)}
                         disabled={performingUnlink}
                     >
