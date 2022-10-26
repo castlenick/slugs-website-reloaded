@@ -127,15 +127,15 @@ function LinkDiscord() {
 
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">
-            <span className="w-3/5 text-center">
+            <span className="sm:w-3/5 text-center">
                 Let's get verified! This will verify you are a slug burner/holder and unlock certain channels and roles in the Discord server.
             </span>
 
-            <span className="w-3/5 text-center">
+            <span className="sm:w-3/5 text-center">
                 You can also link more wallets if you have already verified your address.
             </span>
 
-            <span>
+            <span className='text-center'>
                 Start by linking your Discord account.
             </span>
 
@@ -282,7 +282,7 @@ function PerformVerify(props: PerformVerifyProps) {
                 <>
                     {verified === null && (
                         <>
-                            <p className="text-center">
+                            <p className="text-center truncate w-full">
                                 {`Linking ${publicKey.toString()} to ${user.username}#${user.discriminator}`}
                             </p>
 
@@ -377,7 +377,7 @@ function ConnectWallet(props: ConnectWalletProps) {
 
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">
-            <p>
+            <p className='text-center'>
                 {user!.username}#{user!.discriminator}, your Discord has been linked!
             </p>
 
