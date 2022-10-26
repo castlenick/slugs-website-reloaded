@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,7 +11,7 @@ import Infungibles from './img/partner-logos/Infungibles.png';
 interface AffiliateLink {
     url: string;
 
-    icon: IconProp;
+    icon: any;
 }
 
 interface AffiliatedItemProps {

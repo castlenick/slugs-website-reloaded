@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Switch } from '@headlessui/react';
 import { encode } from "@stablelib/base64";
-import * as Qs from 'querystring';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { Transaction, SystemProgram } from '@solana/web3.js';
 
@@ -42,7 +41,7 @@ interface ConnectWalletProps {
     user: DiscordUser;
 }
 
-const redirectURL = process.env.REACT_APP_REDIRECT_URL;
+const redirectURL = process.env.REACT_APP_REDIRECT_URL!;
 const verifyURL = process.env.REACT_APP_VERIFY_URL;
 
 const discordArgs = {
@@ -124,10 +123,12 @@ function Loading() {
 }
 
 function LinkDiscord() {
+    const args = new URLSearchParams(discordArgs).toString();
+
     return (
         <div className="flex flex-col items-center justify-center gap-y-5">
             <span className="w-3/5 text-center">
-                Let's get verified! This will verify you are a slug holder and unlock certain channels and roles in the Discord server.
+                Let's get verified! This will verify you are a slug burner/holder and unlock certain channels and roles in the Discord server.
             </span>
 
             <span className="w-3/5 text-center">
@@ -141,7 +142,7 @@ function LinkDiscord() {
             <button
                 className="background-transparent border-slugGreen border-2 uppercase text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
                 onClick={() => {
-                    window.location.href = `https://discord.com/api/oauth2/authorize?${Qs.stringify(discordArgs)}`;
+                    window.location.href = `https://discord.com/api/oauth2/authorize?${args}`;
                 }}
             >
                 Link Discord
