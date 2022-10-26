@@ -120,7 +120,7 @@ function App() {
             <ConnectionProvider endpoint={endpoint}>
                 <WalletProvider wallets={wallets} autoConnect>
                     <WalletModalProvider>
-                        <div className="flex justify-center items-center flex-col min-h-screen text-white text-3xl">
+                        <div className="flex items-center flex-col min-h-screen text-white text-3xl">
                             <div className="w-4/5 2xl:w-5/6 mb-20">
                                 <Header
                                     slugCount={data?.slugStats?.slugCount}

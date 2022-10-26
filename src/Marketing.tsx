@@ -6,7 +6,7 @@ export function Marketing() {
             </span>
 
             <button
-                className="background-transparent border-slugGreen border-2 uppercase text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
+                className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
                 onClick={() => {
                     window.location.href = 'https://github.com/SolSlugs/assets/blob/main/SlugMarketingPack.zip?raw=true';
                 }}

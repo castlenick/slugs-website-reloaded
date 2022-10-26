@@ -10,7 +10,7 @@ import { MSolStaking } from './MSolStaking';
 import { Affiliates } from './Affiliates';
 import { BurnLeaderboard } from './BurnLeaderboard';
 import { Graveyard } from './Graveyard';
-import { Verifier } from './Verify';
+import { Verifier } from './Verify/';
 import { APIData, UnburntSlug, BurntSlug, Trait } from './Types';
 import { Marketing } from './Marketing';
 

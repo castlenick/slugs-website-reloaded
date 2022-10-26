@@ -307,7 +307,7 @@ export function Designer(props: DesignerProps) {
 
                             <div className="flex flex-wrap md:flex-nowrap flex-row w-full items-center justify-center sm:justify-end gap-y-4">
                                 <button
-                                    className="background-transparent border-slugGreen border-2 uppercase w-52 sm:w-auto sm:grow text-4xl p-4 rounded h-16 align-middle flex items-center justify-center"
+                                    className={`bg-primary disabled:bg-disabled rounded text-background w-52 sm:w-auto sm:grow h-9 sm:h-11 uppercase font-header text-xs`}
                                     onClick={handleRandomize}
                                 >
                                     Randomize
