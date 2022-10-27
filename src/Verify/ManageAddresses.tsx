@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
 
 import { VerifiedAddress } from '../Types';
 
 export interface ManageAddressesProps {
     accessToken: string;
+
     addresses: VerifiedAddress[];
+
     roles: any[];
+
     toggleManageAddresses: () => void;
+
     removeAddress: (addr: string, roleData: any[]) => void;
+
+    setPrimary: (addr: string) => void;
 }
 
 export function ManageAddresses(props: ManageAddressesProps) {
@@ -17,14 +26,53 @@ export function ManageAddresses(props: ManageAddressesProps) {
         toggleManageAddresses,
         removeAddress,
         accessToken,
+        setPrimary,
     } = props;
 
+    const [performingSetPrimary, setPerformingSetPrimary] = useState<boolean>(false);
     const [performingUnlink, setPerformingUnlink] = useState<boolean>(false);
-    const [unlinkAddr, setUnlinkAddr] = useState<string>();
+
+    const performingOperation = useMemo(() => performingSetPrimary || performingUnlink, [
+        performingSetPrimary,
+        performingUnlink,
+    ])
+
+    async function handleSetPrimary(address: string) {
+        setPerformingSetPrimary(true);
+        setPrimary(address);
+
+        try {
+            const res = await fetch(
+                `${process.env.REACT_APP_VERIFY_URL}/update`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json",
+                    },
+                    body: JSON.stringify({
+                        discordToken: accessToken,
+                        address,
+                        primary: true,
+                    }),
+                }
+            );
+
+            if (res.status === 200) {
+                toast.info('Successfully updated primary wallet.');
+            } else {
+                toast.warn(`Failed to set primary wallet, got status code ${res.status}`);
+            }
+        } catch (err) {
+            console.log((err as any).toString());
+            toast.warn(`Failed to set primary wallet: ${(err as any).toString()}`);
+        }
+
+        setPerformingSetPrimary(false);
+    }
 
     async function handleUnlink(address: string) {
         setPerformingUnlink(true);
-        setUnlinkAddr(address);
 
         try {
             const res = await fetch(
@@ -42,19 +90,19 @@ export function ManageAddresses(props: ManageAddressesProps) {
                 }
             );
 
-            setPerformingUnlink(false);
-            setUnlinkAddr(undefined);
-
             if (res.status === 200) {
                 const { roles } = await res.json();
                 removeAddress(address, roles);
             } else {
+                toast.warn(`Failed to unlink wallet, got status code ${res.status}`);
             }
         } catch (err) {
+            toast.warn(`Failed to unlink wallet: ${(err as any).toString()}`);
             console.log((err as any).toString());
             setPerformingUnlink(false);
-            setUnlinkAddr(undefined);
         }
+
+        setPerformingUnlink(false);
     }
 
     return (
@@ -94,35 +142,31 @@ export function ManageAddresses(props: ManageAddressesProps) {
                 </span>
             )}
 
-            <span className="text-center text-4xl mt-5">
-                {performingUnlink ? 'Updating...' : 'Already Linked Wallets'}
+            <span className="text-center text-4xl mt-5 mb-4">
+                {performingOperation ? 'Updating...' : 'Already Linked Wallets'}
             </span>
 
             {addresses.map(({ address, primary }) => (
-                <div className="flex flex-row flex-wrap items-center justify-center gap-x-5 gap-y-5 w-full" key={address}>
+                <div className="flex flex-row flex-wrap items-center justify-center gap-x-3 gap-y-3 w-full mb-5 sm:mb-2" key={address}>
+                    <FontAwesomeIcon
+                        icon={faX}
+                        className="text-xl mt-0.5 text-red-500 cursor-pointer"
+                        onClick={() => handleUnlink(address)}
+                    />
+
                     <span className='truncate'>
                         {address}
                     </span>
 
-                    <div className='flex flex-row flex-wrap gap-x-5 gap-y-5 items-center justify-center'>
+                    {addresses.length > 1 && (
                         <button
-                            className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
-                            onClick={() => handleUnlink(address)}
-                            disabled={performingUnlink}
+                            className={`${primary ? 'bg-primary cursor-default' : 'bg-widget cursor-pointer hover:bg-accent'} rounded text-background ml-2 px-2 h-9 uppercase font-header text-xs`}
+                            onClick={() => primary ? {} : handleSetPrimary(address)}
+                            disabled={performingOperation}
                         >
-                            {address === unlinkAddr ? 'Unlinking...' : 'Unlink'}
+                            Primary
                         </button>
-
-                        {addresses.length > 1 && (
-                            <button
-                                className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
-                                onClick={() => handleUnlink(address)}
-                                disabled={performingUnlink || primary}
-                            >
-                                {primary ? 'Primary' : 'Set Primary'}
-                            </button>
-                        )}
-                    </div>
+                    )}
                 </div>
             ))}
         </div>

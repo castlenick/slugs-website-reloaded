@@ -85,6 +85,20 @@ export function Verifier() {
         fragment.get("token_type"),
     ];
 
+    function setPrimary(primaryAddress: string) {
+        const newAddresses = [];
+
+        for (const { address } of addresses) {
+            newAddresses.push({
+                address,
+                primary: address === primaryAddress,
+            });
+        }
+
+        setPrimaryAddress(primaryAddress);
+        setAddresses(newAddresses);
+    }
+
     function restartProcess() {
         window.location.href = `/#/verify`;
         setUser(null);
@@ -107,6 +121,10 @@ export function Verifier() {
             primary,
         });
 
+        if (primary) { 
+            setPrimaryAddress(address);
+        }
+
         setAddresses([...new Set(newAddresses)]);
         setManageAddresses(true);
         setRoles(newRoles);
@@ -119,6 +137,10 @@ export function Verifier() {
             if (existingAddress.address !== removedAddress) {
                 newAddresses.push(existingAddress);
             }
+        }
+
+        if (primaryAddress === removedAddress) {
+            setPrimaryAddress(undefined);
         }
 
         setAddresses(newAddresses);
@@ -190,6 +212,7 @@ export function Verifier() {
                 toggleManageAddresses={toggleManageAddresses}
                 removeAddress={removeAddress}
                 accessToken={accessToken}
+                setPrimary={setPrimary}
             />
         );
     }

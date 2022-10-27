@@ -16,6 +16,9 @@ import {
 import {
     WalletModalProvider,
 } from '@solana/wallet-adapter-react-ui';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from './Header';
 import { Footer } from './Footer';
@@ -139,6 +142,20 @@ function App() {
 
                                 <Footer/>
                             </div>
+
+                            <ToastContainer
+                                position="bottom-center"
+                                autoClose={3000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme='dark'
+                                className='text-lg'
+                            />
                         </div>
                     </WalletModalProvider>
                 </WalletProvider>

@@ -150,7 +150,7 @@ export function PerformVerify(props: PerformVerifyProps) {
                 <>
                     {verified === null && (
                         <>
-                            <p className="text-center truncate w-full">
+                            <p className="text-center w-full text-wrap break-words">
                                 {`Linking ${publicKey.toString()} to ${user.username}#${user.discriminator}`}
                             </p>
 
