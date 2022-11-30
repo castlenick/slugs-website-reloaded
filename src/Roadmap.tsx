@@ -74,7 +74,7 @@ export function Roadmap() {
 
                 <div className="flex flex-col justify-center gap-y-6 md:basis-2/5">
                     <RoadmapBundle
-                        label={'October 2021'}
+                        label={'Q4 2021'}
                         items={[
                             {
                                 item: 'Launched Sol Slugs as a Free Mint - 10k supply',
@@ -91,12 +91,6 @@ export function Roadmap() {
                             {
                                 item: 'Slugageddon - Created Burn Bot and Roles',
                             },
-                        ]}
-                    />
-
-                    <RoadmapBundle
-                        label={'November 2021'}
-                        items={[
                             {
                                 item: 'Added Slug Designer and Graveyard to site',
                             },
@@ -109,12 +103,6 @@ export function Roadmap() {
                             {
                                 item: 'Initiated Partnerships and Project Outreach',
                             },
-                        ]}
-                    />
-
-                    <RoadmapBundle
-                        label={'December 2021'}
-                        items={[
                             {
                                 item: 'Onboarded TS as Social Media Coordinator',
                             },
@@ -131,7 +119,7 @@ export function Roadmap() {
                     />
 
                     <RoadmapBundle
-                        label={'January 2022'}
+                        label={'Q1 2022'}
                         items={[
                             {
                                 item: 'Gen 2 released',
@@ -148,12 +136,6 @@ export function Roadmap() {
                             {
                                 item: 'DCF Partnership',
                             },
-                        ]}
-                    />
-
-                    <RoadmapBundle
-                        label={'Febuary 2022'}
-                        items={[
                             {
                                 item: 'Onboarded Buggles as Tinker Dev',
                             },
@@ -169,12 +151,6 @@ export function Roadmap() {
                             {
                                 item: 'Onboarding new community manager/events coordinator',
                             },
-                        ]}
-                    />
-
-                    <RoadmapBundle
-                        label={'March 2022'}
-                        items={[
                             {
                                 item: 'Incinerator Feed Bot',
                             },
@@ -197,16 +173,83 @@ export function Roadmap() {
                                 item: 'Burn and Holder Verification Bot',
                             },
                         ]}
+                    />
+
+                    <RoadmapBundle
+                        label={'Q2 2022'}
+                        items={[
+                            {
+                                item: 'Trending Collections Bot',
+                                complete: true,
+                            },
+                            {
+                                item: 'Slug Sales Bot',
+                                complete: true,
+                            },
+
+                        ]}
+                        initiallyExpanded={true}
+                    />
+
+                    <RoadmapBundle
+                        label={'Q3 2022'}
+                        items={[
+                            {
+                                item: '3000 Slugs burnt',
+                                complete: true,
+                            },
+                            {
+                                item: 'Floor Watcher Bot',
+                                complete: true,
+                            },
+                            {
+                                item: 'Wallet Migration Tool',
+                                complete: true,
+                            },
+                            {
+                                item: 'AI Chat and Image Generation Bots',
+                                complete: true,
+                            },
+
+                        ]}
+                        initiallyExpanded={true}
+                    />
+                    
+                    <RoadmapBundle
+                        label={'Q4 2022'}
+                        items={[
+                            {
+                                item: '1 Year Anniversary',
+                                complete: true,
+                            },
+                            {
+                                item: 'Added Sayuki0x as Developer',
+                                complete: true,
+                            },
+                            {
+                                item: 'Gen 3',
+                                complete: true,
+                            },
+                            {
+                                item: 'Incinerator Redesign',
+                                complete: true,
+                            },
+                            {
+                                item: 'Slime portfolio tracker slime.cx',
+                                complete: true,
+                            },
+                            {
+                                item: 'Listed on sharky.fi',
+                                complete: true,
+                            },
+
+                        ]}
                         initiallyExpanded={true}
                     />
 
                     <RoadmapBundle
                         label={'Future'}
                         items={[
-                            {
-                                item: 'Partnership with large non-NFT project in the space',
-                                complete: false,
-                            },
                             {
                                 item: '50/50',
                                 complete: false,
@@ -216,15 +259,7 @@ export function Roadmap() {
                                 complete: false,
                             },
                             {
-                                item: 'Additional NFT Bots',
-                                complete: false,
-                            },
-                            {
                                 item: 'Slugmutation',
-                                complete: false,
-                            },
-                            {
-                                item: 'Gen 3',
                                 complete: false,
                             },
                             {
@@ -232,6 +267,7 @@ export function Roadmap() {
                                 complete: false,
                             },
                         ]}
+                        initiallyExpanded={true}
                     />
                 </div>
             </div>
