@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1137534b.css",
-    "main.js": "/static/js/main.84b68bca.js",
+    "main.js": "/static/js/main.ecb388a3.js",
     "static/js/59.56d20705.chunk.js": "/static/js/59.56d20705.chunk.js",
     "static/js/608.871f3409.chunk.js": "/static/js/608.871f3409.chunk.js",
     "static/media/fire-bg.gif": "/static/media/fire-bg.d06b8a0f0501b4171d2e.gif",
@@ -9,10 +9,10 @@
     "static/media/Sanctuary Gate.png": "/static/media/Sanctuary Gate.ccd06ac2f60986458019.png",
     "static/media/VT323.ttf": "/static/media/VT323.bddd705ec7f7fc153ad8.ttf",
     "static/media/Infungibles.png": "/static/media/Infungibles.f6c665a8e35487e7eb20.png",
+    "static/media/Goatswap.png": "/static/media/Goatswap.d3c4caebc5a68397c191.png",
     "static/media/Solsea.png": "/static/media/Solsea.65a71b7b3186ea18b81d.png",
     "static/media/PressStart2P.ttf": "/static/media/PressStart2P.21503c6a5385ab41dde9.ttf",
     "static/media/Solanart.png": "/static/media/Solanart.4b1e79807950b76103c2.png",
-    "static/media/DigitalEyes.png": "/static/media/DigitalEyes.b7ecdf62b12aeed0b2b7.png",
     "static/media/DCF.png": "/static/media/DCF.8015acaab041c429954d.png",
     "static/media/graveyard.gif": "/static/media/graveyard.8301301b3e13636c068b.gif",
     "static/media/RSI.png": "/static/media/RSI.0eceddee26870f5f8975.png",
@@ -24,12 +24,12 @@
     "static/media/Undervalued.jpg": "/static/media/Undervalued.fb92caa690540eff920b.jpg",
     "index.html": "/index.html",
     "main.1137534b.css.map": "/static/css/main.1137534b.css.map",
-    "main.84b68bca.js.map": "/static/js/main.84b68bca.js.map",
+    "main.ecb388a3.js.map": "/static/js/main.ecb388a3.js.map",
     "59.56d20705.chunk.js.map": "/static/js/59.56d20705.chunk.js.map",
     "608.871f3409.chunk.js.map": "/static/js/608.871f3409.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1137534b.css",
-    "static/js/main.84b68bca.js"
+    "static/js/main.ecb388a3.js"
   ]
 }
