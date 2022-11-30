@@ -242,10 +242,15 @@ export function Roadmap() {
                                 item: 'Listed on sharky.fi',
                                 complete: true,
                             },
+                            {
+                                item: 'Listed on Goatswap',
+                                complete: true,
+                            },
 
                         ]}
                         initiallyExpanded={true}
                     />
+
 
                     <RoadmapBundle
                         label={'Future'}
