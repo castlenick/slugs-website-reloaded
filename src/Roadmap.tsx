@@ -188,7 +188,6 @@ export function Roadmap() {
                             },
 
                         ]}
-                        initiallyExpanded={true}
                     />
 
                     <RoadmapBundle
@@ -211,8 +210,7 @@ export function Roadmap() {
                                 complete: true,
                             },
 
-                        ]}
-                        initiallyExpanded={true}
+                        ]}                
                     />
                     
                     <RoadmapBundle
