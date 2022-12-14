@@ -135,7 +135,7 @@ export function Header(props: IHeaderProps) {
                             </span>
 
                             <span className="text-2xl mt-8 md:mt-0 text-center w-3/5 2xl:text-3xl 2xl:w-full">
-                                {`Solana Slugs is a deflationary collection of ${slugCount || 6966} slugs on the Solana blockchain`}
+                                {`Solana Slugs is a deflationary collection of ${slugCount || 7564} slugs on the Solana blockchain`}
                             </span>
                         </div>
 
