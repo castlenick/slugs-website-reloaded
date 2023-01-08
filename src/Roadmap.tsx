@@ -186,7 +186,10 @@ export function Roadmap() {
                                 item: 'Slug Sales Bot',
                                 complete: true,
                             },
-
+                            {
+                                item: 'Sol Slug team attends Solana Hacker House Miami',
+                                complete: true,
+                            },
                         ]}
                     />
 
