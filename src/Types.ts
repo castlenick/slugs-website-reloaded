@@ -117,6 +117,7 @@ export enum Generation {
     All = 'All',
     GenerationOne = 'Generation 1',
     GenerationTwo = 'Generation 2',
+    GenerationThree = 'Generation 3',
 }
 
 export enum Align {

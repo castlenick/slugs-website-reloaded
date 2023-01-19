@@ -161,6 +161,10 @@ export function AttributeRarity(props: AttributeRarityProps) {
                                 label: 'Generation 2',
                                 value: Generation.GenerationTwo,
                             },
+                            {
+                                label: 'Generation 3',
+                                value: Generation.GenerationThree,
+                            },
                         ]}
                     />
 
