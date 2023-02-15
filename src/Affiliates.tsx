@@ -2,11 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
-import RugSceneInvestigation from './img/partner-logos/RSI.png';
 import UndervaluedNFTs from './img/partner-logos/Undervalued.jpg';
-import Sanctuary from './img/partner-logos/Sanctuary Gate.png';
 import DegenCoinFlip from './img/partner-logos/DCF.png';
-import Infungibles from './img/partner-logos/Infungibles.png';
+import Netrunner from './img/partner-logos/Netrunner.png';
+import P2 from './img/partner-logos/P2.png';
+import SolanaFM from './img/partner-logos/SolanaFM.png';
 
 interface AffiliateLink {
     url: string;
@@ -81,53 +81,41 @@ export function Affiliates() {
             <AffiliateItem
                 links={[
                     {
-                        url: 'https://discord.gg/YjGA6hmjGf',
-                        icon: faDiscord,
-                    },
-                ]}
-                header={'Rug Scene Investigation'}
-                info={'A discord to allow people in the community to provide information about bad actors in the space, and to stay informed. They strive to protect the Solana community.'}
-                image={RugSceneInvestigation}
-            />
-
-            <AffiliateItem
-                links={[
-                    {
-                        url: 'https://twitter.com/undervaluednfts',
+                        url: 'https://twitter.com/NetrunnerNFT',
                         icon: faTwitter,
                     },
                     {
-                        url: 'https://discord.gg/YjGA6hmjGf',
+                        url: 'https://discord.com/invite/hhscUUv5er',
                         icon: faDiscord,
                     },
                     {
-                        url: 'https://www.youtube.com/channel/UCMGlDrVYhvVZChwZklHX8eg',
-                        icon: faYoutube,
-                    }
-                ]}
-                header={'UnderValuedNFTs'}
-                info={'From providing alpha, to exposing rug rings - Undervalued NFTs is a youtuber who gives transparent and honest reviews regarding all things in the Solana NFT space.'}
-                image={UndervaluedNFTs}
-            />
-
-            <AffiliateItem
-                links={[
-                    {
-                        url: 'https://twitter.com/SolanaSanctuary',
-                        icon: faTwitter,
-                    },
-                    {
-                        url: 'https://discord.gg/solsanctuary',
-                        icon: faDiscord,
-                    },
-                    {
-                        url: 'https://www.solsanctuary.io/',
+                        url: 'https://www.solnetrunner.io/',
                         icon: faGlobe,
-                    }
+                    },
                 ]}
-                header={'Solana Sanctuary'}
-                info={'The Sanctuary is a DAO dedicated to provide resources, community, and organization to Solana NFT communities that have been rugged, abandoned, or otherwise broken.'}
-                image={Sanctuary}
+                header={'Netrunner'}
+                info={'Netrunner is a suite of portfolio management & tax reporting tools for NFT & DeFi traders on Solana. They list the Sol Incinerator on their site as a recommended burn tool, due to the fact that many consider burning to be a disposal event for NFTs.'}
+                image={Netrunner}
+            />
+
+            <AffiliateItem
+                links={[
+                    {
+                        url: 'https://twitter.com/player2world',
+                        icon: faTwitter,
+                    },
+                    {
+                        url: 'https://discord.com/invite/player2',
+                        icon: faDiscord,
+                    },
+                    {
+                        url: 'https://player2.world/',
+                        icon: faGlobe,
+                    },
+                ]}
+                header={'Player2'}
+                info={'Player2 is a gamified world where communities and businesses meet. Their platform provides the infrastructure for businesses to launch, bringing genuine revenue into the ecosystem. Additionally, their token, DEO, seeks to solve the issues of modern currency and become \'perfect money\'.'}
+                image={P2}
             />
 
             <AffiliateItem
@@ -153,21 +141,41 @@ export function Affiliates() {
             <AffiliateItem
                 links={[
                     {
-                        url: 'https://twitter.com/TheInfungibles',
+                        url: 'https://twitter.com/solanafm',
                         icon: faTwitter,
                     },
                     {
-                        url: 'http://discord.gg/infungibles',
+                        url: 'http://discord.gg/3SqREprDJN',
                         icon: faDiscord,
                     },
                     {
-                        url: 'https://infungibl.es/',
+                        url: 'https://solana.fm/?cluster=mainnet-solanafmbeta',
                         icon: faGlobe,
+                    },
+                ]}
+                header={'SolanaFM'}
+                info={'SolanaFM is a blockchain explorer implementing a plethora of tools and features for user convenience.'}
+                image={SolanaFM}
+            />
+
+            <AffiliateItem
+                links={[
+                    {
+                        url: 'https://twitter.com/undervaluednfts',
+                        icon: faTwitter,
+                    },
+                    {
+                        url: 'https://discord.gg/YjGA6hmjGf',
+                        icon: faDiscord,
+                    },
+                    {
+                        url: 'https://www.youtube.com/channel/UCMGlDrVYhvVZChwZklHX8eg',
+                        icon: faYoutube,
                     }
                 ]}
-                header={'The Infungibles'}
-                info={'A P2E game you can play with any Solana NFT inside a mecha and win SOL. Rent your mecha for passive income.'}
-                image={Infungibles}
+                header={'UnderValuedNFTs'}
+                info={'From providing alpha, to exposing rug rings - Undervalued NFTs is a youtuber who gives transparent and honest reviews regarding all things in the Solana NFT space.'}
+                image={UndervaluedNFTs}
             />
         </div>
     );
