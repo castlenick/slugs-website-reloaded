@@ -84,6 +84,11 @@ export function Header(props: IHeaderProps) {
                                 external: true,
                             },
                             {
+                                name: 'Slime Portfolio',
+                                link: 'https://slime.cx',
+                                external: true,
+                            },
+                            {
                                 name: 'Marketing Pack',
                                 link: '/marketing',
                             },
@@ -106,6 +111,11 @@ export function Header(props: IHeaderProps) {
                             {
                                 name: 'Graveyard',
                                 link: '/graveyard',
+                            },
+                            {
+                                name: 'Gitbook',
+                                link: 'https://solana-slugs.gitbook.io/solana-slugs/',
+                                external: true,
                             },
                             {
                                 name: 'Play Slug Flip',
