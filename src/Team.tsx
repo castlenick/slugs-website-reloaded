@@ -4,6 +4,8 @@ import TS from './img/profile-pic-slugs/TS.png';
 import Xaz from './img/profile-pic-slugs/Xaz.png';
 import Wafflez from './img/profile-pic-slugs/Wafflez.png';
 import Zpalm from './img/profile-pic-slugs/Zpalm.png';
+import Sayuki from './img/profile-pic-slugs/Sayuki.png';
+import Jnana from './img/profile-pic-slugs/Jnana.png';
 
 import { SizeOptions, LoadingImage } from './LoadingImage';
 
@@ -138,14 +140,53 @@ export function Team() {
                         size={SizeOptions.Small}
                     />
 
-                    <span className="text-3xl uppercase whitespace-pre">
-                        The Dev
+                    <span className="text-3xl whitespace-pre">
+                        Lead Dev
                     </span>
 
                     <span className="text-xl">
                         *groans*
                     </span>
                 </div>
+
+                <div className="flex flex-col items-center justify-start gap-y-3 h-full">
+                    <span className="text-4xl">
+                        Sayuki0x
+                    </span>
+
+                    <LoadingImage
+                        src={Sayuki}
+                        alt='Sayuki0x'
+                        size={SizeOptions.Small}
+                    />
+
+                    <span className="text-3xl whitespace-pre">
+                        Co-Dev
+                    </span>
+
+                    <span className="text-xl">
+                    </span>
+                </div>
+
+                <div className="flex flex-col items-center justify-start gap-y-3 h-full">
+                    <span className="text-4xl">
+                        Jnana
+                    </span>
+
+                    <LoadingImage
+                        src={Jnana}
+                        alt='Jnana'
+                        size={SizeOptions.Small}
+                    />
+
+                    <span className="text-3xl whitespace-pre">
+                        Collab Manager
+                    </span>
+
+                    <span className="text-xl">
+                    </span>
+                </div>
+
             </div>
         </div>
     );
