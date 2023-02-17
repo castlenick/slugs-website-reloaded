@@ -165,6 +165,7 @@ export function Team() {
                     </span>
 
                     <span className="text-xl">
+                        👽🪐🚀
                     </span>
                 </div>
 
