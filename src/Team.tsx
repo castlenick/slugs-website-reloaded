@@ -33,7 +33,7 @@ export function Team() {
                     />
 
                     <span className="text-3xl whitespace-pre">
-                        Tinker Dev
+                        Dev
                     </span>
 
                     <span className="text-xl">
@@ -141,7 +141,7 @@ export function Team() {
                     />
 
                     <span className="text-3xl whitespace-pre">
-                        Lead Dev
+                        Dev
                     </span>
 
                     <span className="text-xl">
@@ -161,7 +161,7 @@ export function Team() {
                     />
 
                     <span className="text-3xl whitespace-pre">
-                        Co-Dev
+                        Dev
                     </span>
 
                     <span className="text-xl">
