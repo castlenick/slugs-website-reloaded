@@ -14,7 +14,6 @@ import OpenSea from './img/marketplace-icons/OpenSea.png';
 import MagicEden from './img/marketplace-icons/MagicEden.png';
 import Solanart from './img/marketplace-icons/Solanart.png';
 import Solsea from './img/marketplace-icons/Solsea.png';
-import Goatswap from './img/marketplace-icons/Goatswap.png';
 import Tensor from './img/marketplace-icons/Tensor.png';
 
 import Burned from './img/statistics-icons/Burned.png';
