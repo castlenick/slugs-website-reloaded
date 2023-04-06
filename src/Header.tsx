@@ -10,12 +10,12 @@ import { HeaderDropdown } from './HeaderDropdown';
 
 import Logo from './img/Logo-Small.png';
 
-
 import OpenSea from './img/marketplace-icons/OpenSea.png';
 import MagicEden from './img/marketplace-icons/MagicEden.png';
 import Solanart from './img/marketplace-icons/Solanart.png';
 import Solsea from './img/marketplace-icons/Solsea.png';
 import Goatswap from './img/marketplace-icons/Goatswap.png';
+import Tensor from './img/marketplace-icons/Tensor.png';
 
 import Burned from './img/statistics-icons/Burned.png';
 import Minted from './img/statistics-icons/Minted.png';
@@ -229,6 +229,14 @@ export function Header(props: IHeaderProps) {
                             />
                         </a>
 
+                        <a href="https://www.tensor.trade/trade/sol_slugs">
+                            <img
+                                src={Tensor}
+                                className="w-8 2xl:w-9 rounded-full"
+                                alt='Tensor'
+                            />
+                        </a>
+
                         <a href="https://solanart.io/collections/solanaslugs">
                             <img
                                 src={Solanart}
@@ -250,14 +258,6 @@ export function Header(props: IHeaderProps) {
                                 src={Solsea}
                                 className="w-8 2xl:w-9"
                                 alt='Solsea'
-                            />
-                        </a>
-
-                        <a href="https://goatswap.xyz/collection/6ebgTh2HpFH3WvUxjSPRcUE6siRvD9Fx7zUwAnDKjUBs">
-                            <img
-                                src={Goatswap}
-                                className="w-8 2xl:w-9"
-                                alt='Goatswap'
                             />
                         </a>
                     </div>
