@@ -77,7 +77,7 @@ export function Team() {
                     />
 
                     <span className="text-3xl whitespace-pre">
-                        Social Media Rockstar
+                        Marketing Director
                     </span>
 
                     <span className="text-xl uppercase">
