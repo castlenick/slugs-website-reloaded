@@ -13,6 +13,20 @@ export function Marketing() {
             >
                 Download
             </button>
+
+            <span className="w-3/5 text-center">
+                If you simply want access to the Twitter gifs with the black background, you can obtain the most current version here:
+            </span>
+
+            <button
+                className={`bg-primary disabled:bg-disabled rounded text-background px-2 h-9 sm:h-11 uppercase font-header text-xs`}
+                onClick={() => {
+                    window.location.href = 'https://github.com/SolSlugs/assets/blob/main/TwitterGifs.zip?raw=true';
+                }}
+            >
+                Download
+            </button>
+
         </div>
     );
 }
