@@ -99,6 +99,7 @@ export function Routes(props: RouteProps) {
                         traitNameMap={traitNameMap}
                         burntSlugs={data?.slugs.burnt}
                         burnCount={data?.burnStats?.slugsBurnt}
+                        attributes={data?.attributes}
                     />
                 }
             />

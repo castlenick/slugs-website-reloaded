@@ -1,21 +1,25 @@
 import * as React from 'react';
 import { Switch } from '@headlessui/react';
 
-import { BurntSlug } from './Types';
+import { BurntSlug, Trait, Attribute } from './Types';
 import { MemeGraveyard } from './MemeGraveyard';
 import { ProfessionalGraveyard } from './ProfessionalGraveyard';
 
 export interface GraveyardProps {
     burntSlugs?: BurntSlug[];
     burnCount?: number;
+    traitNameMap?: Map<string, Trait>;
+    attributes?: Attribute[];
 }
 
 export function Graveyard(props: GraveyardProps) {
     const {
         burntSlugs,
         burnCount,
+        traitNameMap,
+        attributes,
     } = props;
-
+    
     const [professionalGraveyard, setProfessionalGraveyard] = React.useState<boolean>(true);
 
     function handleToggleProfessionalGraveyard() {
@@ -36,7 +40,7 @@ export function Graveyard(props: GraveyardProps) {
         const sorted = burntSlugs.sort((a, b) => a.rank - b.rank);
 
         if (professionalGraveyard) {
-            return <ProfessionalGraveyard burntSlugs={sorted}/>;
+            return <ProfessionalGraveyard burntSlugs={sorted} traitNameMap={traitNameMap} attributes={attributes}/>;
         }
 
         return (
@@ -49,8 +53,10 @@ export function Graveyard(props: GraveyardProps) {
         burnCount,
         burntSlugs,
         professionalGraveyard,
+        traitNameMap,
+        attributes,
     ]);
-
+    
     return (
         <div className="flex flex-col items-center justify-center">
             <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-x-4 gap-y-4">

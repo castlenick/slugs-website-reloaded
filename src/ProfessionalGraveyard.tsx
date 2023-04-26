@@ -9,14 +9,26 @@ import Burned from './img/statistics-icons/Burned.png';
 
 import Filter from './Filter';
 
+import { Trait, Attribute } from './Types';
+
 export interface GraveyardProps {
     burntSlugs: BurntSlug[];
+    traitNameMap?: Map<string, Trait>;
+    attributes?: Attribute[];
 }
 
 export function ProfessionalGraveyard(props: GraveyardProps) {
     const {
         burntSlugs,
+        traitNameMap,
+        attributes,
     } = props;
+
+    const [showFilter, setShowFilter] = React.useState<boolean>();
+
+    const handleToggleFilter = () => {
+      setShowFilter((val) => !val);
+      }
 
     const data = React.useMemo(() => {
         return (
@@ -68,8 +80,8 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-            <button>Filter ▼</button>
-            <Filter />
+            <button onClick={handleToggleFilter}>Filter ▼</button>
+            {showFilter && <Filter traitNameMap={traitNameMap} attributes={attributes}/>}
             {data}
         </div>
     );
