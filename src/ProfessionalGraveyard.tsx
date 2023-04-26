@@ -7,6 +7,8 @@ import { shortenAddress } from './Utilities';
 
 import Burned from './img/statistics-icons/Burned.png';
 
+import Filter from './Filter';
+
 export interface GraveyardProps {
     burntSlugs: BurntSlug[];
 }
@@ -63,11 +65,11 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                     alt='Fire'
                 />
             </div>
-
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-
+            <button>Filter ▼</button>
+            <Filter />
             {data}
         </div>
     );
