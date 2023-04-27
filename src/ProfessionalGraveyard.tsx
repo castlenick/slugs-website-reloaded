@@ -11,6 +11,8 @@ import Filter from './Filter';
 
 import { Trait, Attribute } from './Types';
 
+import { Traits } from './Filter';
+
 export interface GraveyardProps {
     burntSlugs: BurntSlug[];
     traitNameMap?: Map<string, Trait>;
@@ -30,33 +32,60 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
       setShowFilter((val) => !val);
       }
 
+      const [dataFromFilter, setDataFromFilter] = React.useState<Traits>();
+
+      if (!dataFromFilter) {
+            setDataFromFilter({
+                Background: "",
+                Slug: "",
+                Chest: "",
+                Mouth: "",
+                Head: "",
+                Eyes: "",
+                Tail:"",
+                Back: "",
+                Hands: "",
+        } as Traits)
+    }
+
+      const handleDataFromFilter = (data: Traits) => {
+        setDataFromFilter(data);
+      };
+
+
     const data = React.useMemo(() => {
+        if (!dataFromFilter) {
+            return [];
+          }
+
+        const keys = Object.keys(dataFromFilter) as Array<keyof Traits>;;
         return (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-                {burntSlugs.map((slug) => (
-                    <LazyLoad>
-                        <div className="flex flex-col items-center justify-center">
-                            <LoadingImage
-                                src={slug.image}
-                                alt={`Sol Slug ${slug.name}`}
-                                size={SizeOptions.Small}
-                            />
-
-                            <div className="flex flex-col items-start w-48">
-                                <span className="uppercase text-3xl mt-2">
-                                    {`Former Rank ${slug.rank}`}
-                                </span>
-
-                                <span className="uppercase text-xl" title={slug.burntBy}>
-                                    {`By ${shortenAddress(slug.burntBy)}`}
-                                </span>
-                            </div>
-                        </div>
-                    </LazyLoad>
-                ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+            {burntSlugs
+              .filter((slug) =>
+                keys.every(
+                  (key) =>
+                    !dataFromFilter[key] ||
+                    slug.attributes.some(
+                      (attr) => attr.trait_type === key && attr.value === dataFromFilter[key]
+                    )
+                )
+              )
+              .map((slug) => (
+                <LazyLoad>
+                  <div className="flex flex-col items-center justify-center">
+                    <LoadingImage src={slug.image} alt={`Sol Slug ${slug.name}`} size={SizeOptions.Small} />
+                    <div className="flex flex-col items-start w-48">
+                      <span className="uppercase text-3xl mt-2">{`Former Rank ${slug.rank}`}</span>
+                      <span className="uppercase text-xl" title={slug.burntBy}>{`By ${shortenAddress(slug.burntBy)}`}</span>
+                    </div>
+                  </div>
+                </LazyLoad>
+              ))}
+          </div>
         );
-    }, [burntSlugs]);
+      }, [burntSlugs, dataFromFilter]);
+
 
     return (
         <div className="flex flex-col items-center justify-center mt-10">
@@ -81,7 +110,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                 RIP you slimey bastards
             </span>
             <button onClick={handleToggleFilter}>Filter ▼</button>
-            {showFilter && <Filter traitNameMap={traitNameMap} attributes={attributes}/>}
+            {showFilter && <Filter traitNameMap={traitNameMap} attributes={attributes} onChange={handleDataFromFilter}/>}
             {data}
         </div>
     );

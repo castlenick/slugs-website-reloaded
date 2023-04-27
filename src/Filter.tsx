@@ -2,41 +2,27 @@ import * as React from "react";
 import { Switch } from "@headlessui/react";
 
 import { Trait, Attribute, Align } from "./Types";
-import { SizeOptions, LoadingImage } from "./LoadingImage";
-import { renderSlug, pickRandomTrait } from "./GenerateSlug";
 import { Dropdown } from "./Dropdown";
 
-const canvasWidths = new Map([
-  [256, "w-[256px]"],
-  [432, "w-[256px] md:w-[432px]"],
-  [512, "w-[256px] md:w-[512px]"],
-]);
-
-const canvasHeights = new Map([
-  [256, "h-[256px]"],
-  [432, "h-[256px] md:h-[432px]"],
-  [512, "h-[256px] md:h-[512px]"],
-]);
-
-const canvasOptions = [
-  {
-    label: "256x256",
-    value: 256,
-  },
-  {
-    label: "432x432",
-    value: 432,
-  },
-  {
-    label: "512x512",
-    value: 512,
-  },
-];
+export interface Traits {
+Background: string | undefined;
+Slug: string | undefined;
+Chest: string | undefined;
+Mouth: string | undefined;
+Head: string | undefined;
+Eyes: string | undefined;
+Tail: string | undefined;
+Back: string | undefined;
+Hands: string | undefined;
+[key: string]: string | undefined;
+}
 
 export interface DesignerProps {
   traitNameMap?: Map<string, Trait>;
 
   attributes?: Attribute[];
+
+  onChange: (data: Traits) => void;
 }
 
 export interface AttributeProps {
@@ -89,7 +75,7 @@ function AttributeWrapper(props: AttributeProps) {
         options.sort((a, b) => a.label.localeCompare(b.label));
 
         options.unshift({
-          value: "None",
+          value: "",
           label: "None",
         });
 
@@ -107,7 +93,7 @@ function AttributeWrapper(props: AttributeProps) {
     >
       <Dropdown
         label={attribute}
-        value={trait?.name || "None"}
+        value={trait?.name || ""}
         onChange={onChange}
         options={availableValues}
         headerStyle={`text-2xl text-slugGreen uppercase`}
@@ -128,7 +114,7 @@ function AttributeWrapper(props: AttributeProps) {
 export default function Filter(props: DesignerProps) {
   const { traitNameMap, attributes } = props;
 
-  const [traitSet, setTraitSet] = React.useState<Promise<string> | undefined>();
+  const [traitSet, setTraitSet] = React.useState<object>();
 
   const [showTraitRarity, setShowTraitRarity] = React.useState<boolean>(false);
 
@@ -149,44 +135,21 @@ export default function Filter(props: DesignerProps) {
       return;
     }
 
-    const traits = [
-      {
-        trait_type: "Background",
-        value: background?.name,
-      },
-      {
-        trait_type: "Slug",
-        value: slug?.name,
-      },
-      {
-        trait_type: "Chest",
-        value: chest?.name,
-      },
-      {
-        trait_type: "Mouth",
-        value: mouth?.name,
-      },
-      {
-        trait_type: "Head",
-        value: head?.name,
-      },
-      {
-        trait_type: "Eyes",
-        value: eyes?.name,
-      },
-      {
-        trait_type: "Tail",
-        value: tail?.name,
-      },
-      {
-        trait_type: "Back",
-        value: back?.name,
-      },
-      {
-        trait_type: "Hands",
-        value: hands?.name,
-      },
-    ];
+    const traits: Traits = {
+Background: background?.name,
+Slug: slug?.name,
+Chest: chest?.name,
+Mouth: mouth?.name,
+Head: head?.name,
+Eyes: eyes?.name,
+Tail: tail?.name,
+Back: back?.name,
+Hands: hands?.name,
+};
+
+    setTraitSet(traits);
+    console.log(traits)
+    props.onChange(traits);
 
   }, [
     attributes,
@@ -234,8 +197,6 @@ export default function Filter(props: DesignerProps) {
 
 
   const data = React.useMemo(() => {
-    console.log("traitNameMap: ", traitNameMap);
-    console.log("attributes: ", attributes);
     if (!traitNameMap || !attributes) {
       return (
         <div className="flex items-center justify-center">
