@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Suspense } from 'react';
 import LazyLoad from 'react-lazyload';
 
 import { BurntSlug } from './Types';
@@ -7,11 +8,11 @@ import { shortenAddress } from './Utilities';
 
 import Burned from './img/statistics-icons/Burned.png';
 
-import Filter from './Filter';
+import { Traits } from './Filter';
 
 import { Trait, Attribute } from './Types';
 
-import { Traits } from './Filter';
+const Filter = React.lazy(() => import('./Filter'));
 
 export interface GraveyardProps {
     burntSlugs: BurntSlug[];
@@ -48,43 +49,44 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
         } as Traits)
     }
 
-      const handleDataFromFilter = (data: Traits) => {
+    const handleDataFromFilter = (data: Traits) => {
         setDataFromFilter(data);
-      };
+    };
 
-
+   
     const data = React.useMemo(() => {
         if (!dataFromFilter) {
             return [];
-          }
+        }
 
-        const keys = Object.keys(dataFromFilter) as Array<keyof Traits>;;
-        return (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-            {burntSlugs
-              .filter((slug) =>
-                keys.every(
-                  (key) =>
-                    !dataFromFilter[key] ||
-                    slug.attributes.some(
-                      (attr) => attr.trait_type === key && attr.value === dataFromFilter[key]
-                    )
-                )
-              )
-              .map((slug) => (
-                <LazyLoad>
-                  <div className="flex flex-col items-center justify-center">
-                    <LoadingImage src={slug.image} alt={`Sol Slug ${slug.name}`} size={SizeOptions.Small} />
-                    <div className="flex flex-col items-start w-48">
-                      <span className="uppercase text-3xl mt-2">{`Former Rank ${slug.rank}`}</span>
-                      <span className="uppercase text-xl" title={slug.burntBy}>{`By ${shortenAddress(slug.burntBy)}`}</span>
-                    </div>
-                  </div>
-                </LazyLoad>
-              ))}
-          </div>
+        const keys = Object.keys(dataFromFilter) as Array<keyof Traits>;
+
+        const filteredSlugs = burntSlugs.filter((slug) =>
+            keys.every(
+                (key) =>
+                    !dataFromFilter?.[key] ||
+                        slug.attributes.some(
+                            (attr) => attr.trait_type === key && attr.value === dataFromFilter[key]
+                        )
+            )
         );
-      }, [burntSlugs, dataFromFilter]);
+        return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+                {filteredSlugs
+                    .map((slug) => (
+                        <LazyLoad>
+                            <div className="flex flex-col items-center justify-center">
+                                <LoadingImage src={slug.image} alt={`Sol Slug ${slug.name}`} size={SizeOptions.Small} />
+                                <div className="flex flex-col items-start w-48">
+                                    <span className="uppercase text-3xl mt-2">{`Former Rank ${slug.rank}`}</span>
+                                    <span className="uppercase text-xl" title={slug.burntBy}>{`By ${shortenAddress(slug.burntBy)}`}</span>
+                                </div>
+                            </div>
+                        </LazyLoad>
+                    ))}
+            </div>
+        );
+    }, [burntSlugs, dataFromFilter]);
 
 
     return (
@@ -110,7 +112,9 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                 RIP you slimey bastards
             </span>
             <button onClick={handleToggleFilter}>Filter ▼</button>
-            {showFilter && <Filter traitNameMap={traitNameMap} attributes={attributes} onChange={handleDataFromFilter}/>}
+            <Suspense fallback={<div>Loading...</div>}>
+            <Filter traitNameMap={traitNameMap} attributes={attributes} onChange={handleDataFromFilter}/>
+            </Suspense>
             {data}
         </div>
     );
