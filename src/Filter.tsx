@@ -143,8 +143,7 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
             Back: back?.name,
             Hands: hands?.name,
         };
-        
-        console.log(traits)
+
         onChange(traits);
 
     }, [
@@ -187,7 +186,6 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
         },
         [attributes]
     );
-
 
     const data = React.useMemo(() => {
         if (!traitNameMap || !attributes) {
@@ -303,13 +301,13 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
                             checked={showTraitRarity}
                             onChange={handleToggleAttributeRarity}
                             className={`${
-showTraitRarity ? "bg-slugGreen" : "bg-gray-200"
-} relative inline-flex items-center h-6 rounded-full w-11`}
+                                showTraitRarity ? "bg-slugGreen" : "bg-gray-200"
+                                } relative inline-flex items-center h-6 rounded-full w-11`}
                         >
                             <span
                                 className={`${
-showTraitRarity ? "translate-x-6" : "translate-x-1"
-} inline-block w-4 h-4 transform bg-black rounded-full`}
+                                    showTraitRarity ? "translate-x-6" : "translate-x-1"
+                                    } inline-block w-4 h-4 transform bg-black rounded-full`}
                             />
                         </Switch>
                     </div>
