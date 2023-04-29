@@ -70,7 +70,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
         return (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-14 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {filteredSlugs.map((slug) => (
-                    <LazyLoad >
+                    <LazyLoad key={slug.name} >
                         <div className="flex flex-col items-center justify-center">
                             <LoadingImage src={slug.image} alt={`Sol Slug ${slug.name}`} size={SizeOptions.Small} />
                             <div className="flex flex-col items-start w-48">
