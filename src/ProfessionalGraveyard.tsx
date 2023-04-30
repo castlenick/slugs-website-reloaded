@@ -27,7 +27,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
     const [showFilter, setShowFilter] = React.useState<boolean>();
 
     const handleToggleFilter = () => {
-      setShowFilter((val) => !val);
+        setShowFilter((val) => !val);
     }
 
     const [dataFromFilter, setDataFromFilter] = React.useState<Traits>();
