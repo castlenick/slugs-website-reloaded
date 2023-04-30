@@ -40,7 +40,12 @@ export function Graveyard(props: GraveyardProps) {
         const sorted = burntSlugs.sort((a, b) => a.rank - b.rank);
 
         if (professionalGraveyard) {
-            return <ProfessionalGraveyard burntSlugs={sorted} traitNameMap={traitNameMap} attributes={attributes}/>;
+            return (
+                <ProfessionalGraveyard burntSlugs={sorted}
+                    traitNameMap={traitNameMap}
+                    attributes={attributes}
+                />
+            );
         }
 
         return (

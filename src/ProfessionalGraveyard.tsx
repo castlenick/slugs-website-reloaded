@@ -32,20 +32,6 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
 
     const [dataFromFilter, setDataFromFilter] = React.useState<Traits>();
 
-    if (!dataFromFilter) {
-        setDataFromFilter({
-            Background: "",
-            Slug: "",
-            Chest: "",
-            Mouth: "",
-            Head: "",
-            Eyes: "",
-            Tail:"",
-            Back: "",
-            Hands: "",
-        } as Traits)
-    }
-
     const handleDataFromFilter = React.useCallback((data: Traits) => {
         setDataFromFilter(data);
     }, []);
@@ -67,6 +53,16 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
     }, [burntSlugs, dataFromFilter]);
 
     const slugElements = React.useMemo(() => {
+        if (filteredSlugs.length === 0) {
+            return (
+                <div className="flex items-center justify-center mt-8">
+                    <span className="text-6xl">
+                        No burnt slugs match that particular combination of traits.
+                    </span>
+                </div>
+            );
+        }
+
         return (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                 {filteredSlugs.map((slug) => (
@@ -115,7 +111,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-            <button className="pt-10"onClick={handleToggleFilter}>
+            <button className="mt-10" onClick={handleToggleFilter}>
                 Filter ▼
             </button>
             {showFilter && (

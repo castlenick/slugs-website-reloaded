@@ -145,19 +145,19 @@ export function Filter(props: FilterProps) {
         onChange(traits);
 
     }, [
-           attributes,
-           traitNameMap,
-           background,
-           slug,
-           chest,
-           mouth,
-           head,
-           eyes,
-           tail,
-           back,
-           hands,
-           onChange
-        ]);
+        attributes,
+        traitNameMap,
+        background,
+        slug,
+        chest,
+        mouth,
+        head,
+        eyes,
+        tail,
+        back,
+        hands,
+        onChange
+    ]);
 
     function handleToggleAttributeRarity() {
         setShowTraitRarity((val) => !val);
@@ -300,12 +300,12 @@ export function Filter(props: FilterProps) {
                             onChange={handleToggleAttributeRarity}
                             className={`${
                                 showTraitRarity ? "bg-slugGreen" : "bg-gray-200"
-                                } relative inline-flex items-center h-6 rounded-full w-11`}
+                            } relative inline-flex items-center h-6 rounded-full w-11`}
                         >
                             <span
                                 className={`${
                                     showTraitRarity ? "translate-x-6" : "translate-x-1"
-                                    } inline-block w-4 h-4 transform bg-black rounded-full`}
+                                } inline-block w-4 h-4 transform bg-black rounded-full`}
                             />
                         </Switch>
                     </div>
@@ -313,20 +313,20 @@ export function Filter(props: FilterProps) {
             </div>
         );
     }, [
-           traitNameMap,
-           showTraitRarity,
-           attributes,
-           background,
-           slug,
-           chest,
-           mouth,
-           head,
-           eyes,
-           tail,
-           back,
-           hands,
-           handleTraitChanged,
-       ]);
+        traitNameMap,
+        showTraitRarity,
+        attributes,
+        background,
+        slug,
+        chest,
+        mouth,
+        head,
+        eyes,
+        tail,
+        back,
+        hands,
+        handleTraitChanged,
+    ]);
 
     return data;
 }
