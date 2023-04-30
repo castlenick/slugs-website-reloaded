@@ -115,8 +115,16 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-            <button className="pt-10"onClick={handleToggleFilter}>Filter ▼</button>
-            {showFilter && <Filter traitNameMap={traitNameMap} attributes={attributes} onChange={handleDataFromFilter}/>}
+            <button className="pt-10"onClick={handleToggleFilter}>
+                Filter ▼
+            </button>
+            {showFilter && (
+                <Filter 
+                    traitNameMap={traitNameMap} 
+                    attributes={attributes} 
+                    onChange={handleDataFromFilter}
+                />
+            )}
             {slugElements}
         </div>
     );
