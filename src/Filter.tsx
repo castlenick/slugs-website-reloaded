@@ -5,16 +5,15 @@ import { Trait, Attribute, Align } from "./Types";
 import { Dropdown } from "./Dropdown";
 
 export interface Traits {
-    Background: string | undefined;
-    Slug: string | undefined;
-    Chest: string | undefined;
-    Mouth: string | undefined;
-    Head: string | undefined;
-    Eyes: string | undefined;
-    Tail: string | undefined;
-    Back: string | undefined;
-    Hands: string | undefined;
-    [key: string]: string | undefined;
+    Background?: string;
+    Slug?: string;
+    Chest?: string;
+    Mouth?: string;
+    Head?: string;
+    Eyes?: string;
+    Tail?: string;
+    Back?: string;
+    Hands?: string;
 }
 
 export interface FilterProps {
@@ -112,9 +111,8 @@ function AttributeWrapper(props: AttributeProps) {
 }
 
 
-const Filter: React.FC<FilterProps> = (props: FilterProps) => {
-    const { traitNameMap, attributes, onChange} = props;
-
+export function Filter(props: FilterProps) {
+    const { traitNameMap, attributes, onChange } = props;
     const [showTraitRarity, setShowTraitRarity] = React.useState<boolean>(false);
 
     const [background, setBackground] = React.useState<Trait>();
@@ -147,18 +145,18 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
         onChange(traits);
 
     }, [
-            attributes,
-            traitNameMap,
-            background,
-            slug,
-            chest,
-            mouth,
-            head,
-            eyes,
-            tail,
-            back,
-            hands,
-            onChange
+           attributes,
+           traitNameMap,
+           background,
+           slug,
+           chest,
+           mouth,
+           head,
+           eyes,
+           tail,
+           back,
+           hands,
+           onChange
         ]);
 
     function handleToggleAttributeRarity() {
@@ -315,23 +313,22 @@ const Filter: React.FC<FilterProps> = (props: FilterProps) => {
             </div>
         );
     }, [
-            traitNameMap,
-            showTraitRarity,
-            attributes,
-            background,
-            slug,
-            chest,
-            mouth,
-            head,
-            eyes,
-            tail,
-            back,
-            hands,
-            handleTraitChanged,
-        ]);
+           traitNameMap,
+           showTraitRarity,
+           attributes,
+           background,
+           slug,
+           chest,
+           mouth,
+           head,
+           eyes,
+           tail,
+           back,
+           hands,
+           handleTraitChanged,
+       ]);
 
     return data;
 }
 
 
-export default Filter;
