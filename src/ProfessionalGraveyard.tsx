@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LazyLoad from 'react-lazyload';
+import LazyLoad, { forceCheck } from 'react-lazyload';
 
 import { BurntSlug } from './Types';
 import { SizeOptions, LoadingImage } from './LoadingImage';
@@ -88,6 +88,9 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
         );
     }, [filteredSlugs]);
 
+    React.useEffect(() => {
+        forceCheck();
+    }, [ slugElements ]);
 
     return (
         <div className="flex flex-col items-center justify-center mt-10">
