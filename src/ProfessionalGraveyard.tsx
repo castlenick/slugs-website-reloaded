@@ -24,12 +24,6 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
         attributes,
     } = props;
 
-    const [showFilter, setShowFilter] = React.useState<boolean>();
-
-    const handleToggleFilter = () => {
-        setShowFilter((val) => !val);
-    }
-
     const [dataFromFilter, setDataFromFilter] = React.useState<Traits>();
 
     const handleDataFromFilter = React.useCallback((data: Traits) => {
@@ -53,44 +47,47 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
     }, [burntSlugs, dataFromFilter]);
 
     const slugElements = React.useMemo(() => {
-        if (filteredSlugs.length === 0) {
-            return (
-                <div className="flex items-center justify-center mt-8">
-                    <span className="text-6xl">
-                        No burnt slugs match that particular combination of traits.
-                    </span>
-                </div>
-            );
-        }
+        const noMatches  = (
+            <div className="flex flex-col items-center justify-center w-full">
+                No matching slugs
+            </div>
+        );
+
+        const matches = (
+            filteredSlugs.map((slug: any) => (
+                <LazyLoad key={slug.name}>
+                    <div className="flex flex-col items-center justify-center w-full">
+                        <LoadingImage
+                            src={slug.image}
+                            alt={`Sol Slug ${slug.name}`}
+                            size={SizeOptions.Small}
+                        />
+                        <div className="flex flex-col items-start">
+                            <span className="uppercase text-3xl mt-2">
+                                {`Former Rank ${slug.rank}`}
+                            </span>
+                            <span className="uppercase text-xl" title={slug.burntBy}>
+                                {`By ${shortenAddress(slug.burntBy)}`}
+                            </span>
+                        </div>
+                    </div>
+                </LazyLoad>
+            ))
+        );
 
         return (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12 mt-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-                {filteredSlugs.map((slug) => (
-                    <LazyLoad key={slug.name}>
-                        <div className="flex flex-col items-center justify-center">
-                            <LoadingImage
-                                src={slug.image}
-                                alt={`Sol Slug ${slug.name}`}
-                                size={SizeOptions.Small} 
-                            />
-                            <div className="flex flex-col items-start w-48">
-                                <span className="uppercase text-3xl mt-2">
-                                    {`Former Rank ${slug.rank}`}
-                                </span>
-                                <span className="uppercase text-xl" title={slug.burntBy}>
-                                    {`By ${shortenAddress(slug.burntBy)}`}
-                                </span>
-                            </div>
-                        </div>
-                    </LazyLoad>
-                ))}
+            <div className="flex justify-center w-full">
+                <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                    {filteredSlugs.length === 0 ? noMatches : matches}
+                </div>
             </div>
         );
     }, [filteredSlugs]);
 
     React.useEffect(() => {
         forceCheck();
-    }, [ slugElements ]);
+    }, [filteredSlugs]);
+
 
     return (
         <div className="flex flex-col items-center justify-center mt-10">
@@ -114,17 +111,18 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-            <button className="mt-10" onClick={handleToggleFilter}>
-                Filter ▼
-            </button>
-            {showFilter && (
-                <Filter 
-                    traitNameMap={traitNameMap} 
-                    attributes={attributes} 
-                    onChange={handleDataFromFilter}
-                />
-            )}
-            {slugElements}
+            <div className="grid mt-20 xs:grid-cols-2 sm:grid-cols-4">
+                <div className="col-span-1">
+                    <Filter
+                        traitNameMap={traitNameMap}
+                        attributes={attributes}
+                        onChange={handleDataFromFilter}
+                    />
+                </div>
+                <div className="col-span-1 sm:col-span-2 md:col-span-3">
+                    {slugElements}
+                </div>
+            </div>
         </div>
     );
 }
