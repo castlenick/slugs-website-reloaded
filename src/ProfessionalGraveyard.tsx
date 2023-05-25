@@ -119,7 +119,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                         onChange={handleDataFromFilter}
                     />
                 </div>
-                <div className="col-span-1 sm:col-span-2 md:col-span-3">
+                <div className="col-span-1 mt-10 xs:mt-0 sm:col-span-2 md:col-span-3">
                     {slugElements}
                 </div>
             </div>
