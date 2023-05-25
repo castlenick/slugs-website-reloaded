@@ -96,8 +96,10 @@ export function Routes(props: RouteProps) {
                 path='/graveyard'
                 element={
                     <Graveyard
+                        traitNameMap={traitNameMap}
                         burntSlugs={data?.slugs.burnt}
                         burnCount={data?.burnStats?.slugsBurnt}
+                        attributes={data?.attributes}
                     />
                 }
             />
