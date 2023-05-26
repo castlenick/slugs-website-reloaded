@@ -118,18 +118,18 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-            <div className ="mt-20">
-                <span className="text-5xl uppercase">
+            <div className ="mt-20 justify-center">
+                <span className="text-4xl uppercase">
                     burner address: &nbsp;
                 </span>
                 <input 
-                    className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-5xl text-center placeholder:text-gray-700"
+                    className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-3xl text-center placeholder:text-gray-700"
                     placeholder="Optional"
                     value={addressFilter}
                     onChange={handleAddressInputChange}
                 />
             </div>
-            <div className="grid mt-10 xs:grid-cols-2 sm:grid-cols-4">
+            <div className="grid mt-20 xs:grid-cols-2 sm:grid-cols-4">
                 <div className="col-span-1">
                     <Filter
                         traitNameMap={traitNameMap}
@@ -137,7 +137,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                         onChange={handleDataFromFilter}
                     />
                 </div>
-                <div className="col-span-1 mt-10 xs:mt-0 sm:col-span-2 md:col-span-3">
+                <div className="col-span-1 mt-20 xs:mt-0 sm:col-span-2 md:col-span-3">
                     {slugElements}
                 </div>
             </div>
