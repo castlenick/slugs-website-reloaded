@@ -123,10 +123,10 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                     burner address: &nbsp;
                 </span>
                 <input 
-                        className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-5xl text-center placeholder:text-gray-700"
-                        placeholder="Optional"
-                        value={addressFilter}
-                        onChange={handleAddressInputChange}
+                    className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-5xl text-center placeholder:text-gray-700"
+                    placeholder="Optional"
+                    value={addressFilter}
+                    onChange={handleAddressInputChange}
                 />
             </div>
             <div className="grid mt-10 xs:grid-cols-2 sm:grid-cols-4">
