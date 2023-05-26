@@ -25,13 +25,18 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
     } = props;
 
     const [dataFromFilter, setDataFromFilter] = React.useState<Traits>();
+    const [addressFilter, setAddressFilter] = React.useState("");
+
+    const handleAddressInputChange = (e: any) => {
+        setAddressFilter(e.target.value);
+    }
 
     const handleDataFromFilter = React.useCallback((data: Traits) => {
         setDataFromFilter(data);
     }, []);
 
     const filteredSlugs = React.useMemo(() => {
-        if (!dataFromFilter) { 
+        if (!dataFromFilter) {
             return burntSlugs;
         }
 
@@ -42,9 +47,12 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                     slug.attributes.some((attr) =>
                         attr.trait_type === key && attr.value === dataFromFilter[key]
                     )
+            ) && (
+                addressFilter === "" ||
+                    slug.burntBy === addressFilter
             )
         );
-    }, [burntSlugs, dataFromFilter]);
+    }, [burntSlugs, dataFromFilter, addressFilter]);
 
     const slugElements = React.useMemo(() => {
         const noMatches  = (
@@ -88,7 +96,6 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
         forceCheck();
     }, [filteredSlugs]);
 
-
     return (
         <div className="flex flex-col items-center justify-center mt-10">
             <div className="flex flex-row items-center justify-center gap-x-4">
@@ -111,7 +118,18 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-            <div className="grid mt-20 xs:grid-cols-2 sm:grid-cols-4">
+            <div className ="mt-20">
+                <span className="text-5xl uppercase">
+                    burner address: &nbsp;
+                </span>
+                <input 
+                    className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-5xl text-center placeholder:text-gray-700"
+                    placeholder="Optional"
+                    value={addressFilter}
+                    onChange={handleAddressInputChange}
+                />
+            </div>
+            <div className="grid mt-10 xs:grid-cols-2 sm:grid-cols-4">
                 <div className="col-span-1">
                     <Filter
                         traitNameMap={traitNameMap}
