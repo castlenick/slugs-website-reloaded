@@ -122,7 +122,8 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
                 <span className="text-5xl uppercase">
                     burner address: &nbsp;
                 </span>
-                <input className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-5xl text-center placeholder:text-gray-700"
+                <input 
+                        className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-5xl text-center placeholder:text-gray-700"
                         placeholder="Optional"
                         value={addressFilter}
                         onChange={handleAddressInputChange}
