@@ -5,17 +5,13 @@ import {
     WalletProvider,
 } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import {
-    PhantomWalletAdapter,
-    SlopeWalletAdapter,
-    SolflareWalletAdapter,
-    SolletExtensionWalletAdapter,
-    SolletWalletAdapter,
-    GlowWalletAdapter,
-} from '@solana/wallet-adapter-wallets';
-import {
-    WalletModalProvider,
-} from '@solana/wallet-adapter-react-ui';
+import { ExodusWalletAdapter } from '@solana/wallet-adapter-exodus';
+import { SolflareWalletAdapter } from '@solana/wallet-adapter-solflare';
+import { SolletExtensionWalletAdapter, SolletWalletAdapter } from '@solana/wallet-adapter-sollet';
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
+import { BackpackWalletAdapter } from '@solana/wallet-adapter-backpack';
+import { NightlyWalletAdapter } from '@solana/wallet-adapter-nightly';
+import { SlopeWalletAdapter } from '@solana/wallet-adapter-slope';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -51,12 +47,13 @@ function App() {
     const endpoint = RPC_URL;
 
     const wallets = React.useMemo(() => [
-        new PhantomWalletAdapter(),
-        new SlopeWalletAdapter(),
-        new SolflareWalletAdapter({ network }),
+        new SolflareWalletAdapter(),
+        new BackpackWalletAdapter(),
         new SolletWalletAdapter({ network }),
         new SolletExtensionWalletAdapter({ network }),
-        new GlowWalletAdapter({ network }),
+        new ExodusWalletAdapter(),
+        new NightlyWalletAdapter(),
+        new SlopeWalletAdapter(),
     ], [network]);
 
     const fetchData = React.useCallback(async () => {
