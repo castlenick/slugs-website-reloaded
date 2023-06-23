@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export function FAQ() {
     return (
         <div className="flex flex-col items-center justify-center">
@@ -54,6 +56,19 @@ export function FAQ() {
 
                         <span className="text-[1.35rem] mt-5">
                             We are hedging our bets that Sol Slugs will turn out to be a successful long term project with longevity.
+                        </span>
+                    </div>
+
+                    <div className="flex flex-col gap-y-2">
+                        <span className="text-3xl text-slugGreen">
+                            Can I use my slugs to make merch or use them commercially?
+                        </span>
+
+                        <span className="text-[1.35rem]">
+                            {`Yes! Slugs are licensed under Creative Commons 4.0. Learn more `}
+                            <Link to={'/license'} className="underline">
+                                here!
+                            </Link>
                         </span>
                     </div>
 

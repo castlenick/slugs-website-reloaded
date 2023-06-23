@@ -11,6 +11,7 @@ import { Affiliates } from './Affiliates';
 import { BurnLeaderboard } from './BurnLeaderboard';
 import { Graveyard } from './Graveyard';
 import { Verifier } from './Verify/';
+import { License } from './License';
 import { APIData, UnburntSlug, BurntSlug, Trait } from './Types';
 import { Marketing } from './Marketing';
 
@@ -116,6 +117,14 @@ export function Routes(props: RouteProps) {
                 path='/marketing'
                 element={
                     <Marketing/>
+                }
+            />
+
+            <Route
+                path='/license'
+                element={
+                    <License
+                    />
                 }
             />
         </RoutesWrapper>

@@ -121,6 +121,10 @@ export function Header(props: IHeaderProps) {
                                 link: 'https://degencoinflip.com/solslugs',
                                 external: true,
                             },
+                            {
+                                name: 'License',
+                                link: '/license',
+                            },
                         ]}
                     />
                 </div>
