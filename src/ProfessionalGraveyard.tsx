@@ -11,6 +11,10 @@ import { Trait, Attribute } from './Types';
 
 import { Filter, Traits } from './Filter';
 
+//TODO -- add toggle for the filter to be visible or not
+
+
+
 export interface GraveyardProps {
     burntSlugs: BurntSlug[];
     traitNameMap?: Map<string, Trait>;
@@ -26,6 +30,7 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
 
     const [dataFromFilter, setDataFromFilter] = React.useState<Traits>();
     const [addressFilter, setAddressFilter] = React.useState("");
+    const [hideFilter, setHideFilter] = React.useState(false);
 
     const handleAddressInputChange = (e: any) => {
         setAddressFilter(e.target.value);
@@ -97,7 +102,8 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
     }, [filteredSlugs]);
 
 
-    //TODO -- filter toggle
+
+
     return (
         <div className="flex flex-col items-center justify-center mt-10">
             <div className="flex flex-row items-center justify-center gap-x-4">
@@ -120,27 +126,32 @@ export function ProfessionalGraveyard(props: GraveyardProps) {
             <span className="uppercase text-2xl">
                 RIP you slimey bastards
             </span>
-            <div className ="mt-20 justify-center">
-                <span className="text-4xl uppercase">
-                    burner address: &nbsp;
-                </span>
-                <input 
-                    className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-3xl text-center placeholder:text-gray-700"
-                    placeholder="Optional"
-                    value={addressFilter}
-                    onChange={handleAddressInputChange}
-                />
-            </div>
-            <div className="grid mt-20 xs:grid-cols-2 sm:grid-cols-4">
-                <div className="col-span-1">
-                    <Filter
-                        traitNameMap={traitNameMap}
-                        attributes={attributes}
-                        onChange={handleDataFromFilter}
-                    />
-                </div>
-                <div className="col-span-1 mt-20 xs:mt-0 sm:col-span-2 md:col-span-3">
-                    {slugElements}
+            <div className ="grid place-items-center mt-20">
+                    <span className="text-4xl uppercase justify-center">
+                        burner address: &nbsp;
+                        <input 
+                            className="border-slugGreen border-2 bg-transparent rounded h-full w-96 px-2 text-3xl text-center placeholder:text-gray-700"
+                            placeholder="Optional"
+                            value={addressFilter}
+                            onChange={handleAddressInputChange}
+                        />
+                    </span>
+                <div className="grid mt-10 xs:grid-cols-2 sm:grid-cols-4">
+                    <div className="col-span-1">
+                        <button className = "block xs:hidden" onClick={() => setHideFilter(!hideFilter)}>
+                            {hideFilter? 'Show Filter' : 'Hide Filter'}
+                        </button>
+                        {!hideFilter && (
+                            <Filter
+                                traitNameMap={traitNameMap}
+                                attributes={attributes}
+                                onChange={handleDataFromFilter}
+                            />
+                        )}
+                    </div>
+                    <div className="col-span-1 mt-10 xs:mt-0 sm:col-span-2 md:col-span-3">
+                        {slugElements}
+                    </div>
                 </div>
             </div>
         </div>
