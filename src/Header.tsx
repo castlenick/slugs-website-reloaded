@@ -239,30 +239,6 @@ export function Header(props: IHeaderProps) {
                                 alt='Tensor'
                             />
                         </a>
-
-                        <a href="https://solanart.io/collections/solanaslugs">
-                            <img
-                                src={Solanart}
-                                className="w-8 2xl:w-9"
-                                alt='Solanart'
-                            />
-                        </a>
-
-                        <a href="https://opensea.io/collection/solslugs">
-                            <img
-                                src={OpenSea}
-                                className="w-8 2xl:w-9"
-                                alt='OpenSea'
-                            />
-                        </a>
-
-                        <a href="https://solsea.io/collection/6174889e35bdfa7fd24932c5">
-                            <img
-                                src={Solsea}
-                                className="w-8 2xl:w-9"
-                                alt='Solsea'
-                            />
-                        </a>
                     </div>
                 </div>
 
