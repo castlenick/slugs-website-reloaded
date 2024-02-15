@@ -10,10 +10,7 @@ import { HeaderDropdown } from './HeaderDropdown';
 
 import Logo from './img/Logo-Small.png';
 
-import OpenSea from './img/marketplace-icons/OpenSea.png';
 import MagicEden from './img/marketplace-icons/MagicEden.png';
-import Solanart from './img/marketplace-icons/Solanart.png';
-import Solsea from './img/marketplace-icons/Solsea.png';
 import Tensor from './img/marketplace-icons/Tensor.png';
 
 import Burned from './img/statistics-icons/Burned.png';
